@@ -8,4 +8,5 @@ Tecnologias
  - Primefaces 5.2;
  - Oracle JDK 1.7;
  - Mysql 5.6.x;
- - Glassfish 4.1.
+ - Glassfish 4.1;
+ - AdminLTE 2.2.x

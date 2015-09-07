@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEquipamentosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEquipamentosLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{equipamentosController.selected.id}" title="#{bundle.EditEquipamentosTitle_id}" required="true" requiredMessage="#{bundle.EditEquipamentosRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditEquipamentosLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{equipamentosController.selected.nome}" title="#{bundle.EditEquipamentosTitle_nome}" required="true" requiredMessage="#{bundle.EditEquipamentosRequiredMessage_nome}"/>
+                    <h:outputLabel value="#{bundle.EditEquipamentosLabel_tipoDispositivo}" for="tipoDispositivo" />
+                    <h:selectOneMenu id="tipoDispositivo" value="#{equipamentosController.selected.tipoDispositivo}" title="#{bundle.EditEquipamentosTitle_tipoDispositivo}" required="true" requiredMessage="#{bundle.EditEquipamentosRequiredMessage_tipoDispositivo}">
+                        <f:selectItems value="#{dispositivosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{equipamentosController.update}" value="#{bundle.EditEquipamentosSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEquipamentosViewLink}"/>
+                <br />
+                <h:commandLink action="#{equipamentosController.prepareList}" value="#{bundle.EditEquipamentosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEquipamentosIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

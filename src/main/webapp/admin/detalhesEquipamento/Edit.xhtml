@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDetalhesEquipamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDetalhesEquipamentoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{detalhesEquipamentoController.selected.id}" title="#{bundle.EditDetalhesEquipamentoTitle_id}" required="true" requiredMessage="#{bundle.EditDetalhesEquipamentoRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditDetalhesEquipamentoLabel_mac}" for="mac" />
+                    <h:inputText id="mac" value="#{detalhesEquipamentoController.selected.mac}" title="#{bundle.EditDetalhesEquipamentoTitle_mac}" />
+                    <h:outputLabel value="#{bundle.EditDetalhesEquipamentoLabel_sistemaOperacional}" for="sistemaOperacional" />
+                    <h:inputText id="sistemaOperacional" value="#{detalhesEquipamentoController.selected.sistemaOperacional}" title="#{bundle.EditDetalhesEquipamentoTitle_sistemaOperacional}" />
+                    <h:outputLabel value="#{bundle.EditDetalhesEquipamentoLabel_numSerie}" for="numSerie" />
+                    <h:inputText id="numSerie" value="#{detalhesEquipamentoController.selected.numSerie}" title="#{bundle.EditDetalhesEquipamentoTitle_numSerie}" />
+                    <h:outputLabel value="#{bundle.EditDetalhesEquipamentoLabel_licencaSistOperacional}" for="licencaSistOperacional" />
+                    <h:inputText id="licencaSistOperacional" value="#{detalhesEquipamentoController.selected.licencaSistOperacional}" title="#{bundle.EditDetalhesEquipamentoTitle_licencaSistOperacional}" />
+                    <h:outputLabel value="#{bundle.EditDetalhesEquipamentoLabel_tipoDeOffice}" for="tipoDeOffice" />
+                    <h:inputText id="tipoDeOffice" value="#{detalhesEquipamentoController.selected.tipoDeOffice}" title="#{bundle.EditDetalhesEquipamentoTitle_tipoDeOffice}" />
+                    <h:outputLabel value="#{bundle.EditDetalhesEquipamentoLabel_licencaOffice}" for="licencaOffice" />
+                    <h:inputText id="licencaOffice" value="#{detalhesEquipamentoController.selected.licencaOffice}" title="#{bundle.EditDetalhesEquipamentoTitle_licencaOffice}" />
+                    <h:outputLabel value="#{bundle.EditDetalhesEquipamentoLabel_numTombamento}" for="numTombamento" />
+                    <h:inputText id="numTombamento" value="#{detalhesEquipamentoController.selected.numTombamento}" title="#{bundle.EditDetalhesEquipamentoTitle_numTombamento}" />
+                    <h:outputLabel value="#{bundle.EditDetalhesEquipamentoLabel_equipamento}" for="equipamento" />
+                    <h:selectOneMenu id="equipamento" value="#{detalhesEquipamentoController.selected.equipamento}" title="#{bundle.EditDetalhesEquipamentoTitle_equipamento}" required="true" requiredMessage="#{bundle.EditDetalhesEquipamentoRequiredMessage_equipamento}">
+                        <f:selectItems value="#{equipamentosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{detalhesEquipamentoController.update}" value="#{bundle.EditDetalhesEquipamentoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDetalhesEquipamentoViewLink}"/>
+                <br />
+                <h:commandLink action="#{detalhesEquipamentoController.prepareList}" value="#{bundle.EditDetalhesEquipamentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDetalhesEquipamentoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

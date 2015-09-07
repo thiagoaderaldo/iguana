@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDetalhesEquipamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDetalhesEquipamentoEmpty}" rendered="#{detalhesEquipamentoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{detalhesEquipamentoController.items.rowCount > 0}">
+                    <h:outputText value="#{detalhesEquipamentoController.pagination.pageFirstItem + 1}..#{detalhesEquipamentoController.pagination.pageLastItem + 1}/#{detalhesEquipamentoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{detalhesEquipamentoController.previous}" value="#{bundle.Previous} #{detalhesEquipamentoController.pagination.pageSize}" rendered="#{detalhesEquipamentoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{detalhesEquipamentoController.next}" value="#{bundle.Next} #{detalhesEquipamentoController.pagination.pageSize}" rendered="#{detalhesEquipamentoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{detalhesEquipamentoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetalhesEquipamentoTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetalhesEquipamentoTitle_mac}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mac}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetalhesEquipamentoTitle_sistemaOperacional}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sistemaOperacional}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetalhesEquipamentoTitle_numSerie}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numSerie}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetalhesEquipamentoTitle_licencaSistOperacional}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.licencaSistOperacional}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetalhesEquipamentoTitle_tipoDeOffice}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoDeOffice}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetalhesEquipamentoTitle_licencaOffice}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.licencaOffice}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetalhesEquipamentoTitle_numTombamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numTombamento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetalhesEquipamentoTitle_equipamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.equipamento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{detalhesEquipamentoController.prepareView}" value="#{bundle.ListDetalhesEquipamentoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{detalhesEquipamentoController.prepareEdit}" value="#{bundle.ListDetalhesEquipamentoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{detalhesEquipamentoController.destroy}" value="#{bundle.ListDetalhesEquipamentoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{detalhesEquipamentoController.prepareCreate}" value="#{bundle.ListDetalhesEquipamentoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDetalhesEquipamentoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

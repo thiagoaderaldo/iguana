@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <body>
+        <ui:composition template="./login-template.xhtml">
+            <ui:define name="title">
+                Iguana - Login
+            </ui:define>
+            <ui:define name="top">
+                <!--<img src="resources/img/iguana-logo-151x60.png" width="131" height="50" alt="iguana-logo-151x60"/>-->
+                <h:graphicImage library="img" name="iguana-logo-151x60.png" width="131" height="50" alt="Iguana - Service Desk"/>
+                <i>Service Desk</i>
+                <i>2.2.0</i>
+            </ui:define>
+            <ui:define name="content">
+                <body class="login-page">
+                    <div class="login-box">
+                        <div class="login-logo">
+                            <b>Área Administrativa</b>
+                            <h5><i>Iguana - Service Desk</i></h5>
+                        </div><!-- /.login-logo -->
+                        <div class="login-box-body">
+                            <p class="login-box-msg">Faça login para iniciar sua sessão</p>
+                            <h:form id="form-login" prependId="false" onsubmit="document.getElementById('form-login').action='j_security_check';">
+                            <!--<form id="form-login" prependId="false" action="j_security_check">-->
+                                <h:message id="msg" for="form-login" errorStyle="color: red" infoStyle="color: green"/> 
+                                <div class="form-group has-feedback">
+                                    <!--<input type="email" class="form-control" placeholder="Login" />-->
+                                    <h:inputText id="j_username" value="#{loginController.username}" 
+                                                 required="true" class="form-control" pt:placeholder="Login" requiredMessage="É necessário preencher o campo 'Login'">
+                                        <f:validateLength minimum="8" />
+                                    </h:inputText>
+                                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                </div>
+                                <h:message for="j_username" errorStyle="color: red" infoStyle="color: green"/>
+                                <div class="form-group has-feedback">
+                                    <!--<input type="password" class="form-control" placeholder="Senha" />-->
+                                    <h:inputSecret id="j_password" value="#{loginController.password}"
+                                                 required="true" label="Senha:" class="form-control" pt:placeholder="Senha" requiredMessage="É necessário preencher o campo 'Senha'">
+                                        <f:validateLength minimum="1" />
+                                    </h:inputSecret>
+                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                </div>
+                                <h:message for="j_password" errorStyle="color: red" infoStyle="color: green"/>
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <div class="checkbox icheck">
+                                            <label>
+                                                <input type="checkbox"> Lembrar me </input>
+                                            </label>
+                                        </div>
+                                    </div><!-- /.col -->
+                                    <div class="col-xs-4">
+                                        <h:commandButton immediate="false" action="#{loginController.login}" value="Entrar" class="btn btn-primary btn-block btn-flat"/>
+                                    </div><!-- /.col -->
+                                </div>
+                            </h:form>
+                            <a href="#">Esqueci minha senha</a><br/>
+                            <a href="register.html" class="text-center">Registrar-se como novo membro</a>
+                        </div><!-- /.login-box-body -->
+                    </div><!-- /.login-box -->
+                </body>
+            </ui:define>
+            <ui:define name="bottom">
+                <!-- To the right -->
+                <div class="pull-right hidden-xs">
+                    Iguana - Service Desk
+                </div>
+                <!-- Default to the left -->
+                <strong>GPLv3 &copy;<a href="#">Código F</a>.</strong> Todos os direitos reservados.
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

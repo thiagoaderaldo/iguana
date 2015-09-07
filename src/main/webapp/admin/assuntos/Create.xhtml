@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAssuntosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="breadcrumb">
+            <li class="active">Cadastrar</li>
+            <li class="active">Assunto</li>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAssuntosLabel_id}" for="id" />
+                    <p:inputText id="id" value="#{assuntosController.selected.id}" title="#{bundle.CreateAssuntosTitle_id}" required="true" requiredMessage="#{bundle.CreateAssuntosRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateAssuntosLabel_nome}" for="nome" />
+                    <p:inputText id="nome" value="#{assuntosController.selected.nome}" title="#{bundle.CreateAssuntosTitle_nome}" required="true" requiredMessage="#{bundle.CreateAssuntosRequiredMessage_nome}"/>
+                    <p:selectOneMenu>
+                        <f:selectItem itemLabel="Teste"/>
+                        <f:selectItem itemLabel="Teste coisado"/>
+                        <f:selectItem itemLabel="Teste muito coisado"/>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{assuntosController.create}" value="#{bundle.CreateAssuntosSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{assuntosController.prepareList}" value="#{bundle.CreateAssuntosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAssuntosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

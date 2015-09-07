@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSolicitacoesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSolicitacoesEmpty}" rendered="#{solicitacoesController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{solicitacoesController.items.rowCount > 0}">
+                    <h:outputText value="#{solicitacoesController.pagination.pageFirstItem + 1}..#{solicitacoesController.pagination.pageLastItem + 1}/#{solicitacoesController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{solicitacoesController.previous}" value="#{bundle.Previous} #{solicitacoesController.pagination.pageSize}" rendered="#{solicitacoesController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{solicitacoesController.next}" value="#{bundle.Next} #{solicitacoesController.pagination.pageSize}" rendered="#{solicitacoesController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{solicitacoesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitacoesTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitacoesTitle_protocolo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.protocolo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitacoesTitle_protocoloOrigem}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.protocoloOrigem}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitacoesTitle_tituloSolicitacao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tituloSolicitacao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitacoesTitle_dataSolicitacao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataSolicitacao}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitacoesTitle_horaSolicitacao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horaSolicitacao}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitacoesTitle_localizacao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.localizacao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitacoesTitle_descricao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descricao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitacoesTitle_solicitante}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.solicitante}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitacoesTitle_origem}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.origem}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitacoesTitle_estatus}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estatus}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitacoesTitle_atendimentos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.atendimentos}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitacoesTitle_dispositivo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dispositivo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitacoesTitle_assunto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.assunto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{solicitacoesController.prepareView}" value="#{bundle.ListSolicitacoesViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{solicitacoesController.prepareEdit}" value="#{bundle.ListSolicitacoesEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{solicitacoesController.destroy}" value="#{bundle.ListSolicitacoesDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{solicitacoesController.prepareCreate}" value="#{bundle.ListSolicitacoesCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListSolicitacoesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

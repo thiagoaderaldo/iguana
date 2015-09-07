@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAtendimentosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAtendimentosLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{atendimentosController.selected.id}" title="#{bundle.CreateAtendimentosTitle_id}" required="true" requiredMessage="#{bundle.CreateAtendimentosRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateAtendimentosLabel_descricaoAtendimento}" for="descricaoAtendimento" />
+                    <h:inputTextarea rows="4" cols="30" id="descricaoAtendimento" value="#{atendimentosController.selected.descricaoAtendimento}" title="#{bundle.CreateAtendimentosTitle_descricaoAtendimento}" required="true" requiredMessage="#{bundle.CreateAtendimentosRequiredMessage_descricaoAtendimento}"/>
+                    <h:outputLabel value="#{bundle.CreateAtendimentosLabel_dataAtendimento}" for="dataAtendimento" />
+                    <h:inputText id="dataAtendimento" value="#{atendimentosController.selected.dataAtendimento}" title="#{bundle.CreateAtendimentosTitle_dataAtendimento}" required="true" requiredMessage="#{bundle.CreateAtendimentosRequiredMessage_dataAtendimento}"/>
+                    <h:outputLabel value="#{bundle.CreateAtendimentosLabel_horaAtendimento}" for="horaAtendimento" />
+                    <h:inputText id="horaAtendimento" value="#{atendimentosController.selected.horaAtendimento}" title="#{bundle.CreateAtendimentosTitle_horaAtendimento}" required="true" requiredMessage="#{bundle.CreateAtendimentosRequiredMessage_horaAtendimento}"/>
+                    <h:outputLabel value="#{bundle.CreateAtendimentosLabel_observacao}" for="observacao" />
+                    <h:inputText id="observacao" value="#{atendimentosController.selected.observacao}" title="#{bundle.CreateAtendimentosTitle_observacao}" />
+                    <h:outputLabel value="#{bundle.CreateAtendimentosLabel_marcadores}" for="marcadores" />
+                    <h:inputText id="marcadores" value="#{atendimentosController.selected.marcadores}" title="#{bundle.CreateAtendimentosTitle_marcadores}" />
+                    <h:outputLabel value="#{bundle.CreateAtendimentosLabel_solucao}" for="solucao" />
+                    <h:inputText id="solucao" value="#{atendimentosController.selected.solucao}" title="#{bundle.CreateAtendimentosTitle_solucao}" />
+                    <h:outputLabel value="#{bundle.CreateAtendimentosLabel_responsavel}" for="responsavel" />
+                    <h:inputText id="responsavel" value="#{atendimentosController.selected.responsavel}" title="#{bundle.CreateAtendimentosTitle_responsavel}" required="true" requiredMessage="#{bundle.CreateAtendimentosRequiredMessage_responsavel}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{atendimentosController.create}" value="#{bundle.CreateAtendimentosSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{atendimentosController.prepareList}" value="#{bundle.CreateAtendimentosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAtendimentosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

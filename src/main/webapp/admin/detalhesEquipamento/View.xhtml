@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDetalhesEquipamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDetalhesEquipamentoLabel_id}"/>
+                    <h:outputText value="#{detalhesEquipamentoController.selected.id}" title="#{bundle.ViewDetalhesEquipamentoTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewDetalhesEquipamentoLabel_mac}"/>
+                    <h:outputText value="#{detalhesEquipamentoController.selected.mac}" title="#{bundle.ViewDetalhesEquipamentoTitle_mac}"/>
+                    <h:outputText value="#{bundle.ViewDetalhesEquipamentoLabel_sistemaOperacional}"/>
+                    <h:outputText value="#{detalhesEquipamentoController.selected.sistemaOperacional}" title="#{bundle.ViewDetalhesEquipamentoTitle_sistemaOperacional}"/>
+                    <h:outputText value="#{bundle.ViewDetalhesEquipamentoLabel_numSerie}"/>
+                    <h:outputText value="#{detalhesEquipamentoController.selected.numSerie}" title="#{bundle.ViewDetalhesEquipamentoTitle_numSerie}"/>
+                    <h:outputText value="#{bundle.ViewDetalhesEquipamentoLabel_licencaSistOperacional}"/>
+                    <h:outputText value="#{detalhesEquipamentoController.selected.licencaSistOperacional}" title="#{bundle.ViewDetalhesEquipamentoTitle_licencaSistOperacional}"/>
+                    <h:outputText value="#{bundle.ViewDetalhesEquipamentoLabel_tipoDeOffice}"/>
+                    <h:outputText value="#{detalhesEquipamentoController.selected.tipoDeOffice}" title="#{bundle.ViewDetalhesEquipamentoTitle_tipoDeOffice}"/>
+                    <h:outputText value="#{bundle.ViewDetalhesEquipamentoLabel_licencaOffice}"/>
+                    <h:outputText value="#{detalhesEquipamentoController.selected.licencaOffice}" title="#{bundle.ViewDetalhesEquipamentoTitle_licencaOffice}"/>
+                    <h:outputText value="#{bundle.ViewDetalhesEquipamentoLabel_numTombamento}"/>
+                    <h:outputText value="#{detalhesEquipamentoController.selected.numTombamento}" title="#{bundle.ViewDetalhesEquipamentoTitle_numTombamento}"/>
+                    <h:outputText value="#{bundle.ViewDetalhesEquipamentoLabel_equipamento}"/>
+                    <h:outputText value="#{detalhesEquipamentoController.selected.equipamento}" title="#{bundle.ViewDetalhesEquipamentoTitle_equipamento}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detalhesEquipamentoController.destroyAndView}" value="#{bundle.ViewDetalhesEquipamentoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDetalhesEquipamentoEditLink}"/>
+                <br />
+                <h:commandLink action="#{detalhesEquipamentoController.prepareCreate}" value="#{bundle.ViewDetalhesEquipamentoCreateLink}" />
+                <br />
+                <h:commandLink action="#{detalhesEquipamentoController.prepareList}" value="#{bundle.ViewDetalhesEquipamentoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDetalhesEquipamentoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

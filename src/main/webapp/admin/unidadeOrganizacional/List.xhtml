@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListUnidadeOrganizacionalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListUnidadeOrganizacionalEmpty}" rendered="#{unidadeOrganizacionalController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{unidadeOrganizacionalController.items.rowCount > 0}">
+                    <h:outputText value="#{unidadeOrganizacionalController.pagination.pageFirstItem + 1}..#{unidadeOrganizacionalController.pagination.pageLastItem + 1}/#{unidadeOrganizacionalController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{unidadeOrganizacionalController.previous}" value="#{bundle.Previous} #{unidadeOrganizacionalController.pagination.pageSize}" rendered="#{unidadeOrganizacionalController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{unidadeOrganizacionalController.next}" value="#{bundle.Next} #{unidadeOrganizacionalController.pagination.pageSize}" rendered="#{unidadeOrganizacionalController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{unidadeOrganizacionalController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUnidadeOrganizacionalTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUnidadeOrganizacionalTitle_nome}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nome}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUnidadeOrganizacionalTitle_descricao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descricao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUnidadeOrganizacionalTitle_lft}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lft}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUnidadeOrganizacionalTitle_rgt}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rgt}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{unidadeOrganizacionalController.prepareView}" value="#{bundle.ListUnidadeOrganizacionalViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{unidadeOrganizacionalController.prepareEdit}" value="#{bundle.ListUnidadeOrganizacionalEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{unidadeOrganizacionalController.destroy}" value="#{bundle.ListUnidadeOrganizacionalDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{unidadeOrganizacionalController.prepareCreate}" value="#{bundle.ListUnidadeOrganizacionalCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListUnidadeOrganizacionalIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

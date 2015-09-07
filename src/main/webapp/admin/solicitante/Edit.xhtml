@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSolicitanteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSolicitanteLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{solicitanteController.selected.id}" title="#{bundle.EditSolicitanteTitle_id}" required="true" requiredMessage="#{bundle.EditSolicitanteRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitanteLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{solicitanteController.selected.nome}" title="#{bundle.EditSolicitanteTitle_nome}" required="true" requiredMessage="#{bundle.EditSolicitanteRequiredMessage_nome}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitanteLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{solicitanteController.selected.email}" title="#{bundle.EditSolicitanteTitle_email}" required="true" requiredMessage="#{bundle.EditSolicitanteRequiredMessage_email}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitanteLabel_telefone}" for="telefone" />
+                    <h:inputText id="telefone" value="#{solicitanteController.selected.telefone}" title="#{bundle.EditSolicitanteTitle_telefone}" />
+                    <h:outputLabel value="#{bundle.EditSolicitanteLabel_unidadeOrganizacional}" for="unidadeOrganizacional" />
+                    <h:selectOneMenu id="unidadeOrganizacional" value="#{solicitanteController.selected.unidadeOrganizacional}" title="#{bundle.EditSolicitanteTitle_unidadeOrganizacional}" required="true" requiredMessage="#{bundle.EditSolicitanteRequiredMessage_unidadeOrganizacional}">
+                        <f:selectItems value="#{unidadeOrganizacionalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{solicitanteController.update}" value="#{bundle.EditSolicitanteSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSolicitanteViewLink}"/>
+                <br />
+                <h:commandLink action="#{solicitanteController.prepareList}" value="#{bundle.EditSolicitanteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSolicitanteIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

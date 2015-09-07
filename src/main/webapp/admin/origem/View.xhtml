@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewOrigemTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewOrigemLabel_id}"/>
+                    <h:outputText value="#{origemController.selected.id}" title="#{bundle.ViewOrigemTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewOrigemLabel_nome}"/>
+                    <h:outputText value="#{origemController.selected.nome}" title="#{bundle.ViewOrigemTitle_nome}"/>
+                    <h:outputText value="#{bundle.ViewOrigemLabel_descricao}"/>
+                    <h:outputText value="#{origemController.selected.descricao}" title="#{bundle.ViewOrigemTitle_descricao}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{origemController.destroyAndView}" value="#{bundle.ViewOrigemDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewOrigemEditLink}"/>
+                <br />
+                <h:commandLink action="#{origemController.prepareCreate}" value="#{bundle.ViewOrigemCreateLink}" />
+                <br />
+                <h:commandLink action="#{origemController.prepareList}" value="#{bundle.ViewOrigemShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewOrigemIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

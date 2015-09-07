@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSolicitacoesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSolicitacoesLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{solicitacoesController.selected.id}" title="#{bundle.EditSolicitacoesTitle_id}" required="true" requiredMessage="#{bundle.EditSolicitacoesRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitacoesLabel_protocolo}" for="protocolo" />
+                    <h:inputText id="protocolo" value="#{solicitacoesController.selected.protocolo}" title="#{bundle.EditSolicitacoesTitle_protocolo}" />
+                    <h:outputLabel value="#{bundle.EditSolicitacoesLabel_protocoloOrigem}" for="protocoloOrigem" />
+                    <h:inputText id="protocoloOrigem" value="#{solicitacoesController.selected.protocoloOrigem}" title="#{bundle.EditSolicitacoesTitle_protocoloOrigem}" />
+                    <h:outputLabel value="#{bundle.EditSolicitacoesLabel_tituloSolicitacao}" for="tituloSolicitacao" />
+                    <h:inputText id="tituloSolicitacao" value="#{solicitacoesController.selected.tituloSolicitacao}" title="#{bundle.EditSolicitacoesTitle_tituloSolicitacao}" required="true" requiredMessage="#{bundle.EditSolicitacoesRequiredMessage_tituloSolicitacao}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitacoesLabel_dataSolicitacao}" for="dataSolicitacao" />
+                    <h:inputText id="dataSolicitacao" value="#{solicitacoesController.selected.dataSolicitacao}" title="#{bundle.EditSolicitacoesTitle_dataSolicitacao}" required="true" requiredMessage="#{bundle.EditSolicitacoesRequiredMessage_dataSolicitacao}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditSolicitacoesLabel_horaSolicitacao}" for="horaSolicitacao" />
+                    <h:inputText id="horaSolicitacao" value="#{solicitacoesController.selected.horaSolicitacao}" title="#{bundle.EditSolicitacoesTitle_horaSolicitacao}" required="true" requiredMessage="#{bundle.EditSolicitacoesRequiredMessage_horaSolicitacao}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditSolicitacoesLabel_localizacao}" for="localizacao" />
+                    <h:inputText id="localizacao" value="#{solicitacoesController.selected.localizacao}" title="#{bundle.EditSolicitacoesTitle_localizacao}" required="true" requiredMessage="#{bundle.EditSolicitacoesRequiredMessage_localizacao}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitacoesLabel_descricao}" for="descricao" />
+                    <h:inputTextarea rows="4" cols="30" id="descricao" value="#{solicitacoesController.selected.descricao}" title="#{bundle.EditSolicitacoesTitle_descricao}" required="true" requiredMessage="#{bundle.EditSolicitacoesRequiredMessage_descricao}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitacoesLabel_solicitante}" for="solicitante" />
+                    <h:selectOneMenu id="solicitante" value="#{solicitacoesController.selected.solicitante}" title="#{bundle.EditSolicitacoesTitle_solicitante}" required="true" requiredMessage="#{bundle.EditSolicitacoesRequiredMessage_solicitante}">
+                        <f:selectItems value="#{solicitanteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSolicitacoesLabel_origem}" for="origem" />
+                    <h:selectOneMenu id="origem" value="#{solicitacoesController.selected.origem}" title="#{bundle.EditSolicitacoesTitle_origem}" required="true" requiredMessage="#{bundle.EditSolicitacoesRequiredMessage_origem}">
+                        <f:selectItems value="#{origemController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSolicitacoesLabel_estatus}" for="estatus" />
+                    <h:selectOneMenu id="estatus" value="#{solicitacoesController.selected.estatus}" title="#{bundle.EditSolicitacoesTitle_estatus}" required="true" requiredMessage="#{bundle.EditSolicitacoesRequiredMessage_estatus}">
+                        <f:selectItems value="#{estatusController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSolicitacoesLabel_atendimentos}" for="atendimentos" />
+                    <h:selectOneMenu id="atendimentos" value="#{solicitacoesController.selected.atendimentos}" title="#{bundle.EditSolicitacoesTitle_atendimentos}" >
+                        <f:selectItems value="#{atendimentosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSolicitacoesLabel_dispositivo}" for="dispositivo" />
+                    <h:selectOneMenu id="dispositivo" value="#{solicitacoesController.selected.dispositivo}" title="#{bundle.EditSolicitacoesTitle_dispositivo}" >
+                        <f:selectItems value="#{dispositivosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSolicitacoesLabel_assunto}" for="assunto" />
+                    <h:selectOneMenu id="assunto" value="#{solicitacoesController.selected.assunto}" title="#{bundle.EditSolicitacoesTitle_assunto}" >
+                        <f:selectItems value="#{assuntosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{solicitacoesController.update}" value="#{bundle.EditSolicitacoesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSolicitacoesViewLink}"/>
+                <br />
+                <h:commandLink action="#{solicitacoesController.prepareList}" value="#{bundle.EditSolicitacoesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSolicitacoesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

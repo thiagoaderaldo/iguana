@@ -1,6 +1,6 @@
 Iguana - Service Desk (2.2.x)
 =======
-Sistema de Web de Service Desk.
+Sistema Web para Service Desk.
 
 Tecnologias
 

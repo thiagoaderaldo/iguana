@@ -4,7 +4,7 @@ Sistema Web para Service Desk.
 
 Tecnologias
 
- - JSF 2.2;
+ - JSF 2.2.x;
  - Primefaces 5.2;
  - Oracle JDK 1.7;
  - Mysql 5.6.x;

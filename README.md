@@ -1,8 +1,8 @@
-# Iguana - Service Desk (2.2.x)
-
+Iguana - Service Desk (2.2.x)
+=======
     Sistema de Web de Service Desk.
 
-# Tecnologias
+Tecnologias
 
     * JSF 2.2;
     * Primefaces 5.2;

@@ -106,7 +106,8 @@ public class Grupos implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.codigof.iguana.jpa.entities.Grupos[ nome=" + nome + " ]";
+//        return "br.com.codigof.iguana.jpa.entities.Grupos[ nome=" + nome + " ]";
+        return getNome() + " - " + getDescricao();
     }
     
 }

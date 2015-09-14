@@ -107,7 +107,8 @@ public class Assuntos implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.codigof.iguana.jpa.entities.Assuntos[ id=" + id + " ]";
+//        return "br.com.codigof.iguana.jpa.entities.Assuntos[ id=" + id + " ]";
+        return getNome();
     }
     
 }

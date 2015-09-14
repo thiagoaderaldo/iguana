@@ -119,7 +119,8 @@ public class Dispositivos implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.codigof.iguana.jpa.entities.Dispositivos[ id=" + id + " ]";
+//        return "br.com.codigof.iguana.jpa.entities.Dispositivos[ id=" + id + " ]";
+        return getNome();
     }
     
 }

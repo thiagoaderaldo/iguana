@@ -120,7 +120,8 @@ public class Origem implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.codigof.iguana.jpa.entities.Origem[ id=" + id + " ]";
+//        return "br.com.codigof.iguana.jpa.entities.Origem[ id=" + id + " ]";
+        return getNome();
     }
     
 }

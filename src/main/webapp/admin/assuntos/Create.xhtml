@@ -37,10 +37,13 @@
                         </div>
                         <h:form>
                             <div class="box-body">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateAssuntosLabel_nome}" for="nome" />
-                                        <h:inputText id="nome" class="form-control" value="#{assuntosController.selected.nome}" title="#{bundle.CreateAssuntosTitle_nome}" required="true" requiredMessage="#{bundle.CreateAssuntosRequiredMessage_nome}" pt:placeholder="Nome do assunto. Ex.: INSTALAÇÃO"/>
+                                <div class="col-md-12">
+                                    <div class="ui-fluid">
+                                        <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
+
+                                            <h:outputLabel value="#{bundle.CreateAssuntosLabel_nome}" for="nome" />
+                                            <p:inputText id="nome" value="#{assuntosController.selected.nome}" title="#{bundle.CreateAssuntosTitle_nome}" required="true" requiredMessage="#{bundle.CreateAssuntosRequiredMessage_nome}" pt:placeholder="Nome do assunto. Ex.: INSTALAÇÃO"/>
+                                        </p:panelGrid>
                                     </div>
                                 </div>
                             </div>
@@ -51,6 +54,18 @@
                     </div>
                 </div>
             </div>
+            <h:form>
+                <h:panelGrid columns="2">
+                </h:panelGrid>
+                <br />
+                <h:commandLink  />
+                <br />
+                <br />
+                <h:commandLink action="#{assuntosController.prepareList}" value="#{bundle.CreateAssuntosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateUnidadeOrganizacionalIndexLink}"/>
+            </h:form>
         </ui:define>
     </ui:composition>
 

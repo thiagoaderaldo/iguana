@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:mc="http://java.sun.com/jsf/composite/atendimentos">
+      xmlns:mc="http://java.sun.com/jsf/composite/solicitantes">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -16,7 +16,7 @@
             Cadastrar solicitação
         </ui:define>
         <ui:define name="pagedescription">
-            
+
         </ui:define>
         <ui:define name="breadcrumb">
             <li class="active">Cadastrar</li>
@@ -41,90 +41,106 @@
                         </div>
                         <h:form>
                             <div class="box-body">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateSolicitacoesLabel_origem}" for="origem" />
-                                        <h:selectOneMenu class="form-control" id="origem" value="#{solicitacoesController.selected.origem}" title="#{bundle.CreateSolicitacoesTitle_origem}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_origem}">
-                                            <f:selectItems value="#{origemController.itemsAvailableSelectOne}"/>
-                                        </h:selectOneMenu>
+                                <div class="ui-fluid">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.CreateSolicitacoesLabel_origem}" for="origem" />
+                                            <p:selectOneMenu id="origem" value="#{solicitacoesController.selected.origem}" title="#{bundle.CreateSolicitacoesTitle_origem}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_origem}">
+                                                <f:selectItems value="#{origemController.itemsAvailableSelectOne}"/>
+                                            </p:selectOneMenu>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateSolicitacoesLabel_protocoloOrigem}" for="protocoloOrigem" />
-                                        <h:inputText id="protocoloOrigem" class="form-control" value="#{solicitacoesController.selected.protocoloOrigem}" title="#{bundle.CreateSolicitacoesTitle_protocoloOrigem}" />
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.CreateSolicitacoesLabel_protocoloOrigem}" for="protocoloOrigem" />
+                                            <p:inputText id="protocoloOrigem" value="#{solicitacoesController.selected.protocoloOrigem}" title="#{bundle.CreateSolicitacoesTitle_protocoloOrigem}" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateSolicitacoesLabel_tituloSolicitacao}" for="tituloSolicitacao" />
-                                        <h:inputText id="tituloSolicitacao" class="form-control" value="#{solicitacoesController.selected.tituloSolicitacao}" title="#{bundle.CreateSolicitacoesTitle_tituloSolicitacao}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_tituloSolicitacao}"/>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.CreateSolicitacoesLabel_tituloSolicitacao}" for="tituloSolicitacao" />
+                                            <p:inputText id="tituloSolicitacao" value="#{solicitacoesController.selected.tituloSolicitacao}" title="#{bundle.CreateSolicitacoesTitle_tituloSolicitacao}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_tituloSolicitacao}"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateSolicitacoesLabel_dataSolicitacao}" for="dataSolicitacao" />
-                                        <h:inputText pt:type="date" id="dataSolicitacao" class="form-control" value="#{solicitacoesController.selected.dataSolicitacao}" title="#{bundle.CreateSolicitacoesTitle_dataSolicitacao}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_dataSolicitacao}">
-                                            <f:convertDateTime pattern="dd/MM/yyyy" />
-                                        </h:inputText>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.CreateSolicitacoesLabel_dataSolicitacao}" for="dataSolicitacao" />
+                                            <p:calendar pt:type="date" id="dataSolicitacao" value="#{solicitacoesController.selected.dataSolicitacao}" title="#{bundle.CreateSolicitacoesTitle_dataSolicitacao}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_dataSolicitacao}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                                            </p:calendar>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateSolicitacoesLabel_horaSolicitacao}" for="horaSolicitacao" />
-                                        <h:inputText id="horaSolicitacao" class="form-control" pt:type="time" value="#{solicitacoesController.selected.horaSolicitacao}" title="#{bundle.CreateSolicitacoesTitle_horaSolicitacao}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_horaSolicitacao}">
-                                            <f:convertDateTime pattern="HH:mm:ss" />
-                                        </h:inputText>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.CreateSolicitacoesLabel_horaSolicitacao}" for="horaSolicitacao" />
+                                            <p:inputMask mask="__:__" style="text-align: center" id="horaSolicitacao" pt:type="time" value="#{solicitacoesController.selected.horaSolicitacao}" title="#{bundle.CreateSolicitacoesTitle_horaSolicitacao}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_horaSolicitacao}">
+                                                <f:convertDateTime pattern="HH:mm:ss" />
+                                            </p:inputMask>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateSolicitacoesLabel_localizacao}" for="localizacao" />
-                                        <h:inputText id="localizacao" class="form-control" value="#{solicitacoesController.selected.localizacao}" title="#{bundle.CreateSolicitacoesTitle_localizacao}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_localizacao}"/>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.CreateSolicitacoesLabel_localizacao}" for="localizacao" />
+                                            <p:inputText id="localizacao" value="#{solicitacoesController.selected.localizacao}" title="#{bundle.CreateSolicitacoesTitle_localizacao}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_localizacao}"/>
+                                        </div>
                                     </div>
-                                </div>
-                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateSolicitacoesLabel_solicitante}" for="solicitante" />
-                                        <h:selectOneMenu id="solicitante" class="form-control" value="#{solicitacoesController.selected.solicitante}" title="#{bundle.CreateSolicitacoesTitle_solicitante}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_solicitante}">
-                                            <f:selectItems value="#{solicitanteController.itemsAvailableSelectOne}"/>
-                                        </h:selectOneMenu>
+                                    <div class="col-md-4">
+                                        <p:outputLabel value="#{bundle.CreateSolicitacoesLabel_solicitante}" for="solicitante" />
+
+                                        <div class="ui-grid ui-grid-responsive">
+                                            <div class="ui-grid-row">
+                                                <div class="ui-grid-col-12">
+                                                    <p:selectOneMenu id="solicitante" value="#{solicitacoesController.selected.solicitante}" title="#{bundle.CreateSolicitacoesTitle_solicitante}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_solicitante}">
+                                                        <f:selectItems value="#{solicitanteController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                                <div class="ui-grid-col-1"></div>
+                                                <div class="ui-grid-col-2">
+                                                    <p:commandButton immediate="true" value="+"  onclick="PF('modalAddGrupos').show();" ></p:commandButton>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateSolicitacoesLabel_assunto}" for="assunto" />
-                                        <h:selectOneMenu id="assunto" class="form-control" value="#{solicitacoesController.selected.assunto}" title="#{bundle.CreateSolicitacoesTitle_assunto}" >
-                                            <f:selectItems value="#{assuntosController.itemsAvailableSelectOne}"/>
-                                        </h:selectOneMenu>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.CreateSolicitacoesLabel_assunto}" for="assunto" />
+                                            <p:selectOneMenu id="assunto"  value="#{solicitacoesController.selected.assunto}" title="#{bundle.CreateSolicitacoesTitle_assunto}" >
+                                                <f:selectItems value="#{assuntosController.itemsAvailableSelectOne}"/>
+                                            </p:selectOneMenu>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateSolicitacoesLabel_dispositivo}" for="dispositivo" />
-                                        <h:selectOneMenu id="dispositivo" class="form-control" value="#{solicitacoesController.selected.dispositivo}" title="#{bundle.CreateSolicitacoesTitle_dispositivo}" >
-                                            <f:selectItems value="#{dispositivosController.itemsAvailableSelectOne}"/>
-                                        </h:selectOneMenu>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.CreateSolicitacoesLabel_dispositivo}" for="dispositivo" />
+                                            <p:selectOneMenu id="dispositivo"  value="#{solicitacoesController.selected.dispositivo}" title="#{bundle.CreateSolicitacoesTitle_dispositivo}" >
+                                                <f:selectItems value="#{dispositivosController.itemsAvailableSelectOne}"/>
+                                            </p:selectOneMenu>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateSolicitacoesLabel_descricao}" for="descricao" />
-                                        <h:inputTextarea class="form-control" rows="4" cols="30" id="descricao" value="#{solicitacoesController.selected.descricao}" title="#{bundle.CreateSolicitacoesTitle_descricao}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_descricao}"/>
-                                    </div>
-                                </div>                               
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateSolicitacoesLabel_estatus}" for="estatus" />
-                                        <h:selectOneMenu id="estatus" class="form-control" value="#{solicitacoesController.selected.estatus}" title="#{bundle.CreateSolicitacoesTitle_estatus}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_estatus}">
-                                            <f:selectItems value="#{estatusController.itemsAvailableSelectOne}"/>
-                                        </h:selectOneMenu>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.CreateSolicitacoesLabel_descricao}" for="descricao" />
+                                            <p:inputTextarea  rows="4" cols="30" id="descricao" value="#{solicitacoesController.selected.descricao}" title="#{bundle.CreateSolicitacoesTitle_descricao}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_descricao}"/>
+                                        </div>
+                                    </div>                               
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.CreateSolicitacoesLabel_estatus}" for="estatus" />
+                                            <p:selectOneMenu id="estatus"  value="#{solicitacoesController.selected.estatus}" title="#{bundle.CreateSolicitacoesTitle_estatus}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_estatus}">
+                                                <f:selectItems value="#{estatusController.itemsAvailableSelectOne}"/>
+                                            </p:selectOneMenu>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="box-footer">
                                 <h:commandButton class="btn btn-primary" action="#{solicitacoesController.create}" value="#{bundle.CreateSolicitacoesSaveLink}"/>                                 
                             </div><!-- /.box-body -->
+                        </h:form>
+                        <h:form prependId="false">
+                            <p:dialog modal="true" widgetVar="modalAddGrupos" id="modalAddGrupos">
+                                <mc:Create/>
+                            </p:dialog>
                         </h:form>
                     </div>
                 </div>

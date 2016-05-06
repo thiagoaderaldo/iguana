@@ -128,10 +128,11 @@ public class LoginController {
               
             return STAY_IN_THE_SAME_PAGE;    
         }
-//            finally{
-//////            System.out.println("Login: " + user.getLogin() + "\nSenha: " + HashGenerator.md5(user.getSenha()));
-//////            System.out.println("Tipo de autenticação: \n" + getRequest().getAuthType());
-////        }   
+            finally{
+//            System.out.println("Login: " + user.getLogin() + "\nSenha: " + HashGenerator.md5(user.getSenha()));
+            System.out.println("Login: " + getUsername() + "\nSenha: " + getPassword());
+            System.out.println("Tipo de autenticação: \n" + getRequest().getAuthType());
+        }   
           
     }    
     

@@ -34,9 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "UnidadeOrganizacional.findAll", query = "SELECT u FROM UnidadeOrganizacional u"),
     @NamedQuery(name = "UnidadeOrganizacional.findById", query = "SELECT u FROM UnidadeOrganizacional u WHERE u.id = :id"),
     @NamedQuery(name = "UnidadeOrganizacional.findByNome", query = "SELECT u FROM UnidadeOrganizacional u WHERE u.nome = :nome"),
-    @NamedQuery(name = "UnidadeOrganizacional.findByDescricao", query = "SELECT u FROM UnidadeOrganizacional u WHERE u.descricao = :descricao"),
-    @NamedQuery(name = "UnidadeOrganizacional.findByLft", query = "SELECT u FROM UnidadeOrganizacional u WHERE u.lft = :lft"),
-    @NamedQuery(name = "UnidadeOrganizacional.findByRgt", query = "SELECT u FROM UnidadeOrganizacional u WHERE u.rgt = :rgt")})
+    @NamedQuery(name = "UnidadeOrganizacional.findByDescricao", query = "SELECT u FROM UnidadeOrganizacional u WHERE u.descricao = :descricao")})
 public class UnidadeOrganizacional implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -52,16 +50,6 @@ public class UnidadeOrganizacional implements Serializable {
     @Size(max = 250)
     @Column(name = "descricao")
     private String descricao;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "lft")
-    private String lft;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "rgt")
-    private String rgt;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadeOrganizacional")
     private Collection<Solicitante> solicitanteCollection;
 
@@ -72,11 +60,9 @@ public class UnidadeOrganizacional implements Serializable {
         this.id = id;
     }
 
-    public UnidadeOrganizacional(Integer id, String nome, String lft, String rgt) {
+    public UnidadeOrganizacional(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
-        this.lft = lft;
-        this.rgt = rgt;
     }
 
     public Integer getId() {
@@ -101,22 +87,6 @@ public class UnidadeOrganizacional implements Serializable {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getLft() {
-        return lft;
-    }
-
-    public void setLft(String lft) {
-        this.lft = lft;
-    }
-
-    public String getRgt() {
-        return rgt;
-    }
-
-    public void setRgt(String rgt) {
-        this.rgt = rgt;
     }
 
     @XmlTransient
@@ -150,7 +120,8 @@ public class UnidadeOrganizacional implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.codigof.iguana.jpa.entities.UnidadeOrganizacional[ id=" + id + " ]";
+//        return "br.com.codigof.iguana.jpa.entities.UnidadeOrganizacional[ id=" + id + " ]";
+        return getNome() + " - " + getDescricao();
     }
     
 }

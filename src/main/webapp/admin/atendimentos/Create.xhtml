@@ -15,7 +15,7 @@
             Cadastrar atendimento
         </ui:define>
         <ui:define name="pagedescription">
-            
+
         </ui:define>
         <ui:define name="breadcrumb">
             <li class="active">Cadastrar</li>
@@ -40,52 +40,56 @@
                         </div>
                         <h:form>
                             <div class="box-body">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateSolicitacoesLabel_protocoloOrigem}" for="protocoloOrigem" />
-                                        <h:inputText id="protocoloOrigem" class="form-control" value="#{solicitacoesController.selected.protocoloOrigem}" title="#{bundle.CreateSolicitacoesTitle_protocoloOrigem}" />
+
+                                <div class="ui-fluid">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.CreateSolicitacoesLabel_protocoloOrigem}" for="protocoloOrigem" />
+                                            <p:inputText id="protocoloOrigem"  value="#{solicitacoesController.selected.protocoloOrigem}" title="#{bundle.CreateSolicitacoesTitle_protocoloOrigem}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.CreateAtendimentosLabel_dataAtendimento}" for="dataAtendimento" />
+                                            <p:calendar pt:type="date" id="dataAtendimento"  value="#{atendimentosController.selected.dataAtendimento}" title="#{bundle.CreateAtendimentosTitle_dataAtendimento}" required="true" requiredMessage="#{bundle.CreateAtendimentosRequiredMessage_dataAtendimento}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                                            </p:calendar>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.CreateAtendimentosLabel_horaAtendimento}" for="horaAtendimento" />
+                                            <p:inputMask pt:type="time" mask="__:__" id="horaAtendimento" style="text-align: center" value="#{atendimentosController.selected.horaAtendimento}" title="#{bundle.CreateAtendimentosTitle_horaAtendimento}" required="true" requiredMessage="#{bundle.CreateAtendimentosRequiredMessage_horaAtendimento}">
+                                                <f:convertDateTime pattern="HH:mm:ss" />
+                                            </p:inputMask>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.CreateAtendimentosLabel_solucao}" for="solucao" />
+                                            <p:inputTextarea rows="4" cols="30" id="solucao"  value="#{atendimentosController.selected.solucao}" title="#{bundle.CreateAtendimentosTitle_solucao}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.CreateAtendimentosLabel_marcadores}" for="marcadores" />
+                                            <p:inputText id="marcadores"  value="#{atendimentosController.selected.marcadores}" title="#{bundle.CreateAtendimentosTitle_marcadores}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.CreateAtendimentosLabel_observacao}" for="observacao" />
+                                            <p:inputTextarea rows="4" cols="30" id="observacao"  value="#{atendimentosController.selected.observacao}" title="#{bundle.CreateAtendimentosTitle_observacao}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.CreateAtendimentosLabel_responsavel}" for="responsavel" />
+                                            <p:inputText id="responsavel" value="#{atendimentosController.selected.responsavel}" title="#{bundle.CreateAtendimentosTitle_responsavel}" required="true" requiredMessage="#{bundle.CreateAtendimentosRequiredMessage_responsavel}"/>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateAtendimentosLabel_dataAtendimento}" for="dataAtendimento" />
-                                        <h:inputText pt:type="date" id="dataAtendimento" class="form-control" value="#{atendimentosController.selected.dataAtendimento}" title="#{bundle.CreateAtendimentosTitle_dataAtendimento}" required="true" requiredMessage="#{bundle.CreateAtendimentosRequiredMessage_dataAtendimento}">
-                                            <f:convertDateTime pattern="dd/MM/yyyy" />
-                                        </h:inputText>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateAtendimentosLabel_horaAtendimento}" for="horaAtendimento" />
-                                        <h:inputText pt:type="time" id="horaAtendimento" class="form-control" value="#{atendimentosController.selected.horaAtendimento}" title="#{bundle.CreateAtendimentosTitle_horaAtendimento}" required="true" requiredMessage="#{bundle.CreateAtendimentosRequiredMessage_horaAtendimento}">
-                                            <f:convertDateTime pattern="HH:mm:ss" />
-                                        </h:inputText>
-                                    </div>
-                                </div>    
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateAtendimentosLabel_solucao}" for="solucao" />
-                                        <h:inputTextarea rows="4" cols="30" id="solucao" class="form-control" value="#{atendimentosController.selected.solucao}" title="#{bundle.CreateAtendimentosTitle_solucao}" />
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateAtendimentosLabel_marcadores}" for="marcadores" />
-                                        <h:inputText id="marcadores" class="form-control" value="#{atendimentosController.selected.marcadores}" title="#{bundle.CreateAtendimentosTitle_marcadores}" />
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateAtendimentosLabel_observacao}" for="observacao" />
-                                        <h:inputTextarea rows="4" cols="30" id="observacao" class="form-control" value="#{atendimentosController.selected.observacao}" title="#{bundle.CreateAtendimentosTitle_observacao}" />
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateAtendimentosLabel_responsavel}" for="responsavel" />
-                                        <h:inputText id="responsavel" class="form-control" value="#{atendimentosController.selected.responsavel}" title="#{bundle.CreateAtendimentosTitle_responsavel}" required="true" requiredMessage="#{bundle.CreateAtendimentosRequiredMessage_responsavel}"/>
-                                    </div>
-                                </div>                                
+
                             </div>
                             <div class="box-footer">
                                 <h:commandButton class="btn btn-primary" action="#{atendimentosController.create}" value="#{bundle.CreateAtendimentosSaveLink}"/> 

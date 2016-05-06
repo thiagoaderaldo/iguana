@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Formulário de cadastro de grupos de acesso</h3>
+                    </div><!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <h:panelGroup id="messagePanel" layout="block">
+                                <p:messages closable="true"/>
+                            </h:panelGroup>
+                        </div>
+                    </div>
+                    <h:form>
+                        <div class="box-body">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <h:outputLabel value="#{bundle.CreateGruposLabel_nome}" for="nome" />
+                                    <h:inputText id="nome" class="form-control" value="#{gruposController.selected.nome}" title="#{bundle.CreateGruposTitle_nome}" required="true" requiredMessage="#{bundle.CreateGruposRequiredMessage_nome}" pt:placeholder="Ex.: admin, root, user"/>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <h:outputLabel value="#{bundle.CreateGruposLabel_descricao}" for="descricao" />
+                                    <h:inputText id="descricao" class="form-control" value="#{gruposController.selected.descricao}" title="#{bundle.CreateGruposTitle_descricao}" required="true" requiredMessage="#{bundle.CreateGruposRequiredMessage_descricao}" pt:placeholder="Definição do grupo. Ex.: Grupo de administradores"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <h:commandButton class="btn btn-primary" action="#{gruposController.create}" value="#{bundle.CreateGruposSaveLink}"/> 
+                        </div><!-- /.box-body -->
+                    </h:form>
+                </div>
+            </div>
+        </div>            
+    </cc:implementation>
+
+
+
+</html>

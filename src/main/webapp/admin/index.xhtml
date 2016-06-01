@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -22,60 +24,67 @@
             </ui:define>
 
             <ui:define name="body">
-                <div class="row">
-                    <div class="col-lg-3 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-aqua">
-                            <div class="inner">
-                                <h3>10</h3>
-                                <p>Novas solicitações</p>
+                <h:form>
+                    <div class="row">
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-aqua">
+                                <div class="inner">
+
+                                    <h3><h:outputText id="atendimentosAbertos" value="#{dashboardDiariaController.selected.atendimentosabertos}"/></h3>
+                                    <p>Novas solicitações</p>
+
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-arrow-up-c"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">Detalhes <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-arrow-up-c"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">Detalhes <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <h3><h:outputText id="solicitacaoPendente" value="#{dashboardDiariaController.selected.atendimentospendentes}"/></h3>
+                                    <p>Solicitações pendentes</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-sad-outline"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">Detalhes <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div><!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3><h:outputText id="porcentAtd" value="#{dashboardDiariaController.selected.solicitacaoatendidasemp}"/><sup style="font-size: 20px">%</sup></h3>
+                                    <p>Solicitações atendidas</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">Detalhes <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div><!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3><h:outputText id="sltEspera" value="#{dashboardDiariaController.selected.atendimentoemspera}"/></h3>
+                                    <p>Solicitações em espera</p>
+                                </div>
+
+                                <div class="icon">
+                                    <i class="ion ion-ios-timer-outline"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">Detalhes <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div><!-- ./col -->
                     </div>
-                    <div class="col-lg-3 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-red">
-                            <div class="inner">
-                                <h3>7</h3>
-                                <p>Solicitações pendentes</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-sad-outline"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">Detalhes <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div><!-- ./col -->
-                    <div class="col-lg-3 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-green">
-                            <div class="inner">
-                                <h3>4<sup style="font-size: 20px">%</sup></h3>
-                                <p>Solicitações atendidas</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-stats-bars"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">Detalhes <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div><!-- ./col -->
-                    <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-yellow">
-                <div class="inner">
-                  <h3>2</h3>
-                  <p>Solicitações em espera</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-ios-timer-outline"></i>
-                </div>
-                <a href="#" class="small-box-footer">Detalhes <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-                </div>
+                    <p:poll interval="5" listener="#{dashboardDiariaController.dashboardUpdater}" update="atendimentosAbertos,solicitacaoPendente,porcentAtd,sltEspera"/>
+
+                </h:form>
             </ui:define>
 
         </ui:composition>

@@ -82,8 +82,10 @@
                             </div>
                         </div><!-- ./col -->
                     </div>
-                    <p:poll interval="5" listener="#{dashboardDiariaController.dashboardUpdater}" update="atendimentosAbertos,solicitacaoPendente,porcentAtd,sltEspera"/>
+                    <p:poll interval="15" listener="#{dashboardDiariaController.dashboardUpdater}" update="atendimentosAbertos,solicitacaoPendente,porcentAtd,sltEspera"/>
 
+                    <p:poll interval="15" update="charSolMesAtual"/>
+                    <p:chart id="charSolMesAtual" type="line" model="#{solicitacoesChartView.lineModel1}" responsive="true" style="height: 300px"/>
                 </h:form>
             </ui:define>
 

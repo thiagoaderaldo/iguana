@@ -40,8 +40,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Solicitacoes.findByTituloSolicitacao", query = "SELECT s FROM Solicitacoes s WHERE s.tituloSolicitacao = :tituloSolicitacao"),
     @NamedQuery(name = "Solicitacoes.findByDataSolicitacao", query = "SELECT s FROM Solicitacoes s WHERE s.dataSolicitacao = :dataSolicitacao"),
     @NamedQuery(name = "Solicitacoes.findByHoraSolicitacao", query = "SELECT s FROM Solicitacoes s WHERE s.horaSolicitacao = :horaSolicitacao"),
-    @NamedQuery(name = "Solicitacoes.findByLocalizacao", query = "SELECT s FROM Solicitacoes s WHERE s.localizacao = :localizacao")})
+    @NamedQuery(name = "Solicitacoes.findByLocalizacao", query = "SELECT s FROM Solicitacoes s WHERE s.localizacao = :localizacao"),
+    @NamedQuery(name = "Solicitacoes.findByCurrentMonth", query = "SELECT s FROM Solicitacoes s WHERE FUNC('MONTH', s.dataSolicitacao) = FUNC('MONTH', CURRENT_DATE)")})
 public class Solicitacoes implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -251,5 +253,5 @@ public class Solicitacoes implements Serializable {
     public String toString() {
         return "br.com.codigof.iguana.jpa.entities.Solicitacoes[ id=" + id + " ]";
     }
-    
+
 }

@@ -50,7 +50,7 @@ public class SolicitacoesChartView implements Serializable {
 
     private void createLineModels() {
         lineModel1 = initLinearModel();
-        lineModel1.setTitle("Solicitaçoes no mes corrente");
+//        lineModel1.setTitle("Solicitaçoes no mes corrente");
         lineModel1.setLegendPosition("e");
         Axis yAxis = lineModel1.getAxis(AxisType.Y);
 //        yAxis.setMin(0);
@@ -106,7 +106,7 @@ public class SolicitacoesChartView implements Serializable {
         //Preenche a série do gráfico.
         model.addSeries(series1);
         //Preenche o título do gráfico.
-        model.setTitle("Qtd. Ocorrências x Regional - Mês de Julho");
+//        model.setTitle("Qtd. Ocorrências x Regional - Mês de Julho");
         //Configurações do eixo X.
         model.getAxis(AxisType.X).setLabel("Dias");
         model.getAxis(AxisType.X).setTickAngle(-50);

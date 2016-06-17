@@ -28,4 +28,7 @@ public class SolicitanteFacade extends AbstractFacade<Solicitante> {
         super(Solicitante.class);
     }
     
+    //Método que retorna uma lista de string com os dias da semana atual
+    
+    
 }

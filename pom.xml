@@ -56,6 +56,15 @@
             <version>0.6.6</version>
             <scope>compile</scope>
         </dependency>
+        <!-- http://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <!--Adicionando o MySQL connector-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.2</version>
+        </dependency>
+        
+        
     </dependencies>
     <repositories>
         <!--

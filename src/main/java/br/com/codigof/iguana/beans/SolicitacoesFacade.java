@@ -6,6 +6,12 @@
 package br.com.codigof.iguana.beans;
 
 import br.com.codigof.iguana.jpa.entities.Solicitacoes;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,5 +53,35 @@ public class SolicitacoesFacade extends AbstractFacade<Solicitacoes> {
         }
         
         return q.getResultList();
+    }
+    
+    public static List<String> findByCurrentWeek() {
+        List<String> currentWeek = new ArrayList<String>();
+        try{
+            String myDriver = "com.mysql.jdbc.Driver";
+            String myUrl = "jdbc:mysql://localhost:3306/iguana";
+            Class.forName(myDriver).newInstance();
+            Connection coon = DriverManager.getConnection(myUrl,"iguana","1");
+            String query = "SELECT data_solicitacao FROM solicitacoes WHERE data_solicitacao >= STR_TO_DATE(CONCAT(YEARWEEK(CURRENT_DATE()),'Sunday'),'%X%V %W') AND data_solicitacao <= STR_TO_DATE(CONCAT(YEARWEEK(CURRENT_DATE()),'Saturday'),'%X%V %W')";
+            Statement st = coon.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            
+            while(rs.next()){
+                currentWeek.add(rs.getString("data_solicitacao"));
+                
+            }
+            st.close();
+            
+               
+        }catch (ClassNotFoundException | SQLException e){
+            System.err.println("Got an execption!");
+            System.err.println(e.getMessage());
+        } catch (InstantiationException ex) {
+            Logger.getLogger(SolicitacoesFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(SolicitacoesFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return currentWeek;
     }
 }

@@ -133,17 +133,19 @@
                                 <p:chart id="charSolMesAtual" type="line" model="#{solicitacoesChartView.lineModel1}" responsive="true"/>
                             </p:panel>
                         </section>
+                        <p:poll interval="15" update="chrtSolCurrentByWeek"/>
+                        <section class="col-lg-6">
+                            <p:panel id="pnlSolCurrentByWeek"
+                                     header="Gráfico - Solicitações realizadas na semana"
+                                     toggleable="true"
+                                     >
+                                <p:chart id="chrtSolCurrentByWeek" type="bar" model="#{solicitacoesChartView.barChartSolicitacoesByCurrentWeek}" responsive="true"/>
+                            </p:panel>
+                    </section>
+                        
 
                     </div>
-                    <p:poll interval="15" update="chrtSolCurrentByWeek"/>
-                    <section class="col-lg-6">
-                        <p:panel id="pnlSolCurrentByWeek"
-                                 header="Gráfico - Solicitações realizadas na semana"
-                                 toggleable="true"
-                                 >
-                            <p:chart id="chrtSolCurrentByWeek" type="bar" model="#{solicitacoesChartView.barChartSolicitacoesByCurrentWeek}" responsive="true" style="height:300px"/>
-                        </p:panel>
-                    </section>
+                    
 
 
                 </h:form>

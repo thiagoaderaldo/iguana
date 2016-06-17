@@ -212,7 +212,6 @@ public class SolicitacoesChartView implements Serializable {
              
              int i = 0;
              for(String nome : map.keySet()){
-                 
                 series1.set(dayWeek.get(i)+"\n"+nome, map.get(nome));
                 ++i;
                  

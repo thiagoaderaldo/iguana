@@ -113,10 +113,6 @@ public class SolicitacoesChartView implements Serializable {
             pieModel1.set("Sem solicitantes",100);
         }
         
-//        pieModel1.set("Brand 1", 540);
-//        pieModel1.set("Brand 2", 325);
-//        pieModel1.set("Brand 3", 702);
-//        pieModel1.set("Brand 4", 421);
          
         pieModel1.setTitle("Simple Pie");
         pieModel1.setLegendPosition("w");

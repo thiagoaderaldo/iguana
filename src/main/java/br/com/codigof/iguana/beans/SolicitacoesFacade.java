@@ -84,4 +84,18 @@ public class SolicitacoesFacade extends AbstractFacade<Solicitacoes> {
 
         return currentWeek;
     }
+    //Retorna solicitante do mes atual
+    public  List<String> findBySolicitanteCurrentMonth(){
+        List<String> solicitacao = null;
+        try {
+            solicitacao = em.createNamedQuery("Solicitacoes.findByQtdSolicitacao")
+                    .getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        for (int i = 0; i < solicitacao.size(); i++) {
+//            System.out.println(solicitacao.get(i));
+//       }
+        return solicitacao;
+      }
 }

@@ -143,6 +143,17 @@
                             </p:panel>
                     </section>
                         
+                        <p:poll interval="15" update="chrtSlcCurrentMonth"/>
+                        <section class="col-lg-6">
+                            <p:panel id="pnlSlcCurrentByMonth"
+                                     header="Gráfico - Solicitantes "
+                                     toggleable="true"
+                                     >
+                                <p:chart id="chrtSlcCurrentMonth" type="pie" model="#{solicitacoesChartView.pieModelSclByCurrentMonth}"  responsive="true"/>
+                            </p:panel>
+                    </section>
+                        
+                        
 
                     </div>
                     

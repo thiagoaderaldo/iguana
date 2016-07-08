@@ -11,6 +11,7 @@ package br.com.codigof.iguana.chart;
  */
 
 import br.com.codigof.iguana.jpa.entities.Solicitacoes;
+import br.com.codigof.iguana.jpa.entities.Solicitante;
 import br.com.codigof.iguana.util.DateManager;
 import javax.annotation.PostConstruct;
 import java.io.Serializable;
@@ -26,6 +27,7 @@ import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.BarChartSeries;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
+import org.primefaces.model.chart.PieChartModel;
 
 @ManagedBean
 public class SolicitacoesChartView implements Serializable {
@@ -33,16 +35,23 @@ public class SolicitacoesChartView implements Serializable {
     private LineChartModel lineModel1;
     private LineChartModel lineModel2;
     private BarChartModel barModel;
+    private PieChartModel pieModel1;
     @EJB
     private br.com.codigof.iguana.beans.SolicitacoesFacade ejbFacade;
     List<Solicitacoes> solicitacoes;
     List<String> currentWeek;
+    List<String> solicitante;
 
     
     @PostConstruct
     public void init() {
         createLineModels();
         createBarModels();
+        createPieModel1();
+    }
+    
+     public PieChartModel getPieModelSclByCurrentMonth() {
+        return pieModel1;
     }
 
     public BarChartModel getBarChartSolicitacoesByCurrentWeek(){
@@ -75,6 +84,44 @@ public class SolicitacoesChartView implements Serializable {
 //        yAxis.setMax(200);
     }
     
+    private void createPieModel1() {
+        pieModel1 = new PieChartModel();
+        solicitante = ejbFacade.findBySolicitanteCurrentMonth();
+        
+          
+        
+        List<String> nomes = new ArrayList<String>();
+        Map<String,Integer> map = new TreeMap<String,Integer>();
+        
+        
+        if(solicitante!=null && solicitante.size() > 0){
+            
+            for(String nome : solicitante){
+                Integer count = map.get(nome);
+                if(count == null){
+                    count = 0;
+                }
+                map.put(nome,count + 1);
+                
+            }
+            
+            for(String nome : map.keySet()){
+                pieModel1.set(nome, map.get(nome));
+            }
+            
+        }else{
+            pieModel1.set("Sem solicitantes",100);
+        }
+        
+//        pieModel1.set("Brand 1", 540);
+//        pieModel1.set("Brand 2", 325);
+//        pieModel1.set("Brand 3", 702);
+//        pieModel1.set("Brand 4", 421);
+         
+        pieModel1.setTitle("Simple Pie");
+        pieModel1.setLegendPosition("w");
+    }
+    
     private void createBarModels(){
         createBarModel();
     }
@@ -88,7 +135,7 @@ public class SolicitacoesChartView implements Serializable {
 
     private LineChartModel initLinearModel() {
 
-//        solicitacoes = ejbFacade.findAll();
+
         solicitacoes = ejbFacade.findByCurrentMonth();
 
         LineChartModel model = new LineChartModel();

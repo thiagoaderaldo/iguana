@@ -36,7 +36,7 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <p:commandLink oncomplete="PF('modalViewAssuntos').show();" update="mcViewAssuntos:pnlgListAssuntos" actionListener="#{assuntosController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px" title="#{bundle.ListAssuntosViewLink}">
+                            <p:commandLink oncomplete="PF('modalViewAssuntos').show();" update="mcViewAssuntos:pnlgListAssuntos" action="#{assuntosController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px" title="#{bundle.ListAssuntosViewLink}">
                             </p:commandLink>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{assuntosController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>

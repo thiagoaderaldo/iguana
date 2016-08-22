@@ -4,8 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:mc="http://java.sun.com/jsf/composite/dispositivos">
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -19,10 +18,13 @@
             <li class="active">Dispositivos</li>
         </ui:define>
         <ui:define name="body">
-            <h:form id="hFormListDispositivos">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListDispositivosEmpty}" rendered="#{dispositivosController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{dispositivosController.items.rowCount > 0}" id="hpnlGroupListDispositivos">
-                    <p:dataTable value="#{dispositivosController.items}" id="pDataTableListDispositivos" reflow="true" paginator="true" var="item">
+                <h:panelGroup rendered="#{dispositivosController.items.rowCount > 0}">
+                    <p:dataTable value="#{dispositivosController.items}" reflow="true" paginator="true" var="item">
                         <p:column sortBy="#{item.nome}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDispositivosTitle_nome}"/>
@@ -33,7 +35,7 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <p:commandLink oncomplete="PF('modalViewDispositivos').show();" update="mcViewDispositivos:pnlGridListDispositivos" action="#{dispositivosController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px" title="#{bundle.ListDispositivosViewLink}"/>
+                            <h:commandLink action="#{dispositivosController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px" title="#{bundle.ListDispositivosViewLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{dispositivosController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
                             <h:outputText value=" "/>
@@ -46,11 +48,6 @@
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListDispositivosIndexLink}"/>
-            </h:form>
-            <h:form prependId="false">
-                <p:dialog modal="true" widgetVar="modalViewDispositivos" id="modalViewDispositivos" >
-                    <mc:View id="mcViewDispositivos"/>
-                </p:dialog>
             </h:form>
         </ui:define>
     </ui:composition>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+        <h:form prependId="false" rendered="true">
+                <h:panelGrid columns="2" id="pnlgListAssuntos">
+                    <h:outputText value="#{bundle.ViewAssuntosLabel_id}"/>
+                    <h:outputText value="#{assuntosController.selected.id}" title="#{bundle.ViewAssuntosTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewAssuntosLabel_nome}"/>
+                    <h:outputText id="nome" value="#{assuntosController.selected.nome}" title="#{bundle.ViewAssuntosTitle_nome}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{assuntosController.destroyAndView}" value="#{bundle.ViewAssuntosDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAssuntosEditLink}"/>
+                <br />
+                <h:commandLink action="#{assuntosController.prepareCreate}" value="#{bundle.ViewAssuntosCreateLink}" />
+                <br />
+                <h:commandLink action="#{assuntosController.prepareList}" value="#{bundle.ViewAssuntosShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAssuntosIndexLink}"/>
+
+            </h:form>
+    </cc:implementation>
+
+</html>

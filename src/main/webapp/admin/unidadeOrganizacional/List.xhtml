@@ -10,6 +10,9 @@
         <ui:define name="title">
             <h:outputText value="#{bundle.ListUnidadeOrganizacionalTitle}"></h:outputText>
         </ui:define>
+        <ui:define name="pageheader">
+            Lista de Unidades Organizacionais
+        </ui:define>
         <ui:define name="breadcrumb">
             <li class="active">Listar</li>
             <li class="active">Unidade Organizacional</li>
@@ -21,39 +24,30 @@
                 </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListUnidadeOrganizacionalEmpty}" rendered="#{unidadeOrganizacionalController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{unidadeOrganizacionalController.items.rowCount > 0}">
-                    <h:outputText value="#{unidadeOrganizacionalController.pagination.pageFirstItem + 1}..#{unidadeOrganizacionalController.pagination.pageLastItem + 1}/#{unidadeOrganizacionalController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{unidadeOrganizacionalController.previous}" value="#{bundle.Previous} #{unidadeOrganizacionalController.pagination.pageSize}" rendered="#{unidadeOrganizacionalController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{unidadeOrganizacionalController.next}" value="#{bundle.Next} #{unidadeOrganizacionalController.pagination.pageSize}" rendered="#{unidadeOrganizacionalController.pagination.hasNextPage}"/>&nbsp;
-                    <p:dataTable value="#{unidadeOrganizacionalController.items}" var="item" reflow="true" >
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListUnidadeOrganizacionalTitle_id}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.id}"/>
-                    </p:column>
+                    <p:dataTable value="#{unidadeOrganizacionalController.items}" reflow="true" paginator="true" var="item" >
                         <p:column sortBy="#{item.nome}">
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListUnidadeOrganizacionalTitle_nome}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.nome}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListUnidadeOrganizacionalTitle_descricao}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.descricao}"/>
-                    </p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUnidadeOrganizacionalTitle_nome}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nome}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUnidadeOrganizacionalTitle_descricao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descricao}"/>
+                        </p:column>
 
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="&nbsp;"/>
-                        </f:facet>
-                        <h:commandLink action="#{unidadeOrganizacionalController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px"  title="#{bundle.ListUnidadeOrganizacionalViewLink}"/>
-                        <h:outputText value=" "/>
-                        <h:commandLink action="#{unidadeOrganizacionalController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListUnidadeOrganizacionalEditLink}"/>
-                        <h:outputText value=" "/>
-                        <h:commandLink action="#{unidadeOrganizacionalController.destroy}" class="glyphicon glyphicon-trash" style="color: #d33724; padding: 5px" title="#{bundle.ListUnidadeOrganizacionalDestroyLink}"/>
-                    </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{unidadeOrganizacionalController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px"  title="#{bundle.ListUnidadeOrganizacionalViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{unidadeOrganizacionalController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListUnidadeOrganizacionalEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{unidadeOrganizacionalController.destroy}" class="glyphicon glyphicon-trash" style="color: #d33724; padding: 5px" title="#{bundle.ListUnidadeOrganizacionalDestroyLink}"/>
+                        </p:column>
                     </p:dataTable>
                 </h:panelGroup>
                 <br />

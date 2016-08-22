@@ -3,11 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ListDispositivosTitle}"></h:outputText>
+        </ui:define>
+         <ui:define name="pageheader">
+            Lista de Dispositivos
+        </ui:define>
+        <ui:define name="breadcrumb">
+            <li class="active">Listar</li>
+            <li class="active">Dispositivos</li>
         </ui:define>
         <ui:define name="body">
             <h:form styleClass="jsfcrud_list_form">
@@ -16,33 +24,24 @@
                 </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListDispositivosEmpty}" rendered="#{dispositivosController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{dispositivosController.items.rowCount > 0}">
-                    <h:outputText value="#{dispositivosController.pagination.pageFirstItem + 1}..#{dispositivosController.pagination.pageLastItem + 1}/#{dispositivosController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{dispositivosController.previous}" value="#{bundle.Previous} #{dispositivosController.pagination.pageSize}" rendered="#{dispositivosController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{dispositivosController.next}" value="#{bundle.Next} #{dispositivosController.pagination.pageSize}" rendered="#{dispositivosController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{dispositivosController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListDispositivosTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
-                        </h:column>
-                        <h:column>
+                    <p:dataTable value="#{dispositivosController.items}" reflow="true" paginator="true" var="item">
+                        <p:column sortBy="#{item.nome}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDispositivosTitle_nome}"/>
                             </f:facet>
                             <h:outputText value="#{item.nome}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{dispositivosController.prepareView}" value="#{bundle.ListDispositivosViewLink}"/>
+                            <h:commandLink action="#{dispositivosController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px" title="#{bundle.ListDispositivosViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{dispositivosController.prepareEdit}" value="#{bundle.ListDispositivosEditLink}"/>
+                            <h:commandLink action="#{dispositivosController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{dispositivosController.destroy}" value="#{bundle.ListDispositivosDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
+                            <h:commandLink action="#{dispositivosController.destroy}" class="glyphicon glyphicon-trash" style="color: #d33724; padding: 5px" title="#{bundle.ListAssuntosDestroyLink}"/>
+                        </p:column>
+                    </p:dataTable>
                 </h:panelGroup>
                 <br />
                 <h:commandLink action="#{dispositivosController.prepareCreate}" value="#{bundle.ListDispositivosCreateLink}"/>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+
+<!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Formulário de cadastro de assunto</h3>
+                        </div><!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h:panelGroup id="messagePanel" layout="block">
+                                    <p:messages closable="true"/>
+                                </h:panelGroup>
+                            </div>
+                        </div>
+                        <h:form>
+                            <div class="box-body">
+                                <div class="col-md-12">
+                                    <div class="ui-fluid">
+                                        <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
+                                            <h:outputLabel value="#{bundle.EditAssuntosLabel_nome}" for="nome" />
+                                            <p:inputText id="nome" value="#{assuntosController.selected.nome}" title="#{bundle.EditAssuntosTitle_nome}" required="true" requiredMessage="#{bundle.EditAssuntosRequiredMessage_nome}"/>
+                                        </p:panelGrid>
+                                    </div>
+                                </div>
+                            </div>
+                        </h:form>
+                        <div class="box-footer">
+                            <h:commandButton class="btn btn-success" action="#{assuntosController.update}" value="#{bundle.EditAssuntosSaveLink}"/>                                 
+                        </div><!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+            <h:form>                
+                <h:link outcome="View" value="#{bundle.EditAssuntosViewLink}"/>
+                <br />
+                <h:commandLink action="#{assuntosController.prepareList}" value="#{bundle.EditAssuntosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAssuntosIndexLink}" />
+            </h:form>
+
+</cc:implementation>
+</html>

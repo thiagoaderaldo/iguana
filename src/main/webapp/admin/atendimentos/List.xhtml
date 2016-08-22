@@ -3,11 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ListAtendimentosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="pageheader">
+            Lista de Atendimentos
+        </ui:define>
+        <ui:define name="breadcrumb">
+            <li class="active">Listar</li>
+            <li class="active">Atendimentos</li>
         </ui:define>
         <ui:define name="body">
             <h:form styleClass="jsfcrud_list_form">
@@ -16,69 +24,60 @@
                 </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListAtendimentosEmpty}" rendered="#{atendimentosController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{atendimentosController.items.rowCount > 0}">
-                    <h:outputText value="#{atendimentosController.pagination.pageFirstItem + 1}..#{atendimentosController.pagination.pageLastItem + 1}/#{atendimentosController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{atendimentosController.previous}" value="#{bundle.Previous} #{atendimentosController.pagination.pageSize}" rendered="#{atendimentosController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{atendimentosController.next}" value="#{bundle.Next} #{atendimentosController.pagination.pageSize}" rendered="#{atendimentosController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{atendimentosController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAtendimentosTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
-                        </h:column>
-                        <h:column>
+                    <p:dataTable value="#{atendimentosController.items}" reflow="true" paginator="true" var="item">
+                        <p:column sortBy="#{item.descricaoAtendimento}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAtendimentosTitle_descricaoAtendimento}"/>
                             </f:facet>
                             <h:outputText value="#{item.descricaoAtendimento}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column sortBy="#{item.dataAtendimento}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAtendimentosTitle_dataAtendimento}"/>
                             </f:facet>
                             <h:outputText value="#{item.dataAtendimento}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column sortBy="#{item.horaAtendimento}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAtendimentosTitle_horaAtendimento}"/>
                             </f:facet>
                             <h:outputText value="#{item.horaAtendimento}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column sortBy="#{item.observacao}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAtendimentosTitle_observacao}"/>
                             </f:facet>
                             <h:outputText value="#{item.observacao}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column sortBy="#{item.marcadores}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAtendimentosTitle_marcadores}"/>
                             </f:facet>
                             <h:outputText value="#{item.marcadores}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column sortBy="#{item.solucao}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAtendimentosTitle_solucao}"/>
                             </f:facet>
                             <h:outputText value="#{item.solucao}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column sortBy="#{item.responsavel}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAtendimentosTitle_responsavel}"/>
                             </f:facet>
                             <h:outputText value="#{item.responsavel}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{atendimentosController.prepareView}" value="#{bundle.ListAtendimentosViewLink}"/>
+                            <h:commandLink action="#{atendimentosController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{atendimentosController.prepareEdit}" value="#{bundle.ListAtendimentosEditLink}"/>
+                            <h:commandLink action="#{atendimentosController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{atendimentosController.destroy}" value="#{bundle.ListAtendimentosDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
+                            <h:commandLink action="#{atendimentosController.destroy}" class="glyphicon glyphicon-trash" style="color: #d33724; padding: 5px" title="#{bundle.ListAssuntosDestroyLink}"/>
+                        </p:column>
+                    </p:dataTable>
                 </h:panelGroup>
                 <br />
                 <h:commandLink action="#{atendimentosController.prepareCreate}" value="#{bundle.ListAtendimentosCreateLink}"/>

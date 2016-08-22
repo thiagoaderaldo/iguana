@@ -4,33 +4,28 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:mc="http://java.sun.com/jsf/composite/assuntos">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ListAssuntosTitle}"></h:outputText>
         </ui:define>
         <ui:define name="pageheader">
-            Lista de assuntos
+            Lista de Assuntos
         </ui:define>
         <ui:define name="breadcrumb">
             <li class="active">Listar</li>
             <li class="active">Assuntos</li>
         </ui:define>
         <ui:define name="body">
-            <h:form styleClass="jsfcrud_list_form">
+            <h:form id="formListAssuntos">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListAssuntosEmpty}" rendered="#{assuntosController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{assuntosController.items.rowCount > 0}">
-                    <p:dataTable value="#{assuntosController.items}" reflow="true" paginator="true" var="item">
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAssuntosTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
-                        </p:column>
+                <h:panelGroup rendered="#{assuntosController.items.rowCount > 0}" id="pnlGroupListAssuntos">
+                    <p:dataTable value="#{assuntosController.items}" id="dtListAssuntos" reflow="true" paginator="true" var="item">
                         <p:column sortBy="#{item.nome}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAssuntosTitle_nome}"/>
@@ -41,7 +36,8 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{assuntosController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
+                            <p:commandLink oncomplete="PF('modalViewAssuntos').show();" update="mcViewAssuntos:pnlgListAssuntos" actionListener="#{assuntosController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px" title="#{bundle.ListAssuntosViewLink}">
+                            </p:commandLink>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{assuntosController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
                             <h:outputText value=" "/>
@@ -54,6 +50,11 @@
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListAssuntosIndexLink}"/>
+            </h:form>
+            <h:form prependId="false">
+                <p:dialog modal="true" widgetVar="modalViewAssuntos" id="modalViewAssuntos" >
+                    <mc:View id="mcViewAssuntos"/>
+                </p:dialog>
             </h:form>
         </ui:define>
     </ui:composition>

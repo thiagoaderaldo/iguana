@@ -11,7 +11,7 @@
             <h:outputText value="#{bundle.ListUsuariosTitle}"></h:outputText>
         </ui:define>
         <ui:define name="pageheader">
-            Lista de usuarios
+            Lista de Usuarios
         </ui:define>
         <ui:define name="breadcrumb">
             <li class="active">Listar</li>
@@ -24,7 +24,7 @@
                 </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListUsuariosEmpty}" rendered="#{usuariosController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{usuariosController.items.rowCount > 0}">                   
-                    <p:dataTable value="#{usuariosController.items}" var="item">
+                    <p:dataTable value="#{usuariosController.items}" reflow="true" paginator="true" var="item">
                         <p:column sortBy="#{item.matricula}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUsuariosTitle_matricula}"/>

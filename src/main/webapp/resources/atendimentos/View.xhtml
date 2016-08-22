@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+        <h:form prependId="false">
+            <h:panelGrid columns="2" id="hPnlGridViewAtendimentos">
+                <h:outputText value="#{bundle.ViewAtendimentosLabel_id}"/>
+                <h:outputText value="#{atendimentosController.selected.id}" title="#{bundle.ViewAtendimentosTitle_id}"/>
+                <h:outputText value="#{bundle.ViewAtendimentosLabel_descricaoAtendimento}"/>
+                <h:outputText value="#{atendimentosController.selected.descricaoAtendimento}" title="#{bundle.ViewAtendimentosTitle_descricaoAtendimento}"/>
+                <h:outputText value="#{bundle.ViewAtendimentosLabel_dataAtendimento}"/>
+                <h:outputText value="#{atendimentosController.selected.dataAtendimento}" title="#{bundle.ViewAtendimentosTitle_dataAtendimento}"/>
+                <h:outputText value="#{bundle.ViewAtendimentosLabel_horaAtendimento}"/>
+                <h:outputText value="#{atendimentosController.selected.horaAtendimento}" title="#{bundle.ViewAtendimentosTitle_horaAtendimento}"/>
+                <h:outputText value="#{bundle.ViewAtendimentosLabel_observacao}"/>
+                <h:outputText value="#{atendimentosController.selected.observacao}" title="#{bundle.ViewAtendimentosTitle_observacao}"/>
+                <h:outputText value="#{bundle.ViewAtendimentosLabel_marcadores}"/>
+                <h:outputText value="#{atendimentosController.selected.marcadores}" title="#{bundle.ViewAtendimentosTitle_marcadores}"/>
+                <h:outputText value="#{bundle.ViewAtendimentosLabel_solucao}"/>
+                <h:outputText value="#{atendimentosController.selected.solucao}" title="#{bundle.ViewAtendimentosTitle_solucao}"/>
+                <h:outputText value="#{bundle.ViewAtendimentosLabel_responsavel}"/>
+                <h:outputText value="#{atendimentosController.selected.responsavel}" title="#{bundle.ViewAtendimentosTitle_responsavel}"/>
+            </h:panelGrid>
+            <br />
+            <h:commandLink action="#{atendimentosController.destroyAndView}" value="#{bundle.ViewAtendimentosDestroyLink}"/>
+            <br />
+            <br />
+            <h:link outcome="Edit" value="#{bundle.ViewAtendimentosEditLink}"/>
+            <br />
+            <h:commandLink action="#{atendimentosController.prepareCreate}" value="#{bundle.ViewAtendimentosCreateLink}" />
+            <br />
+            <h:commandLink action="#{atendimentosController.prepareList}" value="#{bundle.ViewAtendimentosShowAllLink}"/>
+            <br />
+            <br />
+            <h:link outcome="/index" value="#{bundle.ViewAtendimentosIndexLink}"/>
+
+        </h:form>
+    </cc:implementation>
+
+</html>

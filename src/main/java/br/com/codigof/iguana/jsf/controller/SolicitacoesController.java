@@ -70,7 +70,8 @@ public class SolicitacoesController implements Serializable {
     public String prepareView() {
         current = (Solicitacoes) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+//        return "View";
+        return null;
     }
 
     public String prepareCreate() {

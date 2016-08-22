@@ -70,7 +70,8 @@ public class GruposController implements Serializable {
     public String prepareView() {
         current = (Grupos) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+//        return "View";
+        return null;
     }
 
     public String prepareCreate() {

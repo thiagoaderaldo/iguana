@@ -70,7 +70,8 @@ public class UnidadeOrganizacionalController implements Serializable {
     public String prepareView() {
         current = (UnidadeOrganizacional) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+//        return "View";
+        return null;
     }
 
     public String prepareCreate() {

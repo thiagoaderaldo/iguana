@@ -4,8 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:mc="http://java.sun.com/jsf/composite/grupos">
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -19,10 +18,13 @@
             <li class="active">Grupos</li>
         </ui:define>
         <ui:define name="body">
-            <h:form id="hFormListGrupos">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListGruposEmpty}" rendered="#{gruposController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{gruposController.items.rowCount > 0}" id="hPnlGroupListGrupos">
-                    <p:dataTable value="#{gruposController.items}" id="pDataTableListGrupos" reflow="true" paginator="true" var="item">
+                <h:panelGroup rendered="#{gruposController.items.rowCount > 0}">
+                    <p:dataTable value="#{gruposController.items}" reflow="true" paginator="true" var="item">
                         <p:column sortBy="#{item.nome}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListGruposTitle_nome}"/>
@@ -39,7 +41,7 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <p:commandLink oncomplete="PF('modalViewGrupos').show();" update="mcViewGrupos:hPnlGridViewGrupos" action="#{gruposController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
+                            <h:commandLink action="#{gruposController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{gruposController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
                             <h:outputText value=" "/>
@@ -52,11 +54,6 @@
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListGruposIndexLink}"/>
-            </h:form>
-             <h:form prependId="false">
-                <p:dialog modal="true" widgetVar="modalViewGrupos" id="modalViewGrupos" >
-                    <mc:View id="mcViewGrupos"/>
-                </p:dialog>
             </h:form>
         </ui:define>
     </ui:composition>

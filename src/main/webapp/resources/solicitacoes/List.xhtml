@@ -4,8 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:mc="http://java.sun.com/jsf/composite/solicitacoes">
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -19,10 +18,13 @@
             <li class="active">Solicitações</li>
         </ui:define>
         <ui:define name="body">
-            <h:form id="hFormListSolicitacoes">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListSolicitacoesEmpty}" rendered="#{solicitacoesController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{solicitacoesController.items.rowCount > 0}" id="hPnlGroupListSolicitacoes">
-                    <p:dataTable value="#{solicitacoesController.items}" id="pDataTableListSolicitacoes" reflow="true" paginator="true" var="item">
+                <h:panelGroup rendered="#{solicitacoesController.items.rowCount > 0}">
+                    <p:dataTable value="#{solicitacoesController.items}" reflow="true" paginator="true" var="item">
                         <p:column sortBy="#{item.protocolo}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSolicitacoesTitle_protocolo}"/>
@@ -57,19 +59,19 @@
                                 <f:convertDateTime pattern="HH:mm:ss" />
                             </h:outputText>
                         </p:column>
-                        <p:column sortBy="#{item.localizacao}" rendered="false">
+                        <p:column sortBy="#{item.localizacao}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSolicitacoesTitle_localizacao}"/>
                             </f:facet>
                             <h:outputText value="#{item.localizacao}"/>
                         </p:column>
-                        <p:column sortBy="#{item.descricao}" rendered="false">
+                        <p:column sortBy="#{item.descricao}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSolicitacoesTitle_descricao}"/>
                             </f:facet>
                             <h:outputText value="#{item.descricao}"/>
                         </p:column>
-                        <p:column sortBy="#{item.solicitante.nome}" rendered="false">
+                        <p:column sortBy="#{item.solicitante.nome}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSolicitacoesTitle_solicitante}"/>
                             </f:facet>
@@ -87,13 +89,13 @@
                             </f:facet>
                             <h:outputText value="#{item.estatus.nome}"/>
                         </p:column>
-                        <p:column sortBy="#{item.atendimentos}" rendered="false">
+                        <p:column sortBy="#{item.atendimentos}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSolicitacoesTitle_atendimentos}"/>
                             </f:facet>
                             <h:outputText value="#{item.atendimentos}"/>
                         </p:column>
-                        <p:column sortBy="#{item.dispositivo.nome}" rendered="false">
+                        <p:column sortBy="#{item.dispositivo.nome}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSolicitacoesTitle_dispositivo}"/>
                             </f:facet>
@@ -109,7 +111,7 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <p:commandLink oncomplete="PF('modalViewSolicitacoes').show();" update="mcViewSolicitacoes:hPnlGridViewSolicitacoes" action="#{solicitacoesController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
+                            <h:commandLink action="#{solicitacoesController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{solicitacoesController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
                             <h:outputText value=" "/>
@@ -122,11 +124,6 @@
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListSolicitacoesIndexLink}"/>
-            </h:form>
-            <h:form prependId="false">
-                <p:dialog modal="true" widgetVar="modalViewSolicitacoes" id="modalViewSolicitacoes" >
-                    <mc:View id="mcViewSolicitacoes"/>
-                </p:dialog>
             </h:form>
         </ui:define>
     </ui:composition>

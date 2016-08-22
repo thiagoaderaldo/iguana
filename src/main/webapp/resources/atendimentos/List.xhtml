@@ -4,8 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:mc="http://java.sun.com/jsf/composite/atendimentos">
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -19,10 +18,13 @@
             <li class="active">Atendimentos</li>
         </ui:define>
         <ui:define name="body">
-            <h:form id="hFormListAtendimentos">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListAtendimentosEmpty}" rendered="#{atendimentosController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{atendimentosController.items.rowCount > 0}" id="hPnlGroupListAtendimentos">
-                    <p:dataTable value="#{atendimentosController.items}" id="pDataTableListAtendimentos" reflow="true" paginator="true" var="item">
+                <h:panelGroup rendered="#{atendimentosController.items.rowCount > 0}">
+                    <p:dataTable value="#{atendimentosController.items}" reflow="true" paginator="true" var="item">
                         <p:column sortBy="#{item.descricaoAtendimento}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAtendimentosTitle_descricaoAtendimento}"/>
@@ -69,7 +71,7 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <p:commandLink oncomplete="PF('modalViewAtendimentos').show();" update="mcViewAtendimentos:hPnlGridViewAtendimentos" action="#{atendimentosController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
+                            <h:commandLink action="#{atendimentosController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{atendimentosController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
                             <h:outputText value=" "/>
@@ -82,11 +84,6 @@
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListAtendimentosIndexLink}"/>
-            </h:form>
-            <h:form prependId="false">
-                <p:dialog modal="true" widgetVar="modalViewAtendimentos" id="modalViewAtendimentos" >
-                    <mc:View id="mcViewAtendimentos"/>
-                </p:dialog>
             </h:form>
         </ui:define>
     </ui:composition>

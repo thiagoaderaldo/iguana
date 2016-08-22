@@ -4,8 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:mc="http://java.sun.com/jsf/composite/unidadeOrganizacional">
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -19,13 +18,13 @@
             <li class="active">Unidade Organizacional</li>
         </ui:define>
         <ui:define name="body">
-            <h:form id="hFormListUnidadeOrganizacional">
+            <h:form styleClass="jsfcrud_list_form">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListUnidadeOrganizacionalEmpty}" rendered="#{unidadeOrganizacionalController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{unidadeOrganizacionalController.items.rowCount > 0}" id="hPnlGroupListUnidadeOrganizacional">
-                    <p:dataTable value="#{unidadeOrganizacionalController.items}" id="pDataTableListUnidadeOrganizacional" reflow="true" paginator="true" var="item" >
+                <h:panelGroup rendered="#{unidadeOrganizacionalController.items.rowCount > 0}">
+                    <p:dataTable value="#{unidadeOrganizacionalController.items}" reflow="true" paginator="true" var="item" >
                         <p:column sortBy="#{item.nome}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUnidadeOrganizacionalTitle_nome}"/>
@@ -43,7 +42,7 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <p:commandLink oncomplete="PF('modalViewUnidadeOrganizacional').show();" update="mcViewUnidadeOrganizacional:hPnlGridViewUnidadeOrganizacional" action="#{unidadeOrganizacionalController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px"  title="#{bundle.ListUnidadeOrganizacionalViewLink}"/>
+                            <h:commandLink action="#{unidadeOrganizacionalController.prepareView}" class="glyphicon glyphicon-search" style="color: #00ABA5; padding: 5px"  title="#{bundle.ListUnidadeOrganizacionalViewLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{unidadeOrganizacionalController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListUnidadeOrganizacionalEditLink}"/>
                             <h:outputText value=" "/>
@@ -56,11 +55,6 @@
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListUnidadeOrganizacionalIndexLink}"/>
-            </h:form>
-                         <h:form prependId="false">
-                <p:dialog modal="true" widgetVar="modalViewUnidadeOrganizacional" id="modalViewUnidadeOrganizacional" >
-                    <mc:View id="mcViewUnidadeOrganizacional"/>
-                </p:dialog>
             </h:form>
         </ui:define>
     </ui:composition>

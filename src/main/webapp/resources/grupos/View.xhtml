@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:form prependId="false">
+            <h:panelGrid columns="2" id="hPnlGridViewGrupos">
+                    <h:outputText value="#{bundle.ViewGruposLabel_nome}"/>
+                    <h:outputText value="#{gruposController.selected.nome}" title="#{bundle.ViewGruposTitle_nome}"/>
+                    <h:outputText value="#{bundle.ViewGruposLabel_descricao}"/>
+                    <h:outputText value="#{gruposController.selected.descricao}" title="#{bundle.ViewGruposTitle_descricao}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{gruposController.destroyAndView}" value="#{bundle.ViewGruposDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewGruposEditLink}"/>
+                <br />
+                <h:commandLink action="#{gruposController.prepareCreate}" value="#{bundle.ViewGruposCreateLink}" />
+                <br />
+                <h:commandLink action="#{gruposController.prepareList}" value="#{bundle.ViewGruposShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewGruposIndexLink}"/>
+
+            </h:form>
+    </cc:implementation>
+</html>

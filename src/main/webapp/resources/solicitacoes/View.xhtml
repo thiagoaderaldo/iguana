@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:form prependId="false">
+            <h:panelGrid columns="2" id="hPnlGridViewSolicitacoes">
+                    <h:outputText value="#{bundle.ViewSolicitacoesLabel_id}"/>
+                    <h:outputText value="#{solicitacoesController.selected.id}" title="#{bundle.ViewSolicitacoesTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewSolicitacoesLabel_protocolo}"/>
+                    <h:outputText value="#{solicitacoesController.selected.protocolo}" title="#{bundle.ViewSolicitacoesTitle_protocolo}"/>
+                    <h:outputText value="#{bundle.ViewSolicitacoesLabel_protocoloOrigem}"/>
+                    <h:outputText value="#{solicitacoesController.selected.protocoloOrigem}" title="#{bundle.ViewSolicitacoesTitle_protocoloOrigem}"/>
+                    <h:outputText value="#{bundle.ViewSolicitacoesLabel_tituloSolicitacao}"/>
+                    <h:outputText value="#{solicitacoesController.selected.tituloSolicitacao}" title="#{bundle.ViewSolicitacoesTitle_tituloSolicitacao}"/>
+                    <h:outputText value="#{bundle.ViewSolicitacoesLabel_dataSolicitacao}"/>
+                    <h:outputText value="#{solicitacoesController.selected.dataSolicitacao}" title="#{bundle.ViewSolicitacoesTitle_dataSolicitacao}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSolicitacoesLabel_horaSolicitacao}"/>
+                    <h:outputText value="#{solicitacoesController.selected.horaSolicitacao}" title="#{bundle.ViewSolicitacoesTitle_horaSolicitacao}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSolicitacoesLabel_localizacao}"/>
+                    <h:outputText value="#{solicitacoesController.selected.localizacao}" title="#{bundle.ViewSolicitacoesTitle_localizacao}"/>
+                    <h:outputText value="#{bundle.ViewSolicitacoesLabel_descricao}"/>
+                    <h:outputText value="#{solicitacoesController.selected.descricao}" title="#{bundle.ViewSolicitacoesTitle_descricao}"/>
+                    <h:outputText value="#{bundle.ViewSolicitacoesLabel_solicitante}"/>
+                    <h:outputText value="#{solicitacoesController.selected.solicitante}" title="#{bundle.ViewSolicitacoesTitle_solicitante}"/>
+                    <h:outputText value="#{bundle.ViewSolicitacoesLabel_origem}"/>
+                    <h:outputText value="#{solicitacoesController.selected.origem}" title="#{bundle.ViewSolicitacoesTitle_origem}"/>
+                    <h:outputText value="#{bundle.ViewSolicitacoesLabel_estatus}"/>
+                    <h:outputText value="#{solicitacoesController.selected.estatus}" title="#{bundle.ViewSolicitacoesTitle_estatus}"/>
+                    <h:outputText value="#{bundle.ViewSolicitacoesLabel_atendimentos}"/>
+                    <h:outputText value="#{solicitacoesController.selected.atendimentos}" title="#{bundle.ViewSolicitacoesTitle_atendimentos}"/>
+                    <h:outputText value="#{bundle.ViewSolicitacoesLabel_dispositivo}"/>
+                    <h:outputText value="#{solicitacoesController.selected.dispositivo}" title="#{bundle.ViewSolicitacoesTitle_dispositivo}"/>
+                    <h:outputText value="#{bundle.ViewSolicitacoesLabel_assunto}"/>
+                    <h:outputText value="#{solicitacoesController.selected.assunto}" title="#{bundle.ViewSolicitacoesTitle_assunto}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{solicitacoesController.destroyAndView}" value="#{bundle.ViewSolicitacoesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSolicitacoesEditLink}"/>
+                <br />
+                <h:commandLink action="#{solicitacoesController.prepareCreate}" value="#{bundle.ViewSolicitacoesCreateLink}" />
+                <br />
+                <h:commandLink action="#{solicitacoesController.prepareList}" value="#{bundle.ViewSolicitacoesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSolicitacoesIndexLink}"/>
+
+            </h:form>
+    </cc:implementation>
+
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:form prependId="false">
+            <h:panelGrid columns="2" id="hPnlGridViewSolicitantes">
+                <h:outputText value="#{bundle.ViewSolicitanteLabel_id}"/>
+                <h:outputText value="#{solicitanteController.selected.id}" title="#{bundle.ViewSolicitanteTitle_id}"/>
+                <h:outputText value="#{bundle.ViewSolicitanteLabel_nome}"/>
+                <h:outputText value="#{solicitanteController.selected.nome}" title="#{bundle.ViewSolicitanteTitle_nome}"/>
+                <h:outputText value="#{bundle.ViewSolicitanteLabel_email}"/>
+                <h:outputText value="#{solicitanteController.selected.email}" title="#{bundle.ViewSolicitanteTitle_email}"/>
+                <h:outputText value="#{bundle.ViewSolicitanteLabel_telefone}"/>
+                <h:outputText value="#{solicitanteController.selected.telefone}" title="#{bundle.ViewSolicitanteTitle_telefone}"/>
+                <h:outputText value="#{bundle.ViewSolicitanteLabel_unidadeOrganizacional}"/>
+                <h:outputText value="#{solicitanteController.selected.unidadeOrganizacional.nome}" title="#{bundle.ViewSolicitanteTitle_unidadeOrganizacional}"/>
+            </h:panelGrid>
+            <br />
+            <h:commandLink action="#{solicitanteController.destroyAndView}" value="#{bundle.ViewSolicitanteDestroyLink}"/>
+            <br />
+            <br />
+            <h:link outcome="Edit" value="#{bundle.ViewSolicitanteEditLink}"/>
+            <br />
+            <h:commandLink action="#{solicitanteController.prepareCreate}" value="#{bundle.ViewSolicitanteCreateLink}" />
+            <br />
+            <h:commandLink action="#{solicitanteController.prepareList}" value="#{bundle.ViewSolicitanteShowAllLink}"/>
+            <br />
+            <br />
+            <h:link outcome="/index" value="#{bundle.ViewSolicitanteIndexLink}"/>
+
+        </h:form>
+    </cc:implementation>
+
+</html>

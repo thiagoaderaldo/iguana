@@ -40,16 +40,16 @@
                         </div>
                         <h:form>
                             <div class="box-body">
-                                <div class="col-md-12">
-                                    <div class="form-group">
+                                 <div class="col-md-12">
+                                    <div class="ui-fluid">
                                         <h:outputLabel value="#{bundle.CreateGruposLabel_nome}" for="nome" />
-                                        <h:inputText id="nome" class="form-control" value="#{gruposController.selected.nome}" title="#{bundle.CreateGruposTitle_nome}" required="true" requiredMessage="#{bundle.CreateGruposRequiredMessage_nome}" pt:placeholder="Ex.: admin, root, user"/>
+                                        <p:inputText id="nome" value="#{gruposController.selected.nome}" title="#{bundle.CreateGruposTitle_nome}" required="true" requiredMessage="#{bundle.CreateGruposRequiredMessage_nome}" pt:placeholder="Ex.: admin, root, user"/>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="form-group">
+                                    <div class="ui-fluid">
                                         <h:outputLabel value="#{bundle.CreateGruposLabel_descricao}" for="descricao" />
-                                        <h:inputText id="descricao" class="form-control" value="#{gruposController.selected.descricao}" title="#{bundle.CreateGruposTitle_descricao}" required="true" requiredMessage="#{bundle.CreateGruposRequiredMessage_descricao}" pt:placeholder="Definição do grupo. Ex.: Grupo de administradores"/>
+                                        <p:inputText id="descricao" value="#{gruposController.selected.descricao}" title="#{bundle.CreateGruposTitle_descricao}" required="true" requiredMessage="#{bundle.CreateGruposRequiredMessage_descricao}" pt:placeholder="Definição do grupo. Ex.: Grupo de administradores"/>
                                     </div>
                                 </div>
                             </div>

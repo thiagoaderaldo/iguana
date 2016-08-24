@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Estatus.findByNome", query = "SELECT e FROM Estatus e WHERE e.nome = :nome"),
     @NamedQuery(name = "Estatus.findByDescricao", query = "SELECT e FROM Estatus e WHERE e.descricao = :descricao")})
 public class Estatus implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -120,7 +121,8 @@ public class Estatus implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.codigof.iguana.jpa.entities.Estatus[ id=" + id + " ]";
+//        return "br.com.codigof.iguana.jpa.entities.Estatus[ id=" + id + " ]";
+        return getNome();
     }
-    
+
 }

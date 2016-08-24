@@ -40,30 +40,30 @@
                         </div>
                         <h:form>
                             <div class="box-body">
-                                <div class="col-md-6">
-                                    <div class="form-group">
+                                 <div class="col-md-6">
+                                    <div class="ui-fluid">
                                         <h:outputLabel value="#{bundle.CreateSolicitanteLabel_nome}" for="nome" />
-                                        <h:inputText id="nome" class="form-control" value="#{solicitanteController.selected.nome}" title="#{bundle.CreateSolicitanteTitle_nome}" required="true" requiredMessage="#{bundle.CreateSolicitanteRequiredMessage_nome}" pt:placeholder="Nome completo"/>
+                                        <p:inputText id="nome" value="#{solicitanteController.selected.nome}" title="#{bundle.CreateSolicitanteTitle_nome}" required="true" requiredMessage="#{bundle.CreateSolicitanteRequiredMessage_nome}" pt:placeholder="Nome completo"/>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                    <div class="ui-fluid">
                                         <h:outputLabel value="#{bundle.CreateSolicitanteLabel_email}" for="email" />
-                                        <h:inputText id="email" pt:type="email" class="form-control" value="#{solicitanteController.selected.email}" title="#{bundle.CreateSolicitanteTitle_email}" required="true" requiredMessage="#{bundle.CreateSolicitanteRequiredMessage_email}" pt:placeholder="fulano@codigof.com.br" />
+                                        <p:inputText id="email" pt:type="email"  value="#{solicitanteController.selected.email}" title="#{bundle.CreateSolicitanteTitle_email}" required="true" requiredMessage="#{bundle.CreateSolicitanteRequiredMessage_email}" pt:placeholder="fulano@codigof.com.br" />
                                     </div>
                                 </div>
                                 <div class="col-md-2">
-                                    <div class="form-group">
+                                    <div class="ui-fluid">
                                         <h:outputLabel value="#{bundle.CreateSolicitanteLabel_telefone}" for="telefone" />
-                                        <p:inputMask mask="(99)99999-9999" class="form-control" id="telefone" value="#{solicitanteController.selected.telefone}" title="#{bundle.CreateSolicitanteTitle_telefone}" pt:placeholder="(__)_____-____"/>
+                                        <p:inputMask mask="(99)99999-9999" id="telefone" value="#{solicitanteController.selected.telefone}" title="#{bundle.CreateSolicitanteTitle_telefone}" pt:placeholder="(__)_____-____"/>
                                     </div>
                                 </div>
                                 <div class="col-md-10">
-                                    <div class="form-group">
+                                    <div class="ui-fluid">
                                         <h:outputLabel value="#{bundle.CreateSolicitanteLabel_unidadeOrganizacional}" for="unidadeOrganizacional" />
-                                        <h:selectOneMenu id="unidadeOrganizacional" class="form-control" value="#{solicitanteController.selected.unidadeOrganizacional}" title="#{bundle.CreateSolicitanteTitle_unidadeOrganizacional}" required="true" requiredMessage="#{bundle.CreateSolicitanteRequiredMessage_unidadeOrganizacional}">
+                                        <p:selectOneMenu id="unidadeOrganizacional" value="#{solicitanteController.selected.unidadeOrganizacional}" title="#{bundle.CreateSolicitanteTitle_unidadeOrganizacional}" required="true" requiredMessage="#{bundle.CreateSolicitanteRequiredMessage_unidadeOrganizacional}">
                                             <f:selectItems value="#{unidadeOrganizacionalController.itemsAvailableSelectOne}"/>
-                                        </h:selectOneMenu>
+                                        </p:selectOneMenu>
                                     </div>
                                 </div>
                             </div>

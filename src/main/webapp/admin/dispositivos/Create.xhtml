@@ -37,10 +37,12 @@
                         </div>
                         <h:form>
                             <div class="box-body">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <h:outputLabel value="#{bundle.CreateDispositivosLabel_nome}" for="nome" />
-                                        <h:inputText id="nome" class="form-control" value="#{dispositivosController.selected.nome}" title="#{bundle.CreateDispositivosTitle_nome}" required="true" requiredMessage="#{bundle.CreateDispositivosRequiredMessage_nome}" pt:placeholder="Ex.: COMPUTADOR"/>
+                                <div class="col-md-12">
+                                    <div class="ui-fluid">
+                                        <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
+                                            <h:outputLabel value="#{bundle.CreateDispositivosLabel_nome}" for="nome" />
+                                            <p:inputText id="nome"  value="#{dispositivosController.selected.nome}" title="#{bundle.CreateDispositivosTitle_nome}" required="true" requiredMessage="#{bundle.CreateDispositivosRequiredMessage_nome}" pt:placeholder="Ex.: COMPUTADOR"/>
+                                        </p:panelGrid>
                                     </div>
                                 </div>
                             </div>

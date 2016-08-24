@@ -243,12 +243,12 @@ public class DashboardDiariaController implements Serializable {
 //        current = ejbFacade.find(getSelected().getAtendimentosabertos());
         if(current != null){
             current = ejbFacade.findAll().get(0);
-            System.out.println("Atendimentos em espera: " + current.getAtendimentoemspera());
+//            System.out.println("Atendimentos em espera: " + current.getAtendimentoemspera());
         }
-        else{
-            System.out.println("Current iniciou como nulo.");
-        }
-        System.out.println("Passou por aqui");
+//        else{
+//            System.out.println("Current iniciou como nulo.");
+//        }
+//        System.out.println("Passou por aqui");
     }
 
 }

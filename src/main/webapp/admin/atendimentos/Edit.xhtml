@@ -3,35 +3,103 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.EditAtendimentosTitle}"></h:outputText>
         </ui:define>
+        <ui:define name="pageheader">
+            Atualizar atendimento
+        </ui:define>
+        <ui:define name="pagedescription">
+
+        </ui:define>
+        <ui:define name="breadcrumb">
+            <li class="active">Atualizar</li>
+            <li class="active">Atendimento</li>
+        </ui:define>
         <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Formulário de atualização de atendimento</h3>
+                        </div><!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h:panelGroup id="messagePanel" layout="block">
+                                    <p:messages/>
+                                </h:panelGroup>
+                            </div>
+                        </div>
+                        <h:form>
+                            <div class="box-body">
+
+                                <div class="ui-fluid">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.EditSolicitacoesLabel_protocoloOrigem}" for="protocoloOrigem" />
+                                            <p:inputText id="protocoloOrigem"  value="#{solicitacoesController.selected.protocoloOrigem}" title="#{bundle.EditSolicitacoesTitle_protocoloOrigem}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.EditAtendimentosLabel_dataAtendimento}" for="dataAtendimento" />
+                                            <p:calendar pt:type="date" id="dataAtendimento"  value="#{atendimentosController.selected.dataAtendimento}" title="#{bundle.EditAtendimentosTitle_dataAtendimento}" required="true" requiredMessage="#{bundle.EditAtendimentosRequiredMessage_dataAtendimento}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                                            </p:calendar>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.EditAtendimentosLabel_horaAtendimento}" for="horaAtendimento" />
+                                            <p:inputMask pt:type="time" mask="__:__" id="horaAtendimento" style="text-align: center" value="#{atendimentosController.selected.horaAtendimento}" title="#{bundle.EditAtendimentosTitle_horaAtendimento}" required="true" requiredMessage="#{bundle.EditAtendimentosRequiredMessage_horaAtendimento}">
+                                                <f:convertDateTime pattern="HH:mm:ss" />
+                                            </p:inputMask>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.EditAtendimentosLabel_solucao}" for="solucao" />
+                                            <p:inputTextarea rows="4" cols="30" id="solucao"  value="#{atendimentosController.selected.solucao}" title="#{bundle.EditAtendimentosTitle_solucao}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.EditAtendimentosLabel_marcadores}" for="marcadores" />
+                                            <p:inputText id="marcadores"  value="#{atendimentosController.selected.marcadores}" title="#{bundle.EditAtendimentosTitle_marcadores}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.EditAtendimentosLabel_observacao}" for="observacao" />
+                                            <p:inputTextarea rows="4" cols="30" id="observacao"  value="#{atendimentosController.selected.observacao}" title="#{bundle.EditAtendimentosTitle_observacao}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <p:outputLabel value="#{bundle.EditAtendimentosLabel_responsavel}" for="responsavel" />
+                                            <p:inputText id="responsavel" value="#{atendimentosController.selected.responsavel}" title="#{bundle.EditAtendimentosTitle_responsavel}" required="true" requiredMessage="#{bundle.EditAtendimentosRequiredMessage_responsavel}"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </h:form>
+                        <div class="box-footer">
+                            <h:commandButton class="btn btn-success" action="#{assuntosController.update}" value="#{bundle.EditAssuntosSaveLink}"/>                                 
+                        </div><!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
             <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditAtendimentosLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{atendimentosController.selected.id}" title="#{bundle.EditAtendimentosTitle_id}" required="true" requiredMessage="#{bundle.EditAtendimentosRequiredMessage_id}"/>
-                    <h:outputLabel value="#{bundle.EditAtendimentosLabel_descricaoAtendimento}" for="descricaoAtendimento" />
-                    <h:inputTextarea rows="4" cols="30" id="descricaoAtendimento" value="#{atendimentosController.selected.descricaoAtendimento}" title="#{bundle.EditAtendimentosTitle_descricaoAtendimento}" required="true" requiredMessage="#{bundle.EditAtendimentosRequiredMessage_descricaoAtendimento}"/>
-                    <h:outputLabel value="#{bundle.EditAtendimentosLabel_dataAtendimento}" for="dataAtendimento" />
-                    <h:inputText id="dataAtendimento" value="#{atendimentosController.selected.dataAtendimento}" title="#{bundle.EditAtendimentosTitle_dataAtendimento}" required="true" requiredMessage="#{bundle.EditAtendimentosRequiredMessage_dataAtendimento}"/>
-                    <h:outputLabel value="#{bundle.EditAtendimentosLabel_horaAtendimento}" for="horaAtendimento" />
-                    <h:inputText id="horaAtendimento" value="#{atendimentosController.selected.horaAtendimento}" title="#{bundle.EditAtendimentosTitle_horaAtendimento}" required="true" requiredMessage="#{bundle.EditAtendimentosRequiredMessage_horaAtendimento}"/>
-                    <h:outputLabel value="#{bundle.EditAtendimentosLabel_observacao}" for="observacao" />
-                    <h:inputText id="observacao" value="#{atendimentosController.selected.observacao}" title="#{bundle.EditAtendimentosTitle_observacao}" />
-                    <h:outputLabel value="#{bundle.EditAtendimentosLabel_marcadores}" for="marcadores" />
-                    <h:inputText id="marcadores" value="#{atendimentosController.selected.marcadores}" title="#{bundle.EditAtendimentosTitle_marcadores}" />
-                    <h:outputLabel value="#{bundle.EditAtendimentosLabel_solucao}" for="solucao" />
-                    <h:inputText id="solucao" value="#{atendimentosController.selected.solucao}" title="#{bundle.EditAtendimentosTitle_solucao}" />
-                    <h:outputLabel value="#{bundle.EditAtendimentosLabel_responsavel}" for="responsavel" />
-                    <h:inputText id="responsavel" value="#{atendimentosController.selected.responsavel}" title="#{bundle.EditAtendimentosTitle_responsavel}" required="true" requiredMessage="#{bundle.EditAtendimentosRequiredMessage_responsavel}"/>
-                </h:panelGrid>
+
                 <h:commandLink action="#{atendimentosController.update}" value="#{bundle.EditAtendimentosSaveLink}"/>
                 <br />
                 <br />

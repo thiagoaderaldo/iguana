@@ -3,23 +3,60 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.EditDispositivosTitle}"></h:outputText>
         </ui:define>
+         <ui:define name="title">
+            <h:outputText value="#{bundle.EditDispositivosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="pageheader">
+            Atualização de dispositivo
+        </ui:define>
+        <ui:define name="breadcrumb">
+            <li class="active">Atualizar</li>
+            <li class="active">Dispositivo</li>
+        </ui:define>
         <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Formulário de atualização de dispositivo</h3>
+                        </div><!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h:panelGroup id="messagePanel" layout="block">
+                                    <p:messages closable="true"/>
+                                </h:panelGroup>
+                            </div>
+                        </div>
+                        <h:form>
+                            <div class="box-body">
+                                <div class="col-md-12">
+                                    <div class="ui-fluid">
+                                        <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
+                                            <h:outputLabel value="#{bundle.EditDispositivosLabel_nome}" for="nome" />
+                                            <p:inputText id="nome"  value="#{dispositivosController.selected.nome}" title="#{bundle.EditDispositivosTitle_nome}" required="true" requiredMessage="#{bundle.EditDispositivosRequiredMessage_nome}" pt:placeholder="Ex.: COMPUTADOR"/>
+                                        </p:panelGrid>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                <h:commandButton class="btn btn-success" action="#{dispositivosController.update()}" value="#{bundle.EditDispositivosSaveLink}"/> 
+                            </div><!-- /.box-body -->
+                        </h:form>
+                    </div>
+                </div>
+            </div>
             <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditDispositivosLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{dispositivosController.selected.id}" title="#{bundle.EditDispositivosTitle_id}" required="true" requiredMessage="#{bundle.EditDispositivosRequiredMessage_id}"/>
-                    <h:outputLabel value="#{bundle.EditDispositivosLabel_nome}" for="nome" />
-                    <h:inputText id="nome" value="#{dispositivosController.selected.nome}" title="#{bundle.EditDispositivosTitle_nome}" required="true" requiredMessage="#{bundle.EditDispositivosRequiredMessage_nome}"/>
-                </h:panelGrid>
                 <h:commandLink action="#{dispositivosController.update}" value="#{bundle.EditDispositivosSaveLink}"/>
                 <br />
                 <br />

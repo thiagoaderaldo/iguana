@@ -18,7 +18,7 @@
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Formulário de cadastro de assunto</h3>
+                            <h3 class="box-title">Formulário de Edição de Assunto</h3>
                         </div><!-- /.box-header -->
                         <!-- form start -->
                         <div class="col-md-12">
@@ -28,11 +28,11 @@
                                 </h:panelGroup>
                             </div>
                         </div>
-                        <h:form>
+                        <h:form prependId="false">
                             <div class="box-body">
                                 <div class="col-md-12">
                                     <div class="ui-fluid">
-                                        <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
+                                        <p:panelGrid id="pnlGridEditAssuntos" columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
                                             <h:outputLabel value="#{bundle.EditAssuntosLabel_nome}" for="nome" />
                                             <p:inputText id="nome" value="#{assuntosController.selected.nome}" title="#{bundle.EditAssuntosTitle_nome}" required="true" requiredMessage="#{bundle.EditAssuntosRequiredMessage_nome}"/>
                                         </p:panelGrid>

@@ -94,7 +94,8 @@ public class SolicitacoesController implements Serializable {
     public String prepareEdit() {
         current = (Solicitacoes) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+//        return "Edit";
+        return null;
     }
 
     public String update() {

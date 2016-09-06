@@ -6,8 +6,10 @@
 package br.com.codigof.iguana.jpa.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,12 +20,14 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -83,24 +87,23 @@ public class Solicitacoes implements Serializable {
     @Size(min = 1, max = 16777215)
     @Column(name = "descricao")
     private String descricao;
-    @JoinColumn(name = "solicitante", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Solicitante solicitante;
-    @JoinColumn(name = "origem", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Origem origem;
-    @JoinColumn(name = "estatus", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Estatus estatus;
-    @JoinColumn(name = "atendimentos", referencedColumnName = "id")
-    @ManyToOne
-    private Atendimentos atendimentos;
-    @JoinColumn(name = "dispositivo", referencedColumnName = "id")
-    @ManyToOne
-    private Dispositivos dispositivo;
     @JoinColumn(name = "assunto", referencedColumnName = "id")
     @ManyToOne
     private Assuntos assunto;
+    @JoinColumn(name = "dispositivo", referencedColumnName = "id")
+    @ManyToOne
+    private Dispositivos dispositivo;
+    @JoinColumn(name = "estatus", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Estatus estatus;
+    @JoinColumn(name = "origem", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Origem origem;
+    @JoinColumn(name = "solicitante", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Solicitante solicitante;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSolicitacao")
+    private Collection<Atendimentos> atendimentosCollection;
 
     public Solicitacoes() {
     }
@@ -182,36 +185,12 @@ public class Solicitacoes implements Serializable {
         this.descricao = descricao;
     }
 
-    public Solicitante getSolicitante() {
-        return solicitante;
+    public Assuntos getAssunto() {
+        return assunto;
     }
 
-    public void setSolicitante(Solicitante solicitante) {
-        this.solicitante = solicitante;
-    }
-
-    public Origem getOrigem() {
-        return origem;
-    }
-
-    public void setOrigem(Origem origem) {
-        this.origem = origem;
-    }
-
-    public Estatus getEstatus() {
-        return estatus;
-    }
-
-    public void setEstatus(Estatus estatus) {
-        this.estatus = estatus;
-    }
-
-    public Atendimentos getAtendimentos() {
-        return atendimentos;
-    }
-
-    public void setAtendimentos(Atendimentos atendimentos) {
-        this.atendimentos = atendimentos;
+    public void setAssunto(Assuntos assunto) {
+        this.assunto = assunto;
     }
 
     public Dispositivos getDispositivo() {
@@ -222,12 +201,37 @@ public class Solicitacoes implements Serializable {
         this.dispositivo = dispositivo;
     }
 
-    public Assuntos getAssunto() {
-        return assunto;
+    public Estatus getEstatus() {
+        return estatus;
     }
 
-    public void setAssunto(Assuntos assunto) {
-        this.assunto = assunto;
+    public void setEstatus(Estatus estatus) {
+        this.estatus = estatus;
+    }
+
+    public Origem getOrigem() {
+        return origem;
+    }
+
+    public void setOrigem(Origem origem) {
+        this.origem = origem;
+    }
+
+    public Solicitante getSolicitante() {
+        return solicitante;
+    }
+
+    public void setSolicitante(Solicitante solicitante) {
+        this.solicitante = solicitante;
+    }
+
+    @XmlTransient
+    public Collection<Atendimentos> getAtendimentosCollection() {
+        return atendimentosCollection;
+    }
+
+    public void setAtendimentosCollection(Collection<Atendimentos> atendimentosCollection) {
+        this.atendimentosCollection = atendimentosCollection;
     }
 
     @Override

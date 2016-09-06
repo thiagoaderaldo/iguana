@@ -97,7 +97,13 @@
                         </h:form>
                     </div>
                 </div>
-            </div>            
+            </div>     
+            <h:form>
+                <h:commandLink action="#{atendimentosController.prepareList}" value="#{bundle.CreateAtendimentosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAtendimentosIndexLink}"/>
+            </h:form>
         </ui:define>
     </ui:composition>
 

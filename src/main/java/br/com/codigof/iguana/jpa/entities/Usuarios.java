@@ -16,6 +16,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -41,6 +42,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuarios.findBySenha", query = "SELECT u FROM Usuarios u WHERE u.senha = :senha"),
     @NamedQuery(name = "Usuarios.findByHabilitado", query = "SELECT u FROM Usuarios u WHERE u.habilitado = :habilitado")})
 public class Usuarios implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -85,6 +87,10 @@ public class Usuarios implements Serializable {
         @JoinColumn(name = "nome_grupo", referencedColumnName = "nome")})
     @ManyToMany
     private Collection<Grupos> gruposCollection;
+
+    @JoinColumn(name = "linguagem", referencedColumnName = "id")
+    @OneToOne(optional = false)
+    private Linguagem linguagem;
 
     public Usuarios() {
     }
@@ -173,6 +179,15 @@ public class Usuarios implements Serializable {
         this.habilitado = habilitado;
     }
 
+    public Linguagem getLinguagem() {
+        return linguagem;
+    }
+
+    public void setLinguagem(Linguagem linguagem) {
+        this.linguagem = linguagem;
+    }
+
+
     @XmlTransient
     public Collection<Grupos> getGruposCollection() {
         return gruposCollection;
@@ -206,5 +221,5 @@ public class Usuarios implements Serializable {
     public String toString() {
         return "br.com.codigof.iguana.jpa.entities.Usuarios[ matricula=" + matricula + " ]";
     }
-    
+
 }

@@ -69,9 +69,11 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
+                            <p:commandLink class="glyphicon glyphicon-plus" style="color: #337ACB; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
+                            <h:outputText value=" "/>
                             <p:commandLink oncomplete="PF('modalViewAtendimentos').show();" update="mcViewAtendimentos:hPnlGridViewAtendimentos" action="#{atendimentosController.prepareView}" class="glyphicon glyphicon-eye-open" style="color: #00ABA5; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{atendimentosController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
+                            <p:commandLink oncomplete="PF('modalEditAtendimentos').show();" update="mcEditAtendimentos:hPnlGroupEditAtendimentos" action="#{atendimentosController.prepareEdit}"  class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{atendimentosController.destroy}" class="glyphicon glyphicon-trash" style="color: #d33724; padding: 5px" title="#{bundle.ListAssuntosDestroyLink}"/>
                         </p:column>
@@ -84,8 +86,13 @@
                 <h:link outcome="/index" value="#{bundle.ListAtendimentosIndexLink}"/>
             </h:form>
             <h:form prependId="false">
-                <p:dialog modal="true" widgetVar="modalViewAtendimentos" id="modalViewAtendimentos" >
+                <p:dialog modal="true" responsive="true" showEffect="explode" hideEffect="explode" widgetVar="modalViewAtendimentos" id="modalViewAtendimentos" >
                     <mc:View id="mcViewAtendimentos"/>
+                </p:dialog>
+            </h:form>
+            <h:form prependId="false">
+                <p:dialog modal="true" responsive="true" showEffect="clip" hideEffect="clip" widgetVar="modalEditAtendimentos" id="modalEditAtendimentos" >
+                    <mc:Edit id="mcEditAtendimentos"/>
                 </p:dialog>
             </h:form>
         </ui:define>

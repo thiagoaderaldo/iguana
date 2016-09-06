@@ -8,14 +8,11 @@ package br.com.codigof.iguana.jpa.entities;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -30,15 +27,16 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author thiago
  */
 @Entity
-@Table(name = "unidade_organizacional")
+@Table(name = "instituicao")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "UnidadeOrganizacional.findAll", query = "SELECT u FROM UnidadeOrganizacional u"),
-    @NamedQuery(name = "UnidadeOrganizacional.findById", query = "SELECT u FROM UnidadeOrganizacional u WHERE u.id = :id"),
-    @NamedQuery(name = "UnidadeOrganizacional.findByNome", query = "SELECT u FROM UnidadeOrganizacional u WHERE u.nome = :nome"),
-    @NamedQuery(name = "UnidadeOrganizacional.findByDescricao", query = "SELECT u FROM UnidadeOrganizacional u WHERE u.descricao = :descricao")})
-public class UnidadeOrganizacional implements Serializable {
-     private static final long serialVersionUID = 1L;
+    @NamedQuery(name = "Instituicao.findAll", query = "SELECT i FROM Instituicao i"),
+    @NamedQuery(name = "Instituicao.findById", query = "SELECT i FROM Instituicao i WHERE i.id = :id"),
+    @NamedQuery(name = "Instituicao.findByNome", query = "SELECT i FROM Instituicao i WHERE i.nome = :nome"),
+    @NamedQuery(name = "Instituicao.findByDescricao", query = "SELECT i FROM Instituicao i WHERE i.descricao = :descricao")})
+public class Instituicao implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -49,23 +47,20 @@ public class UnidadeOrganizacional implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "nome")
     private String nome;
-    @Size(max = 250)
+    @Size(max = 255)
     @Column(name = "descricao")
     private String descricao;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadeOrganizacional")
-    private Collection<Solicitante> solicitanteCollection;
-    @JoinColumn(name = "instituicao", referencedColumnName = "id")
-    @ManyToOne
-    private Instituicao instituicao;
+    @OneToMany(mappedBy = "instituicao")
+    private Collection<UnidadeOrganizacional> unidadeOrganizacionalCollection;
 
-    public UnidadeOrganizacional() {
+    public Instituicao() {
     }
 
-    public UnidadeOrganizacional(Integer id) {
+    public Instituicao(Integer id) {
         this.id = id;
     }
 
-    public UnidadeOrganizacional(Integer id, String nome) {
+    public Instituicao(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
     }
@@ -95,20 +90,12 @@ public class UnidadeOrganizacional implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Solicitante> getSolicitanteCollection() {
-        return solicitanteCollection;
+    public Collection<UnidadeOrganizacional> getUnidadeOrganizacionalCollection() {
+        return unidadeOrganizacionalCollection;
     }
 
-    public void setSolicitanteCollection(Collection<Solicitante> solicitanteCollection) {
-        this.solicitanteCollection = solicitanteCollection;
-    }
-
-    public Instituicao getInstituicao() {
-        return instituicao;
-    }
-
-    public void setInstituicao(Instituicao instituicao) {
-        this.instituicao = instituicao;
+    public void setUnidadeOrganizacionalCollection(Collection<UnidadeOrganizacional> unidadeOrganizacionalCollection) {
+        this.unidadeOrganizacionalCollection = unidadeOrganizacionalCollection;
     }
 
     @Override
@@ -121,10 +108,10 @@ public class UnidadeOrganizacional implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof UnidadeOrganizacional)) {
+        if (!(object instanceof Instituicao)) {
             return false;
         }
-        UnidadeOrganizacional other = (UnidadeOrganizacional) object;
+        Instituicao other = (Instituicao) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -133,8 +120,8 @@ public class UnidadeOrganizacional implements Serializable {
 
     @Override
     public String toString() {
-//        return "br.com.codigof.iguana.jpa.entities.UnidadeOrganizacional[ id=" + id + " ]";
-        return getInstituicao().getNome() + " - " + getNome() + " - " + getDescricao();
+//        return "br.com.codigof.iguana.teste.Instituicao[ id=" + id + " ]";
+        return getNome() + " - " + getDescricao();
     }
     
 }

@@ -94,7 +94,8 @@ public class DispositivosController implements Serializable {
     public String prepareEdit() {
         current = (Dispositivos) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "Edit";
+//        return "Edit";
+        return null;
     }
 
     public String update() {

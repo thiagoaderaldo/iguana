@@ -41,6 +41,11 @@
                                             <p:inputText id="nome"  value="#{unidadeOrganizacionalController.selected.nome}" title="#{bundle.CreateUnidadeOrganizacionalTitle_nome}" required="true" requiredMessage="#{bundle.CreateUnidadeOrganizacionalRequiredMessage_nome}" pt:placeholder="Unidade Organizacional"/>
                                             <h:outputLabel value="#{bundle.CreateUnidadeOrganizacionalLabel_descricao}" for="descricao" />
                                             <p:inputText id="descricao"  value="#{unidadeOrganizacionalController.selected.descricao}" title="#{bundle.CreateUnidadeOrganizacionalTitle_descricao}" pt:placeholder="Descrição"/>
+                                            <h:outputLabel value="#{bundle.EditUnidadeOrganizacionalLabel_instituicao}" for="instituicao" />
+                                            <p:selectOneMenu id="instituicao" value="#{unidadeOrganizacionalController.selected.instituicao}" title="#{bundle.CreateUnidadeOrganizacionalTitle_instituicao}" required="true" requiredMessage="#{bundle.CreateUnidadeOrganizacionalTitle_instituicao}">
+                                                <f:selectItems value="#{instituicaoController.itemsAvailableSelectOne}"/>
+                                            </p:selectOneMenu>
+
                                         </p:panelGrid>
                                     </div>
                                 </div>
@@ -52,14 +57,8 @@
                     </div>
                 </div>
             </div>
-            <h:form>
-                <h:panelGrid columns="2">
-                </h:panelGrid>
-                <br />
-                <h:commandLink  />
-                <br />
-                <br />
-                <h:commandLink action="#{unidadeOrganizacionalController.prepareList}" value="#{bundle.CreateUnidadeOrganizacionalShowAllLink}" immediate="true"/>
+           <h:form>
+               <h:commandLink action="#{unidadeOrganizacionalController.prepareList}" value="#{bundle.CreateUnidadeOrganizacionalShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.CreateUnidadeOrganizacionalIndexLink}"/>

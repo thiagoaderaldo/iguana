@@ -54,9 +54,11 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
+                             <p:commandLink class="glyphicon glyphicon-plus" style="color: #337ACB; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
+                            <h:outputText value=" "/>
                             <p:commandLink oncomplete="PF('modalViewUsuarios').show();" update="mcViewUsuarios:hPnlGridViewUsuarios" action="#{usuariosController.prepareView}" class="glyphicon glyphicon-eye-open" style="color: #00ABA5; padding: 5px"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{usuariosController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px"/>
+                            <p:commandLink oncomplete="PF('modalEditUsuarios').show();" update="mcEditUsuarios:hPnlGroupEditUsuarios" action="#{usuariosController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{usuariosController.destroy}" class="glyphicon glyphicon-trash" style="color: #d33724; padding: 5px"/>
                         </p:column>
@@ -69,8 +71,13 @@
                 <h:link outcome="/index" value="#{bundle.ListUsuariosIndexLink}"/>
             </h:form>
             <h:form prependId="false">
-                <p:dialog modal="true" widgetVar="modalViewUsuarios" id="modalViewUsuarios" >
+                <p:dialog modal="true" responsive="true" showEffect="explode" hideEffect="explode" widgetVar="modalViewUsuarios" id="modalViewUsuarios" >
                     <mc:View id="mcViewUsuarios"/>
+                </p:dialog>
+            </h:form>
+            <h:form prependId="false">
+                <p:dialog modal="true" responsive="true" showEffect="clip" hideEffect="clip" widgetVar="modalEditUsuarios" id="modalEditUsuarios" >
+                    <mc:Edit id="mcEditUsuarios"/>
                 </p:dialog>
             </h:form>
         </ui:define>

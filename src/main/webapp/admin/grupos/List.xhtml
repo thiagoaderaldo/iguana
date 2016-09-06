@@ -39,9 +39,10 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
+                            <p:commandLink class="glyphicon glyphicon-plus" style="color: #337ACB; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
                             <p:commandLink oncomplete="PF('modalViewGrupos').show();" update="mcViewGrupos:hPnlGridViewGrupos" action="#{gruposController.prepareView}" class="glyphicon glyphicon-eye-open" style="color: #00ABA5; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{gruposController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
+                            <p:commandLink oncomplete="PF('modalEditGrupos').show();" update="mcEditGrupos:hPnlGroupEditGrupos" action="#{gruposController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{gruposController.destroy}" class="glyphicon glyphicon-trash" style="color: #d33724; padding: 5px" title="#{bundle.ListAssuntosDestroyLink}"/>
                         </p:column>
@@ -54,8 +55,13 @@
                 <h:link outcome="/index" value="#{bundle.ListGruposIndexLink}"/>
             </h:form>
              <h:form prependId="false">
-                <p:dialog modal="true" widgetVar="modalViewGrupos" id="modalViewGrupos" >
+                <p:dialog modal="true" widgetVar="modalViewGrupos" responsive="true" showEffect="explode" hideEffect="explode" id="modalViewGrupos" >
                     <mc:View id="mcViewGrupos"/>
+                </p:dialog>
+            </h:form>
+             <h:form prependId="false">
+                <p:dialog modal="true" responsive="true" showEffect="clip" hideEffect="clip" widgetVar="modalEditGrupos" id="modalEditGrupos" >
+                    <mc:Edit id="mcEditGrupos"/>
                 </p:dialog>
             </h:form>
         </ui:define>

@@ -7,53 +7,57 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:cc="http://xmlns.jcp.org/jsf/composite">
 
-<!-- INTERFACE -->
+    <!-- INTERFACE -->
     <cc:interface>
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-            <div class="row">
-                <!-- left column -->
-                <div class="col-md-12">
-                    <!-- general form elements -->
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Formulário de Edição de Assunto</h3>
-                        </div><!-- /.box-header -->
-                        <!-- form start -->
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <h:panelGroup id="messagePanel" layout="block">
-                                    <p:messages closable="true"/>
-                                </h:panelGroup>
-                            </div>
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Formulário de Edição de Assunto</h3>
+                    </div><!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <h:panelGroup id="messagePanel" layout="block">
+                                <p:messages closable="true"/>
+                            </h:panelGroup>
                         </div>
-                        <h:form prependId="false">
+                    </div>
+                    <h:form prependId="false">
+                        <h:panelGroup id="hPnlGroupEditAssuntos">
                             <div class="box-body">
                                 <div class="col-md-12">
                                     <div class="ui-fluid">
-                                        <p:panelGrid id="pnlGridEditAssuntos" columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
-                                            <h:outputLabel value="#{bundle.EditAssuntosLabel_nome}" for="nome" />
-                                            <p:inputText id="nome" value="#{assuntosController.selected.nome}" title="#{bundle.EditAssuntosTitle_nome}" required="true" requiredMessage="#{bundle.EditAssuntosRequiredMessage_nome}"/>
-                                        </p:panelGrid>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h:outputLabel value="#{bundle.EditAssuntosLabel_nome}" for="nome" />
+                                                <p:inputText id="nome" value="#{assuntosController.selected.nome}" title="#{bundle.EditAssuntosTitle_nome}" required="true" requiredMessage="#{bundle.EditAssuntosRequiredMessage_nome}"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </h:form>
-                        <div class="box-footer">
-                            <h:commandButton class="btn btn-success" action="#{assuntosController.update}" value="#{bundle.EditAssuntosSaveLink}"/>                                 
-                        </div><!-- /.box-body -->
-                    </div>
+                        </h:panelGroup>
+                    </h:form>
+                    <div class="box-footer">
+                        <h:commandButton class="btn btn-success" action="#{assuntosController.update}" value="#{bundle.EditAssuntosSaveLink}"/>                                 
+                    </div><!-- /.box-body -->
                 </div>
             </div>
-            <h:form>                
-                <h:link outcome="View" value="#{bundle.EditAssuntosViewLink}"/>
-                <br />
-                <h:commandLink action="#{assuntosController.prepareList}" value="#{bundle.EditAssuntosShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditAssuntosIndexLink}" />
-            </h:form>
+        </div>
+        <h:form>                
+            <h:link outcome="View" value="#{bundle.EditAssuntosViewLink}"/>
+            <br />
+            <h:commandLink action="#{assuntosController.prepareList}" value="#{bundle.EditAssuntosShowAllLink}" immediate="true"/>
+            <br />
+            <br />
+            <h:link outcome="/index" value="#{bundle.EditAssuntosIndexLink}" />
+        </h:form>
 
-</cc:implementation>
+    </cc:implementation>
 </html>

@@ -11,7 +11,7 @@
         <ui:define name="title">
             <h:outputText value="#{bundle.ListDispositivosTitle}"></h:outputText>
         </ui:define>
-         <ui:define name="pageheader">
+        <ui:define name="pageheader">
             Lista de Dispositivos
         </ui:define>
         <ui:define name="breadcrumb">
@@ -33,9 +33,11 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
+                            <p:commandLink class="glyphicon glyphicon-plus" style="color: #337ACB; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
+                            <h:outputText value=" "/>
                             <p:commandLink oncomplete="PF('modalViewDispositivos').show();" update="mcViewDispositivos:pnlGridListDispositivos" action="#{dispositivosController.prepareView}" class="glyphicon glyphicon-eye-open" style="color: #00ABA5; padding: 5px" title="#{bundle.ListDispositivosViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{dispositivosController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
+                            <p:commandLink oncomplete="PF('modalEditDispositivos').show();" update="mcEditDispositivos:hPnlGroupEditDispositivos" action="#{dispositivosController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{dispositivosController.destroy}" class="glyphicon glyphicon-trash" style="color: #d33724; padding: 5px" title="#{bundle.ListAssuntosDestroyLink}"/>
                         </p:column>
@@ -48,8 +50,13 @@
                 <h:link outcome="/index" value="#{bundle.ListDispositivosIndexLink}"/>
             </h:form>
             <h:form prependId="false">
-                <p:dialog modal="true" widgetVar="modalViewDispositivos" id="modalViewDispositivos" >
+                <p:dialog modal="true" responsive="true" showEffect="explode" hideEffect="explode" widgetVar="modalViewDispositivos" id="modalViewDispositivos" >
                     <mc:View id="mcViewDispositivos"/>
+                </p:dialog>
+            </h:form>
+            <h:form prependId="false">
+                <p:dialog modal="true" responsive="true" showEffect="clip" hideEffect="clip" widgetVar="modalEditDispositivos" id="modalEditDispositivos" >
+                    <mc:Edit id="mcEditDispositivos"/>
                 </p:dialog>
             </h:form>
         </ui:define>

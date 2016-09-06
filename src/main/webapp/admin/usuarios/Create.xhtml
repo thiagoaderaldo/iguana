@@ -126,6 +126,12 @@
                     </div><!-- /.box -->
                 </div>
             </div>
+            <h:form>
+                <h:commandLink action="#{usuariosController.prepareList}" value="#{bundle.CreateUsuariosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateUsuariosIndexLink}"/>
+            </h:form>
         </ui:define>
     </ui:composition>
 

@@ -7,17 +7,22 @@ package br.com.codigof.iguana.jpa.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -40,6 +45,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Atendimentos.findBySolucao", query = "SELECT a FROM Atendimentos a WHERE a.solucao = :solucao"),
     @NamedQuery(name = "Atendimentos.findByResponsavel", query = "SELECT a FROM Atendimentos a WHERE a.responsavel = :responsavel")})
 public class Atendimentos implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,14 +60,14 @@ public class Atendimentos implements Serializable {
     private String descricaoAtendimento;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
     @Column(name = "data_atendimento")
-    private String dataAtendimento;
+    @Temporal(TemporalType.DATE)
+    private Date dataAtendimento;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
     @Column(name = "hora_atendimento")
-    private String horaAtendimento;
+    @Temporal(TemporalType.TIME)
+    private Date horaAtendimento;
     @Size(max = 45)
     @Column(name = "observacao")
     private String observacao;
@@ -75,8 +81,9 @@ public class Atendimentos implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "responsavel")
     private String responsavel;
-    @OneToMany(mappedBy = "atendimentos")
-    private Collection<Solicitacoes> solicitacoesCollection;
+    @JoinColumn(name = "id_solicitacao", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Solicitacoes idSolicitacao;
 
     public Atendimentos() {
     }
@@ -85,7 +92,7 @@ public class Atendimentos implements Serializable {
         this.id = id;
     }
 
-    public Atendimentos(Long id, String descricaoAtendimento, String dataAtendimento, String horaAtendimento, String responsavel) {
+    public Atendimentos(Long id, String descricaoAtendimento, Date dataAtendimento, Date horaAtendimento, String responsavel) {
         this.id = id;
         this.descricaoAtendimento = descricaoAtendimento;
         this.dataAtendimento = dataAtendimento;
@@ -109,19 +116,19 @@ public class Atendimentos implements Serializable {
         this.descricaoAtendimento = descricaoAtendimento;
     }
 
-    public String getDataAtendimento() {
+    public Date getDataAtendimento() {
         return dataAtendimento;
     }
 
-    public void setDataAtendimento(String dataAtendimento) {
+    public void setDataAtendimento(Date dataAtendimento) {
         this.dataAtendimento = dataAtendimento;
     }
 
-    public String getHoraAtendimento() {
+    public Date getHoraAtendimento() {
         return horaAtendimento;
     }
 
-    public void setHoraAtendimento(String horaAtendimento) {
+    public void setHoraAtendimento(Date horaAtendimento) {
         this.horaAtendimento = horaAtendimento;
     }
 
@@ -157,13 +164,12 @@ public class Atendimentos implements Serializable {
         this.responsavel = responsavel;
     }
 
-    @XmlTransient
-    public Collection<Solicitacoes> getSolicitacoesCollection() {
-        return solicitacoesCollection;
+    public Solicitacoes getIdSolicitacao() {
+        return idSolicitacao;
     }
 
-    public void setSolicitacoesCollection(Collection<Solicitacoes> solicitacoesCollection) {
-        this.solicitacoesCollection = solicitacoesCollection;
+    public void setIdSolicitacao(Solicitacoes idSolicitacao) {
+        this.idSolicitacao = idSolicitacao;
     }
 
     @Override

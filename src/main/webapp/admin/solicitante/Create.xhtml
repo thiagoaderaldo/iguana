@@ -74,6 +74,12 @@
                     </div>
                 </div>
             </div>
+            <h:form>
+                <h:commandLink action="#{solicitanteController.prepareList}" value="#{bundle.CreateSolicitanteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSolicitanteIndexLink}"/>
+            </h:form>
         </ui:define>
     </ui:composition>
 

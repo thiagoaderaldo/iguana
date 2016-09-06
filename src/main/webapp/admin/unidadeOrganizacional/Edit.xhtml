@@ -48,6 +48,8 @@
                                             <p:inputText id="nome" value="#{unidadeOrganizacionalController.selected.nome}" title="#{bundle.EditUnidadeOrganizacionalTitle_nome}" required="true" requiredMessage="#{bundle.EditUnidadeOrganizacionalRequiredMessage_nome}"/>
                                             <h:outputLabel value="#{bundle.EditUnidadeOrganizacionalLabel_descricao}" for="descricao" />
                                             <p:inputText id="descricao" value="#{unidadeOrganizacionalController.selected.descricao}" title="#{bundle.EditUnidadeOrganizacionalTitle_descricao}" />
+                                            <h:outputLabel value="#{bundle.EditUnidadeOrganizacionalLabel_instituicao}" for="instituicao" />
+                                            <p:inputText id="instituicao" value="#{unidadeOrganizacionalController.selected.instituicao.nome}" title="#{bundle.EditUnidadeOrganizacionalTitle_instituicao}" />
                                         </p:panelGrid>
                                     </div>
                                 </div>

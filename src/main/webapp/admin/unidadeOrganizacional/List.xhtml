@@ -38,14 +38,21 @@
                             </f:facet>
                             <h:outputText value="#{item.descricao}"/>
                         </p:column>
-
+                        <p:column sortBy="#{item.instituicao.nome}">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUnidadeOrganizacionalTitle_instituicao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.instituicao.nome}"/>
+                        </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
+                            <p:commandLink class="glyphicon glyphicon-plus" style="color: #337ACB; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
+                            <h:outputText value=" "/>
                             <p:commandLink oncomplete="PF('modalViewUnidadeOrganizacional').show();" update="mcViewUnidadeOrganizacional:hPnlGridViewUnidadeOrganizacional" action="#{unidadeOrganizacionalController.prepareView}" class="glyphicon glyphicon-eye-open" style="color: #00ABA5; padding: 5px"  title="#{bundle.ListUnidadeOrganizacionalViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{unidadeOrganizacionalController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListUnidadeOrganizacionalEditLink}"/>
+                            <p:commandLink oncomplete="PF('modalEditUnidadeOrganizacional').show();" update="mcEditUnidadeOrganizacional:hPnlGroupEditUnidadeOrganizacional" action="#{unidadeOrganizacionalController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListUnidadeOrganizacionalEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{unidadeOrganizacionalController.destroy}" class="glyphicon glyphicon-trash" style="color: #d33724; padding: 5px" title="#{bundle.ListUnidadeOrganizacionalDestroyLink}"/>
                         </p:column>
@@ -57,9 +64,14 @@
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListUnidadeOrganizacionalIndexLink}"/>
             </h:form>
-                         <h:form prependId="false">
-                <p:dialog modal="true" widgetVar="modalViewUnidadeOrganizacional" id="modalViewUnidadeOrganizacional" >
+            <h:form prependId="false">
+                <p:dialog modal="true" responsive="true" showEffect="explode" hideEffect="explode" widgetVar="modalViewUnidadeOrganizacional" id="modalViewUnidadeOrganizacional" >
                     <mc:View id="mcViewUnidadeOrganizacional"/>
+                </p:dialog>
+            </h:form>
+            <h:form prependId="false">
+                <p:dialog modal="true" resizable="true" responsive="true" showEffect="clip" hideEffect="clip" widgetVar="modalEditUnidadeOrganizacional" id="modalEditUnidadeOrganizacional" >
+                    <mc:Edit id="mcEditUnidadeOrganizacional"/>
                 </p:dialog>
             </h:form>
         </ui:define>

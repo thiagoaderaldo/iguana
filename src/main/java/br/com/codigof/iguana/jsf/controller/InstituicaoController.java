@@ -1,9 +1,9 @@
 package br.com.codigof.iguana.jsf.controller;
 
-import br.com.codigof.iguana.jpa.entities.Solicitante;
+import br.com.codigof.iguana.jpa.entities.Instituicao;
 import br.com.codigof.iguana.jsf.controller.util.JsfUtil;
 import br.com.codigof.iguana.jsf.controller.util.PaginationHelper;
-import br.com.codigof.iguana.beans.SolicitanteFacade;
+import br.com.codigof.iguana.beans.InstituicaoFacade;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -18,29 +18,29 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-@Named("solicitanteController")
+@Named("instituicaoController")
 @SessionScoped
-public class SolicitanteController implements Serializable {
+public class InstituicaoController implements Serializable {
 
-    private Solicitante current;
+    private Instituicao current;
     private DataModel items = null;
     @EJB
-    private br.com.codigof.iguana.beans.SolicitanteFacade ejbFacade;
+    private br.com.codigof.iguana.beans.InstituicaoFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-    public SolicitanteController() {
+    public InstituicaoController() {
     }
 
-    public Solicitante getSelected() {
+    public Instituicao getSelected() {
         if (current == null) {
-            current = new Solicitante();
+            current = new Instituicao();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private SolicitanteFacade getFacade() {
+    private InstituicaoFacade getFacade() {
         return ejbFacade;
     }
 
@@ -68,14 +68,13 @@ public class SolicitanteController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Solicitante) getItems().getRowData();
+        current = (Instituicao) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-//        return "View";
-        return null;
+        return "View";
     }
 
     public String prepareCreate() {
-        current = new Solicitante();
+        current = new Instituicao();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -83,7 +82,7 @@ public class SolicitanteController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SolicitanteCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("InstituicaoCreated"));
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -92,16 +91,15 @@ public class SolicitanteController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Solicitante) getItems().getRowData();
+        current = (Instituicao) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-//        return "Edit";
-        return null;
+        return "Edit";
     }
 
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SolicitanteUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("InstituicaoUpdated"));
             return "View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -110,7 +108,7 @@ public class SolicitanteController implements Serializable {
     }
 
     public String destroy() {
-        current = (Solicitante) getItems().getRowData();
+        current = (Instituicao) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -134,7 +132,7 @@ public class SolicitanteController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SolicitanteDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("InstituicaoDeleted"));
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
         }
@@ -190,21 +188,21 @@ public class SolicitanteController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    public Solicitante getSolicitante(java.lang.Integer id) {
+    public Instituicao getInstituicao(java.lang.Integer id) {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = Solicitante.class)
-    public static class SolicitanteControllerConverter implements Converter {
+    @FacesConverter(forClass = Instituicao.class)
+    public static class InstituicaoControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            SolicitanteController controller = (SolicitanteController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "solicitanteController");
-            return controller.getSolicitante(getKey(value));
+            InstituicaoController controller = (InstituicaoController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "instituicaoController");
+            return controller.getInstituicao(getKey(value));
         }
 
         java.lang.Integer getKey(String value) {
@@ -224,11 +222,11 @@ public class SolicitanteController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Solicitante) {
-                Solicitante o = (Solicitante) object;
+            if (object instanceof Instituicao) {
+                Instituicao o = (Instituicao) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Solicitante.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Instituicao.class.getName());
             }
         }
 

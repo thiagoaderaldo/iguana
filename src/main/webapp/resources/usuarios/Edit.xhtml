@@ -6,42 +6,33 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:cg="http://java.sun.com/jsf/composite/grupos">
+      xmlns:cg="http://java.sun.com/jsf/composite/grupos"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
 
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.EditUsuariosTitle}"></h:outputText>
-        </ui:define>
-        <ui:define name="breadcrumb">
-            <li class="active">Editar</li>
-            <li class="active">Usuário</li>
-        </ui:define>
-        <ui:define name="pageheader">
-            Editar Cadastro de Usuário
-        </ui:define>
-        <ui:define name="pagedescription">
-            Ediçao de cadastro de usuários.
-        </ui:define>
-        <ui:define name="body">
-            <div class="row">
-                <!-- left column -->
-                <div class="col-md-12">
-                    <!-- general form elements -->
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Formulário ediçao de cadastro de usuário</h3>
-                        </div><!-- /.box-header -->
-                        <!-- form start -->
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <h:panelGroup id="messagePanel" layout="block">
-                                    <p:messages closable="true"/>
-                                </h:panelGroup>
-                            </div>
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>  
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Formulário ediçao de cadastro de usuário</h3>
+                    </div><!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <h:panelGroup id="messagePanel" layout="block">
+                                <p:messages closable="true"/>
+                            </h:panelGroup>
                         </div>
+                    </div>
 
-                        <h:form>
-
+                    <h:form prependId="false">
+                        <h:panelGroup id="hPnlGroupEditUsuarios">
                             <div class="box-body">
                                 <div class="ui-fluid">
                                     <div class="col-md-6">
@@ -114,21 +105,19 @@
                                     </div>
                                 </div>
                             </div><!-- /.box-body -->
-                            <div class="box-footer">
-                                <h:commandButton class="btn btn-primary" action="#{usuariosController.update}" value="#{bundle.CreateUsuariosSaveLink}"/> 
-                            </div>
-                        </h:form>
-                        <h:form prependId="false">
-                            <p:dialog modal="true" widgetVar="modalAddGrupos" id="modalAddGrupos">
-                                <cg:Create/>
-                            </p:dialog>
-                        </h:form>
-
-
-                    </div>
+                        </h:panelGroup>
+                        <div class="box-footer">
+                            <h:commandButton class="btn btn-success" action="#{usuariosController.update}" value="#{bundle.CreateUsuariosSaveLink}"/> 
+                        </div>
+                    </h:form>
+                    <h:form prependId="false">
+                        <p:dialog modal="true" widgetVar="modalAddGrupos" id="modalAddGrupos">
+                            <cg:Create/>
+                        </p:dialog>
+                    </h:form>
                 </div>
             </div>
-        </ui:define>
-    </ui:composition>
+        </div>
+    </cc:implementation>
 
 </html>

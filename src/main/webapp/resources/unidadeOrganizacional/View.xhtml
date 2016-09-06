@@ -17,6 +17,8 @@
                     <h:outputText value="#{unidadeOrganizacionalController.selected.nome}" title="#{bundle.ViewUnidadeOrganizacionalTitle_nome}"/>
                     <h:outputText value="#{bundle.ViewUnidadeOrganizacionalLabel_descricao}"/>
                     <h:outputText value="#{unidadeOrganizacionalController.selected.descricao}" title="#{bundle.ViewUnidadeOrganizacionalTitle_descricao}"/>
+                    <h:outputText value="#{bundle.ViewUnidadeOrganizacionalLabel_instituicao}"/>
+                    <h:outputText value="#{unidadeOrganizacionalController.selected.instituicao.nome}" title="#{bundle.ViewUnidadeOrganizacionalTitle_instituicao}"/>
                     </h:panelGrid>
                 <br />
                 <h:commandLink action="#{unidadeOrganizacionalController.destroyAndView}" value="#{bundle.ViewUnidadeOrganizacionalDestroyLink}"/>

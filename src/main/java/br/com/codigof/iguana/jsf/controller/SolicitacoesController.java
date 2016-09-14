@@ -4,6 +4,7 @@ import br.com.codigof.iguana.jpa.entities.Solicitacoes;
 import br.com.codigof.iguana.jsf.controller.util.JsfUtil;
 import br.com.codigof.iguana.jsf.controller.util.PaginationHelper;
 import br.com.codigof.iguana.beans.SolicitacoesFacade;
+import br.com.codigof.iguana.util.Protocolo;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -28,6 +29,7 @@ public class SolicitacoesController implements Serializable {
     private br.com.codigof.iguana.beans.SolicitacoesFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private Protocolo protocolo;
 
     public SolicitacoesController() {
     }
@@ -82,11 +84,17 @@ public class SolicitacoesController implements Serializable {
 
     public String create() {
         try {
+            protocolo =  new Protocolo();
+            current.setProtocolo(protocolo.createProtocolo());
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SolicitacoesCreated"));
+            JsfUtil.addWarnMessage("Protocolo gerado: " + current.getProtocolo());
             return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+//            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e.getLocalizedMessage());
+            System.out.println("Erro: " + e.getMessage());
+            System.out.println("Protocolo " + current.getProtocolo());
             return null;
         }
     }

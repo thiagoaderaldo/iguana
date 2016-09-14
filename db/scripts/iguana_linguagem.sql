@@ -1,6 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `iguana` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `iguana`;
--- MySQL dump 10.13  Distrib 5.7.13, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.15, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: iguana
 -- ------------------------------------------------------
@@ -26,10 +24,10 @@ DROP TABLE IF EXISTS `linguagem`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `linguagem` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `descricao` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `nome` varchar(45) NOT NULL,
+  `descricao` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +36,7 @@ CREATE TABLE `linguagem` (
 
 LOCK TABLES `linguagem` WRITE;
 /*!40000 ALTER TABLE `linguagem` DISABLE KEYS */;
-INSERT INTO `linguagem` VALUES (1,'pt_br','Português do Brasil'),(2,'en_us','American English'),(3,'jp','Nihongo');
+INSERT INTO `linguagem` VALUES (1,'pt_BR','Português do Brasil'),(2,'en_US','English');
 /*!40000 ALTER TABLE `linguagem` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-08 13:51:16
+-- Dump completed on 2016-09-14 18:03:38

@@ -51,11 +51,11 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <p:commandLink class="glyphicon glyphicon-plus" style="color: #337ACB; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
+                            <p:commandLink class="glyphicon glyphicon-plus-sign" style="color: #337ACB; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
                             <h:outputText value=" "/>
-                            <p:commandLink oncomplete="PF('modalViewSolicitantes').show();" update="mcViewSolicitantes:hPnlGridViewSolicitantes" action="#{solicitanteController.prepareView}" class="glyphicon glyphicon-eye-open" style="color: #00ABA5; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
+                            <p:commandLink oncomplete="PF('modalViewSolicitantes').show();" update="mcViewSolicitantes:hPnlGroupViewSolicitantes" action="#{solicitanteController.prepareView}" class="glyphicon glyphicon-eye-open" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
                             <h:outputText value=" "/>
-                            <p:commandLink oncomplete="PF('modalEditSolicitantes').show();" update="mcEditSolicitantes:hPnlGroupEditSolicitantes" action="#{solicitanteController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
+                            <p:commandLink oncomplete="PF('modalEditSolicitantes').show();" update="mcEditSolicitantes:hPnlGroupEditSolicitantes" action="#{solicitanteController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #00ABA5;  padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{solicitanteController.destroy}" class="glyphicon glyphicon-trash" style="color: #d33724; padding: 5px" title="#{bundle.ListAssuntosDestroyLink}"/>
                         </p:column>
@@ -68,12 +68,12 @@
                 <h:link outcome="/index" value="#{bundle.ListSolicitanteIndexLink}"/>
             </h:form>
             <h:form prependId="false">
-                <p:dialog modal="true" responsive="true" showEffect="explode" hideEffect="explode" widgetVar="modalViewSolicitantes" id="modalViewSolicitantes" >
+                <p:dialog modal="true" height="400px" width="500px" responsive="true" showEffect="explode" hideEffect="explode" widgetVar="modalViewSolicitantes" id="modalViewSolicitantes" >
                     <mc:View id="mcViewSolicitantes"/>
                 </p:dialog>
             </h:form>
             <h:form prependId="false">
-                <p:dialog modal="true" responsive="true" showEffect="clip" hideEffect="clip" widgetVar="modalEditSolicitantes" id="modalEditSolicitantes" >
+                <p:dialog modal="true"  responsive="true" showEffect="clip" hideEffect="clip" widgetVar="modalEditSolicitantes" id="modalEditSolicitantes" >
                     <mc:Edit id="mcEditSolicitantes"/>
                 </p:dialog>
             </h:form>

@@ -46,7 +46,7 @@
                                 <h:outputText value="#{bundle.ListSolicitacoesTitle_dataSolicitacao}"/>
                             </f:facet>
                             <h:outputText value="#{item.dataSolicitacao}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </p:column>
                         <p:column sortBy="#{item.horaSolicitacao}">
@@ -54,7 +54,7 @@
                                 <h:outputText value="#{bundle.ListSolicitacoesTitle_horaSolicitacao}"/>
                             </f:facet>
                             <h:outputText value="#{item.horaSolicitacao}">
-                                <f:convertDateTime pattern="HH:mm:ss" />
+                                <f:convertDateTime pattern="HH:mm" />
                             </h:outputText>
                         </p:column>
                         <p:column sortBy="#{item.localizacao}" rendered="false">
@@ -87,12 +87,6 @@
                             </f:facet>
                             <h:outputText value="#{item.estatus.nome}"/>
                         </p:column>
-                        <p:column sortBy="#{item.atendimentos}" rendered="false">
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSolicitacoesTitle_atendimentos}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.atendimentos}"/>
-                        </p:column>
                         <p:column sortBy="#{item.dispositivo.nome}" rendered="false">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSolicitacoesTitle_dispositivo}"/>
@@ -109,10 +103,10 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <p:commandLink class="glyphicon glyphicon-plus" style="color: #337ACB; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
-                            <p:commandLink oncomplete="PF('modalViewSolicitacoes').show();" update="mcViewSolicitacoes:hPnlGridViewSolicitacoes" action="#{solicitacoesController.prepareView}" class="glyphicon glyphicon-eye-open" style="color: #00ABA5; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
+                            <p:commandLink class="glyphicon glyphicon-plus-sign" style="color: #337ACB; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
+                            <p:commandLink oncomplete="PF('modalViewSolicitacoes').show();" update="mcViewSolicitacoes:hPnlGroupViewSolicitacoes" action="#{solicitacoesController.prepareView}" class="glyphicon glyphicon-eye-open" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
                             <h:outputText value=" "/>
-                            <p:commandLink oncomplete="PF('modalEditSolicitacoes').show();" update="mcEditSolicitacoes:hPnlGroupEditSolicitacoes" action="#{solicitacoesController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
+                            <p:commandLink oncomplete="PF('modalEditSolicitacoes').show();" update="mcEditSolicitacoes:hPnlGroupEditSolicitacoes" action="#{solicitacoesController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #00ABA5;  padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{solicitacoesController.destroy}" class="glyphicon glyphicon-trash" style="color: #d33724; padding: 5px" title="#{bundle.ListAssuntosDestroyLink}"/>
                         </p:column>
@@ -125,12 +119,12 @@
                 <h:link outcome="/index" value="#{bundle.ListSolicitacoesIndexLink}"/>
             </h:form>
             <h:form prependId="false">
-                <p:dialog modal="true" responsive="true" showEffect="explode" hideEffect="explode" widgetVar="modalViewSolicitacoes" id="modalViewSolicitacoes" >
+                <p:dialog modal="true" responsive="true" position="center" maximizable="true" height="400px" width="450px" resizable="true" showEffect="explode" hideEffect="explode" widgetVar="modalViewSolicitacoes" id="modalViewSolicitacoes" >
                     <mc:View id="mcViewSolicitacoes"/>
                 </p:dialog>
             </h:form>
             <h:form prependId="false">
-                <p:dialog modal="true" responsive="true" showEffect="clip" hideEffect="clip" widgetVar="modalEditSolicitacoes" id="modalEditSolicitacoes" height="500px" width="450px">
+                <p:dialog modal="true" responsive="true" resizable="true" maximizable="true" position="center" height="450px" width="450px" showEffect="clip" hideEffect="clip" widgetVar="modalEditSolicitacoes" id="modalEditSolicitacoes">
                     <mc:Edit id="mcEditSolicitacoes"/>
                 </p:dialog>
             </h:form>

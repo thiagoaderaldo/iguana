@@ -46,18 +46,17 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Atendimentos.findByResponsavel", query = "SELECT a FROM Atendimentos a WHERE a.responsavel = :responsavel")})
 public class Atendimentos implements Serializable {
 
+    @Lob
+    @Size(max = 65535)
+    @Column(name = "solucao")
+    private String solucao;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Size(min = 1, max = 65535)
-    @Column(name = "descricao_atendimento")
-    private String descricaoAtendimento;
     @Basic(optional = false)
     @NotNull
     @Column(name = "data_atendimento")
@@ -74,8 +73,6 @@ public class Atendimentos implements Serializable {
     @Size(max = 45)
     @Column(name = "marcadores")
     private String marcadores;
-    @Column(name = "solucao")
-    private Boolean solucao;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -92,9 +89,8 @@ public class Atendimentos implements Serializable {
         this.id = id;
     }
 
-    public Atendimentos(Long id, String descricaoAtendimento, Date dataAtendimento, Date horaAtendimento, String responsavel) {
+    public Atendimentos(Long id, Date dataAtendimento, Date horaAtendimento, String responsavel) {
         this.id = id;
-        this.descricaoAtendimento = descricaoAtendimento;
         this.dataAtendimento = dataAtendimento;
         this.horaAtendimento = horaAtendimento;
         this.responsavel = responsavel;
@@ -106,14 +102,6 @@ public class Atendimentos implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getDescricaoAtendimento() {
-        return descricaoAtendimento;
-    }
-
-    public void setDescricaoAtendimento(String descricaoAtendimento) {
-        this.descricaoAtendimento = descricaoAtendimento;
     }
 
     public Date getDataAtendimento() {
@@ -148,13 +136,6 @@ public class Atendimentos implements Serializable {
         this.marcadores = marcadores;
     }
 
-    public Boolean getSolucao() {
-        return solucao;
-    }
-
-    public void setSolucao(Boolean solucao) {
-        this.solucao = solucao;
-    }
 
     public String getResponsavel() {
         return responsavel;
@@ -195,6 +176,14 @@ public class Atendimentos implements Serializable {
     @Override
     public String toString() {
         return "br.com.codigof.iguana.jpa.entities.Atendimentos[ id=" + id + " ]";
+    }
+
+    public String getSolucao() {
+        return solucao;
+    }
+
+    public void setSolucao(String solucao) {
+        this.solucao = solucao;
     }
     
 }

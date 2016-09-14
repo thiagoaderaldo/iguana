@@ -23,23 +23,21 @@
                 <h:outputText escape="false" value="#{bundle.ListAtendimentosEmpty}" rendered="#{atendimentosController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{atendimentosController.items.rowCount > 0}" id="hPnlGroupListAtendimentos">
                     <p:dataTable value="#{atendimentosController.items}" id="pDataTableListAtendimentos" reflow="true" paginator="true" var="item">
-                        <p:column sortBy="#{item.descricaoAtendimento}">
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAtendimentosTitle_descricaoAtendimento}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.descricaoAtendimento}"/>
-                        </p:column>
                         <p:column sortBy="#{item.dataAtendimento}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAtendimentosTitle_dataAtendimento}"/>
                             </f:facet>
-                            <h:outputText value="#{item.dataAtendimento}"/>
+                            <h:outputText value="#{item.dataAtendimento}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
                         </p:column>
                         <p:column sortBy="#{item.horaAtendimento}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAtendimentosTitle_horaAtendimento}"/>
                             </f:facet>
-                            <h:outputText value="#{item.horaAtendimento}"/>
+                            <h:outputText value="#{item.horaAtendimento}">
+                                <f:convertDateTime pattern="HH:mm"/>
+                            </h:outputText>
                         </p:column>
                         <p:column sortBy="#{item.observacao}">
                             <f:facet name="header">
@@ -69,11 +67,11 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <p:commandLink class="glyphicon glyphicon-plus" style="color: #337ACB; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
+                            <p:commandLink class="glyphicon glyphicon-plus-sign" style="color: #337ACB; padding: 5px" title="#{bundle.ListAtendimentosCreateLink}"/>
                             <h:outputText value=" "/>
-                            <p:commandLink oncomplete="PF('modalViewAtendimentos').show();" update="mcViewAtendimentos:hPnlGridViewAtendimentos" action="#{atendimentosController.prepareView}" class="glyphicon glyphicon-eye-open" style="color: #00ABA5; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
+                            <p:commandLink oncomplete="PF('modalViewAtendimentos').show();" update="mcViewAtendimentos:hPnlGroupViewAtendimentos" action="#{atendimentosController.prepareView}" class="glyphicon glyphicon-eye-open" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
                             <h:outputText value=" "/>
-                            <p:commandLink oncomplete="PF('modalEditAtendimentos').show();" update="mcEditAtendimentos:hPnlGroupEditAtendimentos" action="#{atendimentosController.prepareEdit}"  class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
+                            <p:commandLink oncomplete="PF('modalEditAtendimentos').show();" update="mcEditAtendimentos:hPnlGroupEditAtendimentos" action="#{atendimentosController.prepareEdit}"  class="glyphicon glyphicon-edit" style="color: #00ABA5;  padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{atendimentosController.destroy}" class="glyphicon glyphicon-trash" style="color: #d33724; padding: 5px" title="#{bundle.ListAssuntosDestroyLink}"/>
                         </p:column>
@@ -86,12 +84,12 @@
                 <h:link outcome="/index" value="#{bundle.ListAtendimentosIndexLink}"/>
             </h:form>
             <h:form prependId="false">
-                <p:dialog modal="true" responsive="true" showEffect="explode" hideEffect="explode" widgetVar="modalViewAtendimentos" id="modalViewAtendimentos" >
+                <p:dialog modal="true" responsive="true" height="400px" width="450px" showEffect="explode" hideEffect="explode" widgetVar="modalViewAtendimentos" id="modalViewAtendimentos" >
                     <mc:View id="mcViewAtendimentos"/>
                 </p:dialog>
             </h:form>
             <h:form prependId="false">
-                <p:dialog modal="true" responsive="true" showEffect="clip" hideEffect="clip" widgetVar="modalEditAtendimentos" id="modalEditAtendimentos" >
+                <p:dialog modal="true" responsive="true" height="400px" width="450px" showEffect="clip" hideEffect="clip" widgetVar="modalEditAtendimentos" id="modalEditAtendimentos" >
                     <mc:Edit id="mcEditAtendimentos"/>
                 </p:dialog>
             </h:form>

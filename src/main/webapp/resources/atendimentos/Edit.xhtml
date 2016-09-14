@@ -17,7 +17,7 @@
             <!-- left column -->
             <div class="col-md-12">
                 <!-- general form elements -->
-                <div class="box box-primary">
+                <div class="box box-success box-solid">
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulário de edição de atendimento</h3>
                     </div><!-- /.box-header -->
@@ -50,8 +50,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <p:outputLabel value="#{bundle.EditAtendimentosLabel_horaAtendimento}" for="horaAtendimento" />
-                                            <p:inputMask pt:type="time" mask="__:__" id="horaAtendimento" style="text-align: center" value="#{atendimentosController.selected.horaAtendimento}" title="#{bundle.EditAtendimentosTitle_horaAtendimento}" required="true" requiredMessage="#{bundle.EditAtendimentosRequiredMessage_horaAtendimento}">
-                                                <f:convertDateTime pattern="HH:mm:ss" />
+                                            <p:inputMask pt:type="time" mask="99:99" id="horaAtendimento" style="text-align: center" value="#{atendimentosController.selected.horaAtendimento}" title="#{bundle.EditAtendimentosTitle_horaAtendimento}" required="true" requiredMessage="#{bundle.EditAtendimentosRequiredMessage_horaAtendimento}">
+                                                <f:convertDateTime pattern="HH:mm" />
                                             </p:inputMask>
                                         </div>
                                     </div>

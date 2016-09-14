@@ -1,6 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `iguana` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `iguana`;
--- MySQL dump 10.13  Distrib 5.7.13, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.15, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: iguana
 -- ------------------------------------------------------
@@ -38,8 +36,8 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`matricula`),
   UNIQUE KEY `UNQ_usuarios_1` (`matricula`),
   UNIQUE KEY `login_UNIQUE` (`login`),
-  UNIQUE KEY `linguagem_UNIQUE` (`linguagem`),
   UNIQUE KEY `UNQ_usuarios_0` (`email`),
+  KEY `fk_usuarios_linguagem` (`linguagem`),
   CONSTRAINT `fk_usuarios_linguagem` FOREIGN KEY (`linguagem`) REFERENCES `linguagem` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -63,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-08 13:51:15
+-- Dump completed on 2016-09-14 18:03:37

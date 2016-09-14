@@ -3,38 +3,93 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ViewUnidadeOrganizacionalTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewUnidadeOrganizacionalLabel_nome}"/>
-                    <h:outputText value="#{unidadeOrganizacionalController.selected.nome}" title="#{bundle.ViewUnidadeOrganizacionalTitle_nome}"/>
-                    <h:outputText value="#{bundle.ViewUnidadeOrganizacionalLabel_descricao}"/>
-                    <h:outputText value="#{unidadeOrganizacionalController.selected.descricao}" title="#{bundle.ViewUnidadeOrganizacionalTitle_descricao}"/>
-                    </h:panelGrid>
-                <br />
-                <h:commandLink action="#{unidadeOrganizacionalController.destroyAndView}" value="#{bundle.ViewUnidadeOrganizacionalDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewUnidadeOrganizacionalEditLink}"/>
-                <br />
-                <h:commandLink action="#{unidadeOrganizacionalController.prepareCreate}" value="#{bundle.ViewUnidadeOrganizacionalCreateLink}" />
-                <br />
-                <h:commandLink action="#{unidadeOrganizacionalController.prepareList}" value="#{bundle.ViewUnidadeOrganizacionalShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewUnidadeOrganizacionalIndexLink}"/>
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-warning box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Visualizar</h3>
+                        </div><!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h:panelGroup id="messagePanel" layout="block">
+                                    <p:messages severity="info" closable="true"/>
+                                </h:panelGroup>
+                            </div>
+                        </div>
+                        <h:form>
+                            <div class="box-body">
+                                <div class="col-md-12">
+                                    <h3 class="box-title">
+                                        <p style="color: #16a085">
+                                            <i class="glyphicon glyphicon-ok-circle">Detalhes</i>
+                                        </p>
+                                    </h3>
+                                    <h:panelGroup id="hPnlGroupViewUnidadeOrganizacional">
+                                        <div class="col-xs-12 table-responsive">
+                                            <table class="table table-responsive table-bordered table-striped">
+                                                <tr>
+                                                    <th>
+                                                        <h:outputText value="#{bundle.ViewUnidadeOrganizacionalLabel_nome}"/>
 
-            </h:form>
-        </ui:define>
-    </ui:composition>
+                                                    </th>
+                                                    <td>
+                                                        <h:outputText value="#{unidadeOrganizacionalController.selected.nome}" title="#{bundle.ViewUnidadeOrganizacionalTitle_nome}"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <h:outputText value="#{bundle.ViewUnidadeOrganizacionalLabel_descricao}"/>
 
-</html>
+                                                    </th>
+                                                    <td>
+                                                        <h:outputText value="#{unidadeOrganizacionalController.selected.descricao}" title="#{bundle.ViewUnidadeOrganizacionalTitle_descricao}"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <h:outputText value="#{bundle.ViewUnidadeOrganizacionalLabel_instituicao}"/>
+
+                                                    </th>
+                                                    <td>
+                                                        <h:outputText value="#{unidadeOrganizacionalController.selected.instituicao.nome}" title="#{bundle.ViewUnidadeOrganizacionalTitle_instituicao}"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </h:panelGroup>
+                                    <h3 class="box-title">
+                                        <p style="color: #16a085">
+                                            <i class="glyphicon glyphicon-ok-circle">Ações</i>
+                                        </p>
+                                    </h3>
+                                    <h:commandLink action="#{unidadeOrganizacionalController.destroyAndView}" value="#{bundle.ViewUnidadeOrganizacionalDestroyLink}"/>
+                                    <br />
+                                    <h:link outcome="Edit" value="#{bundle.ViewUnidadeOrganizacionalEditLink}"/>
+                                    <br />
+                                    <h:commandLink action="#{unidadeOrganizacionalController.prepareCreate}" value="#{bundle.ViewUnidadeOrganizacionalCreateLink}" />
+                                    <br />
+                                    <h:commandLink action="#{unidadeOrganizacionalController.prepareList}" value="#{bundle.ViewUnidadeOrganizacionalShowAllLink}"/>
+                                    <br />
+                                    <br />
+                                    <h:link outcome="/index" value="#{bundle.ViewUnidadeOrganizacionalIndexLink}"/>
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+                    </ui:define>
+                    </ui:composition>
+
+                    </html>

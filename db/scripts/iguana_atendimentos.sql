@@ -1,6 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `iguana` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `iguana`;
--- MySQL dump 10.13  Distrib 5.7.13, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.15, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: iguana
 -- ------------------------------------------------------
@@ -26,18 +24,17 @@ DROP TABLE IF EXISTS `atendimentos`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `atendimentos` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `descricao_atendimento` text NOT NULL,
   `data_atendimento` date NOT NULL,
   `hora_atendimento` time NOT NULL,
   `observacao` varchar(45) DEFAULT NULL,
   `marcadores` varchar(45) DEFAULT NULL,
-  `solucao` tinyint(1) DEFAULT NULL,
+  `solucao` text,
   `responsavel` varchar(45) NOT NULL,
   `id_solicitacao` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_atendimentos_solicitacoes_idx` (`id_solicitacao`),
   CONSTRAINT `fk_atendimentos_solicitacoes` FOREIGN KEY (`id_solicitacao`) REFERENCES `solicitacoes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,6 +43,7 @@ CREATE TABLE `atendimentos` (
 
 LOCK TABLES `atendimentos` WRITE;
 /*!40000 ALTER TABLE `atendimentos` DISABLE KEYS */;
+INSERT INTO `atendimentos` VALUES (1,'0016-09-13','10:21:00','Teste','Teste','Teste','Iguana - xxxxx',333);
 /*!40000 ALTER TABLE `atendimentos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-08 13:51:15
+-- Dump completed on 2016-09-14 18:03:38

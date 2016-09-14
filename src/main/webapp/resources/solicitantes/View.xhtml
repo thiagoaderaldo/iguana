@@ -4,40 +4,105 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
 
     <!-- INTERFACE -->
     <cc:interface>
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-        <h:form prependId="false">
-            <h:panelGrid columns="2" id="hPnlGridViewSolicitantes">
-                <h:outputText value="#{bundle.ViewSolicitanteLabel_id}"/>
-                <h:outputText value="#{solicitanteController.selected.id}" title="#{bundle.ViewSolicitanteTitle_id}"/>
-                <h:outputText value="#{bundle.ViewSolicitanteLabel_nome}"/>
-                <h:outputText value="#{solicitanteController.selected.nome}" title="#{bundle.ViewSolicitanteTitle_nome}"/>
-                <h:outputText value="#{bundle.ViewSolicitanteLabel_email}"/>
-                <h:outputText value="#{solicitanteController.selected.email}" title="#{bundle.ViewSolicitanteTitle_email}"/>
-                <h:outputText value="#{bundle.ViewSolicitanteLabel_telefone}"/>
-                <h:outputText value="#{solicitanteController.selected.telefone}" title="#{bundle.ViewSolicitanteTitle_telefone}"/>
-                <h:outputText value="#{bundle.ViewSolicitanteLabel_unidadeOrganizacional}"/>
-                <h:outputText value="#{solicitanteController.selected.unidadeOrganizacional.nome}" title="#{bundle.ViewSolicitanteTitle_unidadeOrganizacional}"/>
-            </h:panelGrid>
-            <br />
-            <h:commandLink action="#{solicitanteController.destroyAndView}" value="#{bundle.ViewSolicitanteDestroyLink}"/>
-            <br />
-            <br />
-            <h:link outcome="Edit" value="#{bundle.ViewSolicitanteEditLink}"/>
-            <br />
-            <h:commandLink action="#{solicitanteController.prepareCreate}" value="#{bundle.ViewSolicitanteCreateLink}" />
-            <br />
-            <h:commandLink action="#{solicitanteController.prepareList}" value="#{bundle.ViewSolicitanteShowAllLink}"/>
-            <br />
-            <br />
-            <h:link outcome="/index" value="#{bundle.ViewSolicitanteIndexLink}"/>
-
-        </h:form>
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-warning box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Visualizar</h3>
+                    </div><!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <h:panelGroup id="messagePanel" layout="block">
+                                <p:messages severity="info" closable="true"/>
+                            </h:panelGroup>
+                        </div>
+                    </div>
+                    <h:form prependId="false">
+                        <h:panelGroup id="hPnlGroupViewSolicitantes">
+                            <div class="box-body">
+                                <div class="col-md-12">
+                                    <h3 class="box-title">
+                                        <p style="color: #16a085">
+                                            <i class="glyphicon glyphicon-ok-circle">Detalhes</i>
+                                        </p>
+                                    </h3>
+                                    <div class="col-xs-12 table-responsive">
+                                        <table class="table table-responsive table-bordered table-striped">
+                                            <tr>
+                                                <th>
+                                                    <h:outputText value="#{bundle.ViewSolicitanteLabel_nome}"/>
+                                                </th>
+                                                <td>
+                                                    <h:outputText value="#{solicitanteController.selected.nome}" title="#{bundle.ViewSolicitanteTitle_nome}"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <h:outputText value="#{bundle.ViewSolicitanteLabel_email}"/>
+                                                </th>
+                                                <td>
+                                                    <h:outputText value="#{solicitanteController.selected.email}" title="#{bundle.ViewSolicitanteTitle_email}"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <h:outputText value="#{bundle.ViewSolicitanteLabel_telefone}"/>
+                                                </th>
+                                                <td>
+                                                    <h:outputText value="#{solicitanteController.selected.telefone}" title="#{bundle.ViewSolicitanteTitle_telefone}"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <h:outputText value="#{bundle.ViewSolicitanteLabel_unidadeOrganizacional}"/>
+                                                </th>
+                                                <td>
+                                                    <h:outputText value="#{solicitanteController.selected.unidadeOrganizacional.nome}" title="#{bundle.ViewSolicitanteTitle_unidadeOrganizacional}"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <h:outputText value="#{bundle.ViewSolicitanteLabel_instituicao}"/>
+                                                </th>
+                                                <td>
+                                                    <h:outputText value="#{solicitanteController.selected.unidadeOrganizacional.instituicao.nome}" title="#{bundle.ViewSolicitanteTitle_instituicao}"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <h3 class="box-title">
+                                        <p style="color: #16a085">
+                                            <i class="glyphicon glyphicon-ok-circle">Ações</i>
+                                        </p>
+                                    </h3>
+                                    <h:commandLink action="#{solicitanteController.destroyAndView}" value="#{bundle.ViewSolicitanteDestroyLink}"/>
+                                    <br />
+                                    <h:link outcome="Edit" value="#{bundle.ViewSolicitanteEditLink}"/>
+                                    <br />
+                                    <h:commandLink action="#{solicitanteController.prepareCreate}" value="#{bundle.ViewSolicitanteCreateLink}" />
+                                    <br />
+                                    <h:commandLink action="#{solicitanteController.prepareList}" value="#{bundle.ViewSolicitanteShowAllLink}"/>
+                                    <br />
+                                    <br />
+                                    <h:link outcome="/index" value="#{bundle.ViewSolicitanteIndexLink}"/>
+                                </div>
+                            </div>
+                        </h:panelGroup>
+                    </h:form>
+                </div>
+            </div>
+        </div>
     </cc:implementation>
 
 </html>

@@ -257,7 +257,8 @@ public class Solicitacoes implements Serializable {
     @Override
     public String toString() {
         
-        return "br.com.codigof.iguana.jpa.entities.Solicitacoes[ id=" + id + " ]";
+//        return "br.com.codigof.iguana.jpa.entities.Solicitacoes[ id=" + id + " ]";
+        return getProtocolo();
         
     }
 

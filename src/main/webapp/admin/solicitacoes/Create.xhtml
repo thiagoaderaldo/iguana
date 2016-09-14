@@ -27,7 +27,7 @@
                 <!-- left column -->
                 <div class="col-md-12">
                     <!-- general form elements -->
-                    <div class="box box-primary">
+                    <div class="box box-primary box-solid">
                         <div class="box-header with-border">
                             <h3 class="box-title">Formulário de cadastro de solicitação</h3>
                         </div><!-- /.box-header -->
@@ -73,8 +73,8 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <p:outputLabel value="#{bundle.CreateSolicitacoesLabel_horaSolicitacao}" for="horaSolicitacao" />
-                                            <p:inputMask mask="__:__" style="text-align: center" id="horaSolicitacao" pt:type="time" value="#{solicitacoesController.selected.horaSolicitacao}" title="#{bundle.CreateSolicitacoesTitle_horaSolicitacao}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_horaSolicitacao}">
-                                                <f:convertDateTime pattern="HH:mm:ss" />
+                                            <p:inputMask mask="99:99" style="text-align: center" id="horaSolicitacao" value="#{solicitacoesController.selected.horaSolicitacao}" title="#{bundle.CreateSolicitacoesTitle_horaSolicitacao}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_horaSolicitacao}">
+                                                <f:convertDateTime pattern="HH:mm" />
                                             </p:inputMask>
                                         </div>
                                     </div>

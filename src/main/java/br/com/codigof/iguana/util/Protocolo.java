@@ -16,7 +16,7 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name="protocoloController")
 public class Protocolo {
 
-    public String horarioComoProtocolo() {
+    public String createProtocolo() {
 
         //Você pode alterar o valor de 'yyyy-MM-dd HH:mm:ss'
         //para 'dd/MM/yyyy HH:mm:ss', por exemplo. 

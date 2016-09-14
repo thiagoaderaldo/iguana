@@ -219,7 +219,8 @@ public class Usuarios implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.codigof.iguana.jpa.entities.Usuarios[ matricula=" + matricula + " ]";
+//        return "br.com.codigof.iguana.jpa.entities.Usuarios[ matricula=" + matricula + " ]";
+          return getNome() + " - " + getMatricula();
     }
 
 }

@@ -36,12 +36,12 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <p:commandLink class="glyphicon glyphicon-plus" style="color: #337ACB; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
+                            <p:commandLink class="glyphicon glyphicon-plus-sign" style="color: #337ACB; padding: 5px" title="#{bundle.ListAssuntosCreateLink}"/>
                             <h:outputText value=" "/>
-                            <p:commandLink oncomplete="PF('modalViewAssuntos').show();" update="mcViewAssuntos:pnlgListAssuntos" action="#{assuntosController.prepareView}" class="glyphicon glyphicon-eye-open" style="color: #00ABA5; padding: 5px" title="#{bundle.ListAssuntosViewLink}">
+                            <p:commandLink oncomplete="PF('modalViewAssuntos').show();" update="mcViewAssuntos:hPnlGroupViewAssuntos" action="#{assuntosController.prepareView}" class="glyphicon glyphicon-eye-open" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosViewLink}">
                             </p:commandLink>
                             <h:outputText value=" "/>
-                            <p:commandLink action="#{assuntosController.prepareEdit}" oncomplete="PF('modalEditAssuntos').show();" update="mcEditAssuntos:hPnlGroupEditAssuntos" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
+                            <p:commandLink action="#{assuntosController.prepareEdit}" oncomplete="PF('modalEditAssuntos').show();" update="mcEditAssuntos:hPnlGroupEditAssuntos" class="glyphicon glyphicon-edit" style="color: #00ABA5;  padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{assuntosController.destroy}" class="glyphicon glyphicon-trash" style="color: #d33724; padding: 5px" title="#{bundle.ListAssuntosDestroyLink}"/>
                         </p:column>
@@ -54,7 +54,7 @@
                 <h:link outcome="/index" value="#{bundle.ListAssuntosIndexLink}"/>
             </h:form>
             <h:form prependId="false">
-                <p:dialog modal="true" responsive="true" showEffect="explode" hideEffect="explode" widgetVar="modalViewAssuntos" id="modalViewAssuntos" >
+                <p:dialog modal="true" responsive="true" position="center" height="400px" width="450px" showEffect="explode" hideEffect="explode" widgetVar="modalViewAssuntos" id="modalViewAssuntos" >
                     <mc:View id="mcViewAssuntos"/>
                 </p:dialog>
             </h:form>

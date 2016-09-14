@@ -1,6 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `iguana` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `iguana`;
--- MySQL dump 10.13  Distrib 5.7.13, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.15, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: iguana
 -- ------------------------------------------------------
@@ -50,7 +48,7 @@ CREATE TABLE `solicitacoes` (
   CONSTRAINT `fk_solicitacoes_estatus` FOREIGN KEY (`estatus`) REFERENCES `estatus` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_solicitacoes_origem` FOREIGN KEY (`origem`) REFERENCES `origem` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_solicitacoes_solicitante` FOREIGN KEY (`solicitante`) REFERENCES `solicitante` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=336 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=334 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -59,7 +57,7 @@ CREATE TABLE `solicitacoes` (
 
 LOCK TABLES `solicitacoes` WRITE;
 /*!40000 ALTER TABLE `solicitacoes` DISABLE KEYS */;
-INSERT INTO `solicitacoes` VALUES (335,'20160831142115',1,'P234502/2016','Máquina está bipando','2016-08-31','14:21:00',1,1,'sala 10',1,'O computador está bipando e não entra no sistema operacional',2);
+INSERT INTO `solicitacoes` VALUES (333,'20160914173543',1,'P097856/2016','Computador com defeito','0016-09-13','08:40:00',2,2,'Sala 10',2,'Teste.',2);
 /*!40000 ALTER TABLE `solicitacoes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -72,4 +70,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-08 13:51:15
+-- Dump completed on 2016-09-14 18:03:38

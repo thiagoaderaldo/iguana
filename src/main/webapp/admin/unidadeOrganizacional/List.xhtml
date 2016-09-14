@@ -32,7 +32,7 @@
                             </f:facet>
                             <h:outputText value="#{item.nome}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.descricao}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUnidadeOrganizacionalTitle_descricao}"/>
                             </f:facet>
@@ -48,11 +48,11 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <p:commandLink class="glyphicon glyphicon-plus" style="color: #337ACB; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
+                            <p:commandLink class="glyphicon glyphicon-plus-sign" style="color: #337ACB; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
                             <h:outputText value=" "/>
-                            <p:commandLink oncomplete="PF('modalViewUnidadeOrganizacional').show();" update="mcViewUnidadeOrganizacional:hPnlGridViewUnidadeOrganizacional" action="#{unidadeOrganizacionalController.prepareView}" class="glyphicon glyphicon-eye-open" style="color: #00ABA5; padding: 5px"  title="#{bundle.ListUnidadeOrganizacionalViewLink}"/>
+                            <p:commandLink oncomplete="PF('modalViewUnidadeOrganizacional').show();" update="mcViewUnidadeOrganizacional:hPnlGroupViewUnidadeOrganizacional" action="#{unidadeOrganizacionalController.prepareView}" class="glyphicon glyphicon-eye-open" style="color: #FFC414; padding: 5px" title="#{bundle.ListUnidadeOrganizacionalViewLink}"/>
                             <h:outputText value=" "/>
-                            <p:commandLink oncomplete="PF('modalEditUnidadeOrganizacional').show();" update="mcEditUnidadeOrganizacional:hPnlGroupEditUnidadeOrganizacional" action="#{unidadeOrganizacionalController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListUnidadeOrganizacionalEditLink}"/>
+                            <p:commandLink oncomplete="PF('modalEditUnidadeOrganizacional').show();" update="mcEditUnidadeOrganizacional:hPnlGroupEditUnidadeOrganizacional" action="#{unidadeOrganizacionalController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #00ABA5; padding: 5px" title="#{bundle.ListUnidadeOrganizacionalEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{unidadeOrganizacionalController.destroy}" class="glyphicon glyphicon-trash" style="color: #d33724; padding: 5px" title="#{bundle.ListUnidadeOrganizacionalDestroyLink}"/>
                         </p:column>

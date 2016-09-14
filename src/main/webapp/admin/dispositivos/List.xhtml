@@ -33,11 +33,11 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <p:commandLink class="glyphicon glyphicon-plus" style="color: #337ACB; padding: 5px" title="#{bundle.ListAssuntosViewLink}"/>
+                            <p:commandLink class="glyphicon glyphicon-plus-sign" style="color: #337ACB; padding: 5px" title="#{bundle.ListDispositivosCreateLink}"/>
                             <h:outputText value=" "/>
-                            <p:commandLink oncomplete="PF('modalViewDispositivos').show();" update="mcViewDispositivos:pnlGridListDispositivos" action="#{dispositivosController.prepareView}" class="glyphicon glyphicon-eye-open" style="color: #00ABA5; padding: 5px" title="#{bundle.ListDispositivosViewLink}"/>
+                            <p:commandLink oncomplete="PF('modalViewDispositivos').show();" update="mcViewDispositivos:hPnlGroupViewDispositivos" action="#{dispositivosController.prepareView}" class="glyphicon glyphicon-eye-open" style="color: #FFC414; padding: 5px" title="#{bundle.ListDispositivosViewLink}"/>
                             <h:outputText value=" "/>
-                            <p:commandLink oncomplete="PF('modalEditDispositivos').show();" update="mcEditDispositivos:hPnlGroupEditDispositivos" action="#{dispositivosController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #FFC414; padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
+                            <p:commandLink oncomplete="PF('modalEditDispositivos').show();" update="mcEditDispositivos:hPnlGroupEditDispositivos" action="#{dispositivosController.prepareEdit}" class="glyphicon glyphicon-edit" style="color: #00ABA5;  padding: 5px" title="#{bundle.ListAssuntosEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{dispositivosController.destroy}" class="glyphicon glyphicon-trash" style="color: #d33724; padding: 5px" title="#{bundle.ListAssuntosDestroyLink}"/>
                         </p:column>
@@ -50,7 +50,7 @@
                 <h:link outcome="/index" value="#{bundle.ListDispositivosIndexLink}"/>
             </h:form>
             <h:form prependId="false">
-                <p:dialog modal="true" responsive="true" showEffect="explode" hideEffect="explode" widgetVar="modalViewDispositivos" id="modalViewDispositivos" >
+                <p:dialog modal="true" responsive="true" resizable="true" height="400px" width="450px" showEffect="explode" hideEffect="explode" widgetVar="modalViewDispositivos" id="modalViewDispositivos" >
                     <mc:View id="mcViewDispositivos"/>
                 </p:dialog>
             </h:form>

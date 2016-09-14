@@ -4,6 +4,7 @@ import br.com.codigof.iguana.jpa.entities.Atendimentos;
 import br.com.codigof.iguana.jsf.controller.util.JsfUtil;
 import br.com.codigof.iguana.jsf.controller.util.PaginationHelper;
 import br.com.codigof.iguana.beans.AtendimentosFacade;
+import br.com.codigof.iguana.beans.SolicitacoesFacade;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -26,6 +27,8 @@ public class AtendimentosController implements Serializable {
     private DataModel items = null;
     @EJB
     private br.com.codigof.iguana.beans.AtendimentosFacade ejbFacade;
+    @EJB
+    private br.com.codigof.iguana.beans.SolicitacoesFacade solicitacoesEjbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
@@ -42,6 +45,10 @@ public class AtendimentosController implements Serializable {
 
     private AtendimentosFacade getFacade() {
         return ejbFacade;
+    }
+
+    public SolicitacoesFacade getSolicitacoesEjbFacade() {
+        return solicitacoesEjbFacade;
     }
 
     public PaginationHelper getPagination() {
@@ -82,11 +89,14 @@ public class AtendimentosController implements Serializable {
 
     public String create() {
         try {
+//            current.setIdSolicitacao(solicitacoesEjbFacade.find(current.getIdSolicitacao().getProtocolo()));
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AtendimentosCreated"));
             return prepareCreate();
         } catch (Exception e) {
+            System.out.println("Mensagem de erro: " + e.getMessage());
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+
             return null;
         }
     }

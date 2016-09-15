@@ -48,7 +48,7 @@ CREATE TABLE `solicitacoes` (
   CONSTRAINT `fk_solicitacoes_estatus` FOREIGN KEY (`estatus`) REFERENCES `estatus` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_solicitacoes_origem` FOREIGN KEY (`origem`) REFERENCES `origem` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_solicitacoes_solicitante` FOREIGN KEY (`solicitante`) REFERENCES `solicitante` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=334 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=336 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,7 +57,7 @@ CREATE TABLE `solicitacoes` (
 
 LOCK TABLES `solicitacoes` WRITE;
 /*!40000 ALTER TABLE `solicitacoes` DISABLE KEYS */;
-INSERT INTO `solicitacoes` VALUES (333,'20160914173543',1,'P097856/2016','Computador com defeito','0016-09-13','08:40:00',2,2,'Sala 10',2,'Teste.',2);
+INSERT INTO `solicitacoes` VALUES (333,'20160914173543',1,'P097856/2016','Computador com defeito','0016-09-13','08:40:00',2,2,'Sala 10',2,'Teste.',2),(334,'20160914180538',2,'','Teste de telefone','0016-09-13','10:43:00',1,1,'Sala 14',2,'Teste',2),(335,'20160914180930',3,'','Teste','0016-09-12','09:32:00',5,9,'sala 10',2,'Teste',2);
 /*!40000 ALTER TABLE `solicitacoes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -70,4 +70,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-14 18:03:38
+-- Dump completed on 2016-09-15 15:50:26

@@ -26,11 +26,11 @@ CREATE TABLE `unidade_organizacional` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
   `descricao` varchar(250) DEFAULT NULL,
-  `instituicao` int(11) DEFAULT NULL,
+  `instituicao` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_unidade_organizacional_instituicao` (`instituicao`),
   CONSTRAINT `fk_unidade_organizacional_id_instituicao` FOREIGN KEY (`instituicao`) REFERENCES `instituicao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `unidade_organizacional` (
 
 LOCK TABLES `unidade_organizacional` WRITE;
 /*!40000 ALTER TABLE `unidade_organizacional` DISABLE KEYS */;
-INSERT INTO `unidade_organizacional` VALUES (1,'CESUP','Célula de Suporte',1),(2,'CETIC','Célula de Tecnologia da Informação',2),(3,'COTEC','Coordenadoria de Tecnologia da Informação',1),(4,'COAFI','Coordenadoria Administrativo Financeira',1),(5,'COAFI','Coordenadoria Administrativo Financeira',2),(6,'CEGEP','Célula de Gestão de Pessoas',1),(7,'COPSEC','Coordenadoria de Políticas em Segurança Cidadã',1),(8,'IPAM','Inspetoria de Proteção Ambiental',2),(9,'ITERM','Inspetoria dos Terminais',2),(10,'GOE','Grupo de Operações Especiais',2);
+INSERT INTO `unidade_organizacional` VALUES (1,'CESUP','Célula de Suporte',1),(2,'CETIC','Célula de Tecnologia da Informação',2),(3,'COTEC','Coordenadoria de Tecnologia da Informação',1),(4,'COAFI','Coordenadoria Administrativo Financeira',1),(5,'COAFI','Coordenadoria Administrativo Financeira',2),(6,'CEGEP','Célula de Gestão de Pessoas',1),(7,'COPSEC','Coordenadoria de Políticas em Segurança Cidadã',1),(8,'IPAM','Inspetoria de Proteção Ambiental',2),(9,'ITERM','Inspetoria dos Terminais',2),(10,'GOE','Grupo de Operações Especiais',2),(11,'OUVIDO','Ouvidoria',1);
 /*!40000 ALTER TABLE `unidade_organizacional` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-14 18:03:38
+-- Dump completed on 2016-09-15 15:50:26

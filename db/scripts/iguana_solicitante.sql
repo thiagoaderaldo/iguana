@@ -31,7 +31,7 @@ CREATE TABLE `solicitante` (
   PRIMARY KEY (`id`),
   KEY `fk_solicitante_id_unidade_organizacional_idx` (`unidade_organizacional`),
   CONSTRAINT `fk_solicitante_unidade_organizacional` FOREIGN KEY (`unidade_organizacional`) REFERENCES `unidade_organizacional` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `solicitante` (
 
 LOCK TABLES `solicitante` WRITE;
 /*!40000 ALTER TABLE `solicitante` DISABLE KEYS */;
-INSERT INTO `solicitante` VALUES (1,'Thiago Aderaldo Lessa','thiago.aderaldo@fortaleza.ce.gov.br','(85)988776655',1),(2,'Fulano dos Santos','fulano.santos@fortaleza.ce.gov.br','',3),(3,'Cicrano da Silva','cicrano.silva@fortaleza.ce.gov.br','',2);
+INSERT INTO `solicitante` VALUES (1,'Thiago Aderaldo Lessa','thiago.aderaldo@fortaleza.ce.gov.br','(85)988776655',1),(2,'Fulano dos Santos','fulano.santos@fortaleza.ce.gov.br','',3),(3,'Cicrano da Silva','cicrano.silva@fortaleza.ce.gov.br','',2),(4,'Marcos Marinho','marcos.marinho@codigof.com.br','(99)99988-7766',1),(5,'Francisco Chico','francisco.chico@codigof.com.br','(23)45624-5625',5);
 /*!40000 ALTER TABLE `solicitante` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-14 18:03:39
+-- Dump completed on 2016-09-15 15:50:27

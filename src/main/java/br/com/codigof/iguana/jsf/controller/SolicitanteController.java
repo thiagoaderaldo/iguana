@@ -86,6 +86,14 @@ public class SolicitanteController implements Serializable {
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SolicitanteCreated"));
             return prepareCreate();
         } catch (Exception e) {
+            System.out.println("Valores do objeto: \n"
+                    + "Nome: " + current.getNome() + "\n"
+                    + "Email: " + current.getEmail() + "\n"
+                    + "Telefone: " + current.getTelefone() + "\n"
+                    + "Unidade Organizacional: " + current.getUnidadeOrganizacional().getNome() + "\n"
+                    + "Unidade Organizacional ID: " + current.getUnidadeOrganizacional().getId() + "\n"
+                    + "Instituição: " + current.getUnidadeOrganizacional().getInstituicao().getNome() + "\n"
+                    + "ID da Instituição: " + current.getUnidadeOrganizacional().getInstituicao().getId());
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }

@@ -34,7 +34,7 @@ CREATE TABLE `atendimentos` (
   PRIMARY KEY (`id`),
   KEY `fk_atendimentos_solicitacoes_idx` (`id_solicitacao`),
   CONSTRAINT `fk_atendimentos_solicitacoes` FOREIGN KEY (`id_solicitacao`) REFERENCES `solicitacoes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `atendimentos` (
 
 LOCK TABLES `atendimentos` WRITE;
 /*!40000 ALTER TABLE `atendimentos` DISABLE KEYS */;
-INSERT INTO `atendimentos` VALUES (1,'0016-09-13','10:21:00','Teste','Teste','Teste','Iguana - xxxxx',333);
+INSERT INTO `atendimentos` VALUES (1,'0016-09-13','10:21:00','Teste','Teste','Teste','Iguana - xxxxx',333),(2,'0016-09-13','09:32:00','Teste','Teste','Teste','Iguana - xxxxx',333);
 /*!40000 ALTER TABLE `atendimentos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-14 18:03:38
+-- Dump completed on 2016-09-15 15:50:26

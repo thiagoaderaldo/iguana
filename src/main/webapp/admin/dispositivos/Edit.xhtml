@@ -5,7 +5,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:assuntos="http://xmlns.jcp.org/jsf/composite/assuntos">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -50,7 +51,9 @@
                                 </div>
                             </div>
                             <div class="box-footer">
-                                <h:commandButton class="btn btn-success" action="#{dispositivosController.update()}" value="#{bundle.EditDispositivosSaveLink}"/> 
+                                <h:commandLink class="btn btn-success" action="#{dispositivosController.update}">
+                                    <i class="glyphicon glyphicon-edit"> #{bundle.EditDispositivosSaveLink}</i>
+                                </h:commandLink> 
                             </div><!-- /.box-body -->
                         </h:form>
                     </div>

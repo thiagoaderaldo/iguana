@@ -110,12 +110,11 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div><!-- /.box-body -->
-
-
                             <div class="box-footer">
-                                <h:commandButton class="btn btn-primary" action="#{usuariosController.create}" value="#{bundle.CreateUsuariosSaveLink}"/> 
+                                <h:commandLink class="btn btn-primary" action="#{usuariosController.create}"> 
+                                    <i class="fa fa-save"> #{bundle.CreateUsuariosSaveLink}</i>
+                                </h:commandLink>
                             </div>
                         </h:form>
                         <h:form prependId="false">

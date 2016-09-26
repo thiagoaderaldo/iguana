@@ -5,7 +5,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:assuntos="http://xmlns.jcp.org/jsf/composite/assuntos">
 
     <!-- INTERFACE -->
     <cc:interface>
@@ -43,10 +44,13 @@
                                 </div>
                             </div>
                         </h:panelGroup>
+
+                        <div class="box-footer">
+                            <p:commandLink styleClass="btn btn-success" action="#{assuntosController.update}">
+                                <i class="glyphicon glyphicon-edit" style="color: #FFFFFF"> #{bundle.EditAssuntosSaveLink}</i>
+                            </p:commandLink>                                 
+                        </div><!-- /.box-body -->
                     </h:form>
-                    <div class="box-footer">
-                        <h:commandButton class="btn btn-success" action="#{assuntosController.update}" value="#{bundle.EditAssuntosSaveLink}"/>                                 
-                    </div><!-- /.box-body -->
                 </div>
             </div>
         </div>

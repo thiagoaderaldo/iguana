@@ -49,7 +49,9 @@
                             </div>
                         </h:panelGroup>
                         <div class="box-footer">
-                            <h:commandButton class="btn btn-success" action="#{gruposController.update}" value="#{bundle.EditGruposSaveLink}"/> 
+                            <p:commandLink styleClass="btn btn-success" action="#{gruposController.update}">
+                                <i class="glyphicon glyphicon-edit" style="color: #ffffff"> #{bundle.EditGruposSaveLink}</i>
+                            </p:commandLink> 
                         </div><!-- /.box-body -->
                     </h:form>
                 </div>

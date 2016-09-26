@@ -25,7 +25,9 @@
                 </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListAssuntosEmpty}" rendered="#{assuntosController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{assuntosController.items.rowCount > 0}" id="pnlGroupListAssuntos">
-                    <p:dataTable value="#{assuntosController.items}" id="dtListAssuntos" reflow="true" paginator="true" var="item">
+                    <p:dataTable value="#{assuntosController.items}" id="dtListAssuntos" reflow="true" 
+                                 rows="10" paginator="true" rowsPerPageTemplate="5, 10, 25, 50"
+                                 var="item">
                         <p:column sortBy="#{item.nome}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAssuntosTitle_nome}"/>

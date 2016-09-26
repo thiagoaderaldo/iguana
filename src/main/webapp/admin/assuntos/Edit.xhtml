@@ -38,11 +38,15 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="box-footer">
+                                <h:commandLink styleClass="btn btn-success" action="#{assuntosController.update}">
+                                    <i class="glyphicon glyphicon-edit"> #{bundle.EditAssuntosSaveLink}</i>
+                                </h:commandLink>                                 
+                            </div><!-- /.box-body -->
                         </h:form>
-                        <div class="box-footer">
-                            <h:commandButton class="btn btn-success" action="#{assuntosController.update}" value="#{bundle.EditAssuntosSaveLink}"/>                                 
-                        </div><!-- /.box-body -->
                     </div>
+
                 </div>
             </div>
             <h:form>                

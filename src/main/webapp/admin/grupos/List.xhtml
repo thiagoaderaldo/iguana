@@ -22,7 +22,9 @@
             <h:form id="hFormListGrupos">
                 <h:outputText escape="false" value="#{bundle.ListGruposEmpty}" rendered="#{gruposController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{gruposController.items.rowCount > 0}" id="hPnlGroupListGrupos">
-                    <p:dataTable value="#{gruposController.items}" id="pDataTableListGrupos" reflow="true" paginator="true" var="item">
+                    <p:dataTable value="#{gruposController.items}" id="pDataTableListGrupos" reflow="true" 
+                                 rows="10" paginator="true" rowsPerPageTemplate="5, 10, 25, 50"
+                                 var="item">
                         <p:column sortBy="#{item.nome}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListGruposTitle_nome}"/>

@@ -25,7 +25,8 @@
                 </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListUnidadeOrganizacionalEmpty}" rendered="#{unidadeOrganizacionalController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{unidadeOrganizacionalController.items.rowCount > 0}" id="hPnlGroupListUnidadeOrganizacional">
-                    <p:dataTable value="#{unidadeOrganizacionalController.items}" id="pDataTableListUnidadeOrganizacional" reflow="true" paginator="true" var="item" >
+                    <p:dataTable value="#{unidadeOrganizacionalController.items}" id="pDataTableListUnidadeOrganizacional" reflow="true" var="item" 
+                                 rows="10" paginator="true" rowsPerPageTemplate="5, 10, 25, 50">
                         <p:column sortBy="#{item.nome}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUnidadeOrganizacionalTitle_nome}"/>

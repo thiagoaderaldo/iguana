@@ -22,7 +22,9 @@
             <h:form id="hFormListSolicitacoes">
                 <h:outputText escape="false" value="#{bundle.ListSolicitacoesEmpty}" rendered="#{solicitacoesController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{solicitacoesController.items.rowCount > 0}" id="hPnlGroupListSolicitacoes">
-                    <p:dataTable value="#{solicitacoesController.items}" id="pDataTableListSolicitacoes" reflow="true" paginator="true" var="item">
+                    <p:dataTable value="#{solicitacoesController.items}" id="pDataTableListSolicitacoes" reflow="true" 
+                                 rows="10" paginator="true" rowsPerPageTemplate="5, 10, 25, 50"
+                                 var="item">
                         <p:column sortBy="#{item.protocolo}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSolicitacoesTitle_protocolo}"/>

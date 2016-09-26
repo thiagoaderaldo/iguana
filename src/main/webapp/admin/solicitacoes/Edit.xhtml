@@ -134,7 +134,9 @@
                                 </div>
                             </div>
                             <div class="box-footer">
-                                <h:commandButton class="btn btn-success" action="#{solicitacoesController.update}" value="#{bundle.EditSolicitacoesSaveLink}"/>                                 
+                                <h:commandLink class="btn btn-success" action="#{solicitacoesController.update}" value="">
+                                    <i class="glyphicon glyphicon-edit"> #{bundle.EditSolicitacoesSaveLink}</i>
+                                </h:commandLink>                                 
                             </div><!-- /.box-body -->
                         </h:form>
                         <h:form prependId="false">

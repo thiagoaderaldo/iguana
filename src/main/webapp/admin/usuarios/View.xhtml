@@ -112,6 +112,25 @@
                                         </table>
                                     </div>
                                     <h3 class="box-title">
+                                        <p style="color:#16a085"><i class="glyphicon glyphicon-ok-circle">Grupos cadastrados</i></p>
+                                    </h3>
+                                    <div class="col-xs-12 table-responsive">
+                                        <ui:repeat var="item" value="#{usuariosController.selected.gruposCollection}">
+                                            <table class="table table-responsive table-bordered table-striped">
+                                                <tr>
+                                                    <th>
+                                                        <h:outputText value="#{bundle.ViewGruposLabel_nome}"/>
+                                                    </th>
+                                                    <td>
+                                                        <b style="color: #c0392b">
+                                                            <h:outputText value="#{item.nome}" />
+                                                        </b>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ui:repeat>
+                                    </div>
+                                    <h3 class="box-title">
                                         <p style="color: #16a085">
                                             <i class="glyphicon glyphicon-ok-circle">Ações</i>
                                         </p>

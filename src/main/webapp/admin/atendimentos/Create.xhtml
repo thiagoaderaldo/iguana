@@ -96,7 +96,9 @@
 
                             </div>
                             <div class="box-footer">
-                                <h:commandButton class="btn btn-primary" action="#{atendimentosController.create}" value="#{bundle.CreateAtendimentosSaveLink}"/> 
+                                <h:commandLink styleClass="btn btn-primary" action="#{atendimentosController.create}">
+                                    <i class="fa fa-save"> #{bundle.CreateAtendimentosSaveLink}</i>
+                                </h:commandLink> 
                             </div><!-- /.box-body -->
                         </h:form>
                     </div>

@@ -14,9 +14,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -44,7 +44,6 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Usuarios implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
@@ -61,6 +60,7 @@ public class Usuarios implements Serializable {
     @Size(max = 45)
     @Column(name = "celular")
     private String celular;
+    @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -87,22 +87,21 @@ public class Usuarios implements Serializable {
         @JoinColumn(name = "nome_grupo", referencedColumnName = "nome")})
     @ManyToMany
     private Collection<Grupos> gruposCollection;
-
     @JoinColumn(name = "linguagem", referencedColumnName = "id")
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     private Linguagem linguagem;
 
     public Usuarios() {
     }
 
-    public Usuarios(String matricula) {
-        this.matricula = matricula;
+    public Usuarios(String login) {
+        this.login = login;
     }
 
-    public Usuarios(String matricula, String nome, String login, String senha, boolean habilitado) {
+    public Usuarios(String login, String matricula, String nome, String senha, boolean habilitado) {
+        this.login = login;
         this.matricula = matricula;
         this.nome = nome;
-        this.login = login;
         this.senha = senha;
         this.habilitado = habilitado;
     }
@@ -179,15 +178,6 @@ public class Usuarios implements Serializable {
         this.habilitado = habilitado;
     }
 
-    public Linguagem getLinguagem() {
-        return linguagem;
-    }
-
-    public void setLinguagem(Linguagem linguagem) {
-        this.linguagem = linguagem;
-    }
-
-
     @XmlTransient
     public Collection<Grupos> getGruposCollection() {
         return gruposCollection;
@@ -197,10 +187,18 @@ public class Usuarios implements Serializable {
         this.gruposCollection = gruposCollection;
     }
 
+    public Linguagem getLinguagem() {
+        return linguagem;
+    }
+
+    public void setLinguagem(Linguagem linguagem) {
+        this.linguagem = linguagem;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (matricula != null ? matricula.hashCode() : 0);
+        hash += (login != null ? login.hashCode() : 0);
         return hash;
     }
 
@@ -211,7 +209,7 @@ public class Usuarios implements Serializable {
             return false;
         }
         Usuarios other = (Usuarios) object;
-        if ((this.matricula == null && other.matricula != null) || (this.matricula != null && !this.matricula.equals(other.matricula))) {
+        if ((this.login == null && other.login != null) || (this.login != null && !this.login.equals(other.login))) {
             return false;
         }
         return true;
@@ -219,8 +217,8 @@ public class Usuarios implements Serializable {
 
     @Override
     public String toString() {
-//        return "br.com.codigof.iguana.jpa.entities.Usuarios[ matricula=" + matricula + " ]";
+//        return "br.com.codigof.iguana.jpa.entities.Usuarios[ login=" + login + " ]";
           return getNome() + " - " + getMatricula();
     }
-
+    
 }

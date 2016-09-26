@@ -75,8 +75,10 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <p:outputLabel value="#{bundle.EditAtendimentosLabel_responsavel}" for="responsavel" />
-                                            <p:inputText id="responsavel" value="#{atendimentosController.selected.responsavel}" title="#{bundle.EditAtendimentosTitle_responsavel}" required="true" requiredMessage="#{bundle.EditAtendimentosRequiredMessage_responsavel}"/>
+                                            <p:outputLabel value="#{bundle.CreateAtendimentosLabel_responsavel}" for="responsavel" />
+                                            <p:selectOneMenu id="responsavel" value="#{atendimentosController.selected.responsavel}" title="#{bundle.CreateAtendimentosTitle_responsavel}" required="true" requiredMessage="#{bundle.CreateAtendimentosRequiredMessage_responsavel}">
+                                                <f:selectItems value="#{usuariosController.itemsAvailableSelectOne}"/>
+                                            </p:selectOneMenu>
                                         </div>
                                     </div>
 
@@ -86,7 +88,9 @@
                             </div>
                         </h:panelGroup>
                         <div class="box-footer">
-                            <h:commandButton class="btn btn-success" action="#{atendimentosController.update}" value="#{bundle.EditAtendimentosSaveLink}"/> 
+                            <p:commandLink styleClass="btn btn-success" action="#{atendimentosController.update}">
+                                <i class="glyphicon glyphicon-edit" style="color: #FFFFFF"> #{bundle.EditAtendimentosSaveLink}</i>
+                            </p:commandLink> 
                         </div><!-- /.box-body -->
                     </h:form>
                 </div>

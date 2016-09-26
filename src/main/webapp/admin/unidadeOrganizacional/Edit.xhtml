@@ -55,7 +55,9 @@
                                 </div>
                             </div>
                             <div class="box-footer">
-                                <h:commandButton class="btn btn-success" action="#{unidadeOrganizacionalController.update}" value="#{bundle.EditUnidadeOrganizacionalSaveLink}"/>                                 
+                                <h:commandLink class="btn btn-success" action="#{unidadeOrganizacionalController.update}">
+                                    <i class="glyphicon glyphicon-edit"> #{bundle.EditUnidadeOrganizacionalSaveLink}</i>
+                                </h:commandLink>                                 
                             </div><!-- /.box-body -->
                         </h:form>
                     </div>

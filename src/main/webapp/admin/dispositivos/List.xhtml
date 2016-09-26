@@ -22,7 +22,9 @@
             <h:form id="hFormListDispositivos">
                 <h:outputText escape="false" value="#{bundle.ListDispositivosEmpty}" rendered="#{dispositivosController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{dispositivosController.items.rowCount > 0}" id="hpnlGroupListDispositivos">
-                    <p:dataTable value="#{dispositivosController.items}" id="pDataTableListDispositivos" reflow="true" paginator="true" var="item">
+                    <p:dataTable value="#{dispositivosController.items}" id="pDataTableListDispositivos" reflow="true" 
+                                 rows="10" paginator="true" rowsPerPageTemplate="5, 10, 25, 50"
+                                 var="item">
                         <p:column sortBy="#{item.nome}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDispositivosTitle_nome}"/>

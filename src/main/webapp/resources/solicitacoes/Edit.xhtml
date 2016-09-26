@@ -126,7 +126,9 @@
                             </div>
                         </h:panelGroup>
                         <div class="box-footer">
-                            <h:commandButton class="btn btn-success" action="#{solicitacoesController.update}" value="#{bundle.EditSolicitacoesSaveLink}"/>                                 
+                            <h:commandLink class="btn btn-success" action="#{solicitacoesController.update}">
+                                <i class="glyphicon glyphicon-edit" style="color: #ffffff"> #{bundle.EditSolicitacoesSaveLink}</i>
+                            </h:commandLink>                                 
                         </div><!-- /.box-body -->
                     </h:form>
                     <h:form prependId="false">

@@ -134,7 +134,9 @@
                                 </div>
                             </div>
                             <div class="box-footer">
-                                <h:commandButton class="btn btn-primary" action="#{solicitacoesController.create}" value="#{bundle.CreateSolicitacoesSaveLink}"/>                                 
+                                <h:commandLink class="btn btn-primary" action="#{solicitacoesController.create}">
+                                    <i class="fa fa-save"> #{bundle.CreateSolicitacoesSaveLink}</i>
+                                </h:commandLink>                                 
                             </div><!-- /.box-body -->
                         </h:form>
                         <h:form prependId="false">

@@ -37,10 +37,5 @@ public final class HashGenerator {
             sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
         }
         return sb.toString();
-    }
-
-    public static void main(String[] args) throws NoSuchAlgorithmException {
-        System.out.println(HashGenerator.SHA256("password1"));
-    }
-    
+    }    
 }

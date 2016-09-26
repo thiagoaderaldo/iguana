@@ -54,7 +54,9 @@
                                 </div>
                             </div>
                             <div class="box-footer">
-                                <h:commandButton class="btn btn-success" action="#{gruposController.update}" value="#{bundle.CreateGruposSaveLink}"/> 
+                                <h:commandLink class="btn btn-success" action="#{gruposController.update}">
+                                    <i class="glyphicon glyphicon-edit"> #{bundle.CreateGruposSaveLink}</i>
+                                </h:commandLink> 
                             </div><!-- /.box-body -->
                         </h:form>
                     </div>

@@ -51,7 +51,9 @@
                                 </div>
                             </div>
                             <div class="box-footer">
-                                <h:commandButton class="btn btn-primary" action="#{unidadeOrganizacionalController.create}" value="#{bundle.CreateUnidadeOrganizacionalSaveLink}"/>                                 
+                                <h:commandLink class="btn btn-primary" action="#{unidadeOrganizacionalController.create}">
+                                    <i class="fa fa-save"> #{bundle.CreateUnidadeOrganizacionalSaveLink}</i>
+                                </h:commandLink>                                 
                             </div><!-- /.box-body -->
                         </h:form>
                     </div>

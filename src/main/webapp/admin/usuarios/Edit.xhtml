@@ -93,9 +93,13 @@
                                         <div class="ui-grid ui-grid-responsive">
                                             <div class="ui-grid-row">
                                                 <div class="ui-grid-col-10">
-                                                    <p:selectOneMenu  id="grupos"  value="" title="#{bundle.CreateUsuariosTitle_habilitado}" required="true" requiredMessage="#{bundle.CreateUsuariosRequiredMessage_habilitado}">
-                                                        <f:selectItems value="#{gruposController.itemsAvailableSelectOne}"/>
-                                                    </p:selectOneMenu>
+                                                    <p:selectManyCheckbox id="grupos" layout="responsive" columns="1" value="#{usuariosController.selected.gruposCollection}" required="true" converter="gruposConverter" requiredMessage="#{bundle.CreateUsuariosRequiredMessage_habilitado}">
+                                                        <f:selectItems value="#{gruposController.itemsAvailableSelectMany}"
+                                                                       var="item"
+                                                                       itemLabel="#{item.description.toString()}"
+                                                                       itemValue="#{item}">                                                        
+                                                        </f:selectItems>                                                        
+                                                    </p:selectManyCheckbox>
                                                 </div>
                                                 <div class="ui-grid-col-1"></div>
                                                 <div class="ui-grid-col-1">
@@ -115,7 +119,9 @@
                                 </div>
                             </div><!-- /.box-body -->
                             <div class="box-footer">
-                                <h:commandButton class="btn btn-success" action="#{usuariosController.update}" value="#{bundle.CreateUsuariosSaveLink}"/> 
+                                <h:commandLink class="btn btn-success" action="#{usuariosController.update}">
+                                    <i class="glyphicon glyphicon-edit"> #{bundle.CreateUsuariosSaveLink}</i>
+                                </h:commandLink> 
                             </div>
                         </h:form>
                         <h:form prependId="false">

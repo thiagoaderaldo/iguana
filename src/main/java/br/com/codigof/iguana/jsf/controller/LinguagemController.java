@@ -1,11 +1,10 @@
 package br.com.codigof.iguana.jsf.controller;
 
-import br.com.codigof.iguana.jpa.entities.Usuarios;
+
+import br.com.codigof.iguana.beans.LinguagemFacade;
+import br.com.codigof.iguana.jpa.entities.Linguagem;
 import br.com.codigof.iguana.jsf.controller.util.JsfUtil;
 import br.com.codigof.iguana.jsf.controller.util.PaginationHelper;
-import br.com.codigof.iguana.beans.UsuariosFacade;
-import br.com.codigof.iguana.util.HashGenerator;
-
 import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
@@ -19,29 +18,29 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-@Named("usuariosController")
+@Named("linguagemController")
 @SessionScoped
-public class UsuariosController implements Serializable {
+public class LinguagemController implements Serializable {
 
-    private Usuarios current;
+    private Linguagem current;
     private DataModel items = null;
     @EJB
-    private br.com.codigof.iguana.beans.UsuariosFacade ejbFacade;
+    private LinguagemFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-    public UsuariosController() {
+    public LinguagemController() {
     }
 
-    public Usuarios getSelected() {
+    public Linguagem getSelected() {
         if (current == null) {
-            current = new Usuarios();
+            current = new Linguagem();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private UsuariosFacade getFacade() {
+    private LinguagemFacade getFacade() {
         return ejbFacade;
     }
 
@@ -69,43 +68,38 @@ public class UsuariosController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Usuarios) getItems().getRowData();
+        current = (Linguagem) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-//        return "View";
-        return null;
+        return "View";
     }
 
     public String prepareCreate() {
-        current = new Usuarios();
+        current = new Linguagem();
         selectedItemIndex = -1;
         return "Create";
     }
 
     public String create() {
         try {
-            current.setSenha(HashGenerator.SHA256(current.getSenha()));
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UsuariosCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("LinguagemCreated"));
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-            System.out.println("Erro: " + e.getLocalizedMessage());
             return null;
         }
     }
 
     public String prepareEdit() {
-        current = (Usuarios) getItems().getRowData();
+        current = (Linguagem) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-//        return "Edit";
-        return null;
+        return "Edit";
     }
 
     public String update() {
         try {
-            current.setSenha(HashGenerator.SHA256(current.getSenha()));
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UsuariosUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("LinguagemUpdated"));
             return "View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -114,7 +108,7 @@ public class UsuariosController implements Serializable {
     }
 
     public String destroy() {
-        current = (Usuarios) getItems().getRowData();
+        current = (Linguagem) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -138,7 +132,7 @@ public class UsuariosController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UsuariosDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("LinguagemDeleted"));
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
         }
@@ -194,30 +188,30 @@ public class UsuariosController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    public Usuarios getUsuarios(java.lang.String id) {
+    public Linguagem getLinguagem(java.lang.Integer id) {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(value = "usuariosConverter")
-    public static class UsuariosControllerConverter implements Converter {
+    @FacesConverter(forClass = Linguagem.class)
+    public static class LinguagemControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            UsuariosController controller = (UsuariosController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "usuariosController");
-            return controller.getUsuarios(getKey(value));
+            LinguagemController controller = (LinguagemController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "linguagemController");
+            return controller.getLinguagem(getKey(value));
         }
 
-        java.lang.String getKey(String value) {
-            java.lang.String key;
-            key = value;
+        java.lang.Integer getKey(String value) {
+            java.lang.Integer key;
+            key = Integer.valueOf(value);
             return key;
         }
 
-        String getStringKey(java.lang.String value) {
+        String getStringKey(java.lang.Integer value) {
             StringBuilder sb = new StringBuilder();
             sb.append(value);
             return sb.toString();
@@ -228,11 +222,11 @@ public class UsuariosController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Usuarios) {
-                Usuarios o = (Usuarios) object;
-                return getStringKey(o.getMatricula());
+            if (object instanceof Linguagem) {
+                Linguagem o = (Linguagem) object;
+                return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Usuarios.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Linguagem.class.getName());
             }
         }
 

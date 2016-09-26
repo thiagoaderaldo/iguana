@@ -6,6 +6,7 @@
 package br.com.codigof.iguana.jpa.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,11 +16,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,6 +37,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Linguagem.findByNome", query = "SELECT l FROM Linguagem l WHERE l.nome = :nome"),
     @NamedQuery(name = "Linguagem.findByDescricao", query = "SELECT l FROM Linguagem l WHERE l.descricao = :descricao")})
 public class Linguagem implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "linguagem")
+    private Collection<Usuarios> usuariosCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -123,6 +129,15 @@ public class Linguagem implements Serializable {
     public String toString() {
 //        return "br.com.codigof.iguana.teste.Linguagem[ id=" + id + " ]";
         return getNome() + " - " + getDescricao();
+    }
+
+    @XmlTransient
+    public Collection<Usuarios> getUsuariosCollection() {
+        return usuariosCollection;
+    }
+
+    public void setUsuariosCollection(Collection<Usuarios> usuariosCollection) {
+        this.usuariosCollection = usuariosCollection;
     }
     
 }

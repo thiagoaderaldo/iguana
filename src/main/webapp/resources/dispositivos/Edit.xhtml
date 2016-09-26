@@ -42,7 +42,9 @@
                             </div>
                         </h:panelGroup>
                         <div class="box-footer">
-                            <h:commandButton class="btn btn-success" action="#{dispositivosController.update}" value="#{bundle.CreateDispositivosSaveLink}"/> 
+                            <p:commandLink styleClass="btn btn-success" action="#{dispositivosController.update}">
+                                <i class="glyphicon glyphicon-edit" style="color: #FFFFFF"> #{bundle.CreateDispositivosSaveLink}</i>
+                            </p:commandLink> 
                         </div><!-- /.box-body -->
                     </h:form>
                 </div>

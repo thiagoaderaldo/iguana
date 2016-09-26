@@ -82,19 +82,22 @@
                                             <p:inputTextarea rows="4" cols="30" id="observacao"  value="#{atendimentosController.selected.observacao}" title="#{bundle.EditAtendimentosTitle_observacao}" />
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                   <div class="col-md-12">
                                         <div class="form-group">
-                                            <p:outputLabel value="#{bundle.EditAtendimentosLabel_responsavel}" for="responsavel" />
-                                            <p:inputText id="responsavel" value="#{atendimentosController.selected.responsavel}" title="#{bundle.EditAtendimentosTitle_responsavel}" required="true" requiredMessage="#{bundle.EditAtendimentosRequiredMessage_responsavel}"/>
+                                            <p:outputLabel value="#{bundle.CreateAtendimentosLabel_responsavel}" for="responsavel" />
+                                            <p:selectOneMenu id="responsavel" value="#{atendimentosController.selected.responsavel}" title="#{bundle.CreateAtendimentosTitle_responsavel}" required="true" requiredMessage="#{bundle.CreateAtendimentosRequiredMessage_responsavel}">
+                                                <f:selectItems value="#{usuariosController.itemsAvailableSelectOne}"/>
+                                            </p:selectOneMenu>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
+                            <div class="box-footer">
+                                <h:commandLink class="btn btn-success" action="#{assuntosController.update}">
+                                    <i class="glyphicon glyphicon-edit"> #{bundle.EditAssuntosSaveLink}</i>
+                                </h:commandLink>                                 
+                            </div><!-- /.box-body -->
                         </h:form>
-                        <div class="box-footer">
-                            <h:commandButton class="btn btn-success" action="#{assuntosController.update}" value="#{bundle.EditAssuntosSaveLink}"/>                                 
-                        </div><!-- /.box-body -->
                     </div>
                 </div>
             </div>

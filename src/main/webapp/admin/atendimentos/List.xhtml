@@ -22,7 +22,9 @@
             <h:form id="hFormListAtendimentos">
                 <h:outputText escape="false" value="#{bundle.ListAtendimentosEmpty}" rendered="#{atendimentosController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{atendimentosController.items.rowCount > 0}" id="hPnlGroupListAtendimentos">
-                    <p:dataTable value="#{atendimentosController.items}" id="pDataTableListAtendimentos" reflow="true" paginator="true" var="item">
+                    <p:dataTable value="#{atendimentosController.items}" id="pDataTableListAtendimentos" reflow="true" 
+                                 rows="10" paginator="true" rowsPerPageTemplate="5, 10, 25, 50"
+                                 var="item">
                         <p:column sortBy="#{item.dataAtendimento}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAtendimentosTitle_dataAtendimento}"/>

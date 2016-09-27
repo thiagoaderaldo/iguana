@@ -81,6 +81,12 @@ public class SolicitacoesController implements Serializable {
         selectedItemIndex = -1;
         return "Create";
     }
+    
+    public String linkCreate() {
+        current = new Solicitacoes();
+        selectedItemIndex = -1;
+        return "/admin/solicitacoes/Create";
+    }
 
     public String create() {
         try {

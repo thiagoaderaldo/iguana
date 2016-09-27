@@ -25,57 +25,57 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "DashboardDiaria.findAll", query = "SELECT d FROM DashboardDiaria d"),
-    @NamedQuery(name = "DashboardDiaria.findByAtendimentosabertos", query = "SELECT d FROM DashboardDiaria d WHERE d.atendimentosabertos = :atendimentosabertos"),
-    @NamedQuery(name = "DashboardDiaria.findByAtendimentospendentes", query = "SELECT d FROM DashboardDiaria d WHERE d.atendimentospendentes = :atendimentospendentes"),
-    @NamedQuery(name = "DashboardDiaria.findBySolicitacaoatendidasemp", query = "SELECT d FROM DashboardDiaria d WHERE d.solicitacaoatendidasemp = :solicitacaoatendidasemp"),
-    @NamedQuery(name = "DashboardDiaria.findByAtendimentoemspera", query = "SELECT d FROM DashboardDiaria d WHERE d.atendimentoemspera = :atendimentoemspera")})
+    @NamedQuery(name = "DashboardDiaria.findByQtdAtdAbertos", query = "SELECT d FROM DashboardDiaria d WHERE d.qtdAtdAbertos = :qtdAtdAbertos"),
+    @NamedQuery(name = "DashboardDiaria.findByQtdAtdPdtes", query = "SELECT d FROM DashboardDiaria d WHERE d.qtdAtdPdtes = :qtdAtdPdtes"),
+    @NamedQuery(name = "DashboardDiaria.findBySlcAtdEmPercent", query = "SELECT d FROM DashboardDiaria d WHERE d.slcAtdEmPercent = :slcAtdEmPercent"),
+    @NamedQuery(name = "DashboardDiaria.findByQtdAtdEspr", query = "SELECT d FROM DashboardDiaria d WHERE d.qtdAtdEspr = :qtdAtdEspr")})
 public class DashboardDiaria implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Column(name = "Atendimentos_abertos")
+    @Column(name = "qtd_atd_abertos")
     @Id
-    private BigInteger atendimentosabertos;
-    @Column(name = "Atendimentos_pendentes")
-    private BigInteger atendimentospendentes;
+    private BigInteger qtdAtdAbertos;
+    @Column(name = "qtd_atd_pdtes")
+    private BigInteger qtdAtdPdtes;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "Solicitacao_atendidas_em_p")
-    private BigDecimal solicitacaoatendidasemp;
-    @Column(name = "Atendimento_em_spera")
-    private BigInteger atendimentoemspera;
+    @Column(name = "slc_atd_em_percent")
+    private BigDecimal slcAtdEmPercent;
+    @Column(name = "qtd_atd_espr")
+    private BigInteger qtdAtdEspr;
 
     public DashboardDiaria() {
     }
 
-    public BigInteger getAtendimentosabertos() {
-        return atendimentosabertos;
+    public BigInteger getQtdAtdAbertos() {
+        return qtdAtdAbertos;
     }
 
-    public void setAtendimentosabertos(BigInteger atendimentosabertos) {
-        this.atendimentosabertos = atendimentosabertos;
+    public void setQtdAtdAbertos(BigInteger qtdAtdAbertos) {
+        this.qtdAtdAbertos = qtdAtdAbertos;
     }
 
-    public BigInteger getAtendimentospendentes() {
-        return atendimentospendentes;
+    public BigInteger getQtdAtdPdtes() {
+        return qtdAtdPdtes;
     }
 
-    public void setAtendimentospendentes(BigInteger atendimentospendentes) {
-        this.atendimentospendentes = atendimentospendentes;
+    public void setQtdAtdPdtes(BigInteger qtdAtdPdtes) {
+        this.qtdAtdPdtes = qtdAtdPdtes;
     }
 
-    public BigDecimal getSolicitacaoatendidasemp() {
-        return solicitacaoatendidasemp;
+    public BigDecimal getSlcAtdEmPercent() {
+        return slcAtdEmPercent;
     }
 
-    public void setSolicitacaoatendidasemp(BigDecimal solicitacaoatendidasemp) {
-        this.solicitacaoatendidasemp = solicitacaoatendidasemp;
+    public void setSlcAtdEmPercent(BigDecimal slcAtdEmPercent) {
+        this.slcAtdEmPercent = slcAtdEmPercent;
     }
 
-    public BigInteger getAtendimentoemspera() {
-        return atendimentoemspera;
+    public BigInteger getQtdAtdEspr() {
+        return qtdAtdEspr;
     }
 
-    public void setAtendimentoemspera(BigInteger atendimentoemspera) {
-        this.atendimentoemspera = atendimentoemspera;
+    public void setQtdAtdEspr(BigInteger qtdAtdEspr) {
+        this.qtdAtdEspr = qtdAtdEspr;
     }
     
 }

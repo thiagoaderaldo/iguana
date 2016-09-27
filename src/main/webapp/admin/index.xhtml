@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -34,7 +35,7 @@
                                     <div class="small-box bg-aqua">
                                         <div class="inner">
 
-                                            <h3><h:outputText id="atendimentosAbertos" value="#{dashboardDiariaController.selected.atendimentosabertos}"/></h3>
+                                            <h3><h:outputText id="atendimentosAbertos" value="#{dashboardDiariaController.selected.qtdAtdAbertos}"/></h3>
                                             <p>Novas solicitações</p>
 
                                         </div>
@@ -48,7 +49,7 @@
                                     <!-- small box -->
                                     <div class="small-box bg-red">
                                         <div class="inner">
-                                            <h3><h:outputText id="solicitacaoPendente" value="#{dashboardDiariaController.selected.atendimentospendentes}"/></h3>
+                                            <h3><h:outputText id="solicitacaoPendente" value="#{dashboardDiariaController.selected.qtdAtdPdtes}"/></h3>
                                             <p>Solicitações pendentes</p>
                                         </div>
                                         <div class="icon">
@@ -61,7 +62,10 @@
                                     <!-- small box -->
                                     <div class="small-box bg-green">
                                         <div class="inner">
-                                            <h3><h:outputText id="porcentAtd" value="#{dashboardDiariaController.selected.solicitacaoatendidasemp}"/><sup style="font-size: 20px">%</sup></h3>
+                                            <h3><h:outputText id="porcentAtd" value="#{dashboardDiariaController.selected.slcAtdEmPercent}">
+                                                    <f:convertNumber maxFractionDigits="1"/>
+                                                </h:outputText>
+                                                    <sup style="font-size: 20px">%</sup></h3>
                                             <p>Solicitações atendidas</p>
                                         </div>
                                         <div class="icon">
@@ -74,7 +78,7 @@
                                     <!-- small box -->
                                     <div class="small-box bg-yellow">
                                         <div class="inner">
-                                            <h3><h:outputText id="sltEspera" value="#{dashboardDiariaController.selected.atendimentoemspera}"/></h3>
+                                            <h3><h:outputText id="sltEspera" value="#{dashboardDiariaController.selected.qtdAtdEspr}"/></h3>
                                             <p>Solicitações em espera</p>
                                         </div>
 
@@ -100,10 +104,10 @@
                                     <table align="center" style="max-width: 500px">
                                         <tr>
                                             <td align="center">
-                                                <img width="190px" 
-                                                     height="100px" 
+                                                <img width="151px" 
+                                                     height="60px" 
                                                      alt="Iguana" 
-                                                     src="/ipe/resources/images/ipe-300x199.png"/>
+                                                     src="/iguana/resources/img/iguana-logo-151x60.png"/>
                                             </td>
                                         </tr>
                                         <tr>

@@ -79,6 +79,12 @@ public class GruposController implements Serializable {
         selectedItemIndex = -1;
         return "Create";
     }
+    
+    public String linkCreate() {
+        current = new Grupos();
+        selectedItemIndex = -1;
+        return "/admin/grupos/Create";
+    }
 
     public String create() {
         try {

@@ -226,7 +226,7 @@ public class DashboardDiariaController implements Serializable {
             }
             if (object instanceof DashboardDiaria) {
                 DashboardDiaria o = (DashboardDiaria) object;
-                return getStringKey(o.getAtendimentosabertos());
+                return getStringKey(o.getQtdAtdAbertos());
             } else {
                 throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + DashboardDiaria.class.getName());
             }

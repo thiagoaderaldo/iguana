@@ -86,6 +86,12 @@ public class AtendimentosController implements Serializable {
         selectedItemIndex = -1;
         return "Create";
     }
+    
+    public String linkCreate() {
+        current = new Atendimentos();
+        selectedItemIndex = -1;
+        return "/admin/atendimentos/Create";
+    }
 
     public String create() {
         try {

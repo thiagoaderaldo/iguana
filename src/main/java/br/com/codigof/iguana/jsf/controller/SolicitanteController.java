@@ -79,6 +79,12 @@ public class SolicitanteController implements Serializable {
         selectedItemIndex = -1;
         return "Create";
     }
+    
+    public String linkCreate() {
+        current = new Solicitante();
+        selectedItemIndex = -1;
+        return "/admin/solicitante/Create";
+    }
 
     public String create() {
         try {

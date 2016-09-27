@@ -79,6 +79,12 @@ public class UnidadeOrganizacionalController implements Serializable {
         selectedItemIndex = -1;
         return "Create";
     }
+    
+    public String linkCreate() {
+        current = new UnidadeOrganizacional();
+        selectedItemIndex = -1;
+        return "/admin/unidadeOrganizacional/Create";
+    }
 
     public String create() {
         try {

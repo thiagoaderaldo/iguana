@@ -79,6 +79,12 @@ public class AssuntosController implements Serializable {
         selectedItemIndex = -1;
         return "Create";
     }
+    
+    public String linkCreate() {
+        current = new Assuntos();
+        selectedItemIndex = -1;
+        return "/admin/assuntos/Create";
+    }
 
     public String create() {
         try {

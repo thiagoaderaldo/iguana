@@ -79,6 +79,12 @@ public class DispositivosController implements Serializable {
         selectedItemIndex = -1;
         return "Create";
     }
+    
+    public String linkCreate() {
+        current = new Dispositivos();
+        selectedItemIndex = -1;
+        return "/admin/dispositivos/Create";
+    }
 
     public String create() {
         try {

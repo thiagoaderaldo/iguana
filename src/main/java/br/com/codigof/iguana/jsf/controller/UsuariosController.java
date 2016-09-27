@@ -80,6 +80,12 @@ public class UsuariosController implements Serializable {
         selectedItemIndex = -1;
         return "Create";
     }
+    
+    public String linkCreate() {
+        current = new Usuarios();
+        selectedItemIndex = -1;
+        return "/admin/usuarios/Create";
+    }
 
     public String create() {
         try {

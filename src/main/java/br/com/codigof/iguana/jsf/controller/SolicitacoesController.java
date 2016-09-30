@@ -1,12 +1,15 @@
 package br.com.codigof.iguana.jsf.controller;
 
+import br.com.codigof.iguana.beans.EstatusFacade;
 import br.com.codigof.iguana.jpa.entities.Solicitacoes;
 import br.com.codigof.iguana.jsf.controller.util.JsfUtil;
 import br.com.codigof.iguana.jsf.controller.util.PaginationHelper;
 import br.com.codigof.iguana.beans.SolicitacoesFacade;
+import br.com.codigof.iguana.jpa.entities.Estatus;
 import br.com.codigof.iguana.util.Protocolo;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -27,6 +30,8 @@ public class SolicitacoesController implements Serializable {
     private DataModel items = null;
     @EJB
     private br.com.codigof.iguana.beans.SolicitacoesFacade ejbFacade;
+    @EJB
+    private br.com.codigof.iguana.beans.EstatusFacade ejbEstatusFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private Protocolo protocolo;
@@ -44,6 +49,10 @@ public class SolicitacoesController implements Serializable {
 
     private SolicitacoesFacade getFacade() {
         return ejbFacade;
+    }
+
+    public EstatusFacade getEjbEstatusFacade() {
+        return ejbEstatusFacade;
     }
 
     public PaginationHelper getPagination() {
@@ -69,6 +78,47 @@ public class SolicitacoesController implements Serializable {
         return "List";
     }
 
+    public String findAllEstatusPendente() {
+        recreateModel();
+        recreatePagination();
+        Estatus est = new Estatus();
+        List<Solicitacoes> solic = null;
+        est = getEjbEstatusFacade().findByNome("PENDENTE");
+        solic = ejbFacade.findByEstatus(est);
+        items = new ListDataModel(solic);
+        pagination =  new PaginationHelper(10) {
+            @Override
+            public int getItemsCount() {
+                return getFacade().count();
+            }
+            
+            @Override
+            public DataModel createPageDataModel() {
+                return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+            }
+        };
+        return "/admin/solicitacoes/List";
+    }
+    public String findAllCurrentDate() {
+        recreateModel();
+        recreatePagination();
+        List<Solicitacoes> solic = null;
+        solic = ejbFacade.findAllCurrentDate();
+        items = new ListDataModel(solic);
+        pagination =  new PaginationHelper(10) {
+            @Override
+            public int getItemsCount() {
+                return getFacade().count();
+            }
+            
+            @Override
+            public DataModel createPageDataModel() {
+                return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+            }
+        };
+        return "/admin/solicitacoes/List";
+    }
+
     public String prepareView() {
         current = (Solicitacoes) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
@@ -81,7 +131,7 @@ public class SolicitacoesController implements Serializable {
         selectedItemIndex = -1;
         return "Create";
     }
-    
+
     public String linkCreate() {
         current = new Solicitacoes();
         selectedItemIndex = -1;
@@ -90,7 +140,7 @@ public class SolicitacoesController implements Serializable {
 
     public String create() {
         try {
-            protocolo =  new Protocolo();
+            protocolo = new Protocolo();
             current.setProtocolo(protocolo.createProtocolo());
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SolicitacoesCreated"));

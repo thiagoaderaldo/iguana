@@ -65,8 +65,8 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <p:outputLabel value="#{bundle.CreateSolicitacoesLabel_dataSolicitacao}" for="dataSolicitacao" />
-                                            <p:calendar pt:type="date" id="dataSolicitacao" value="#{solicitacoesController.selected.dataSolicitacao}" title="#{bundle.CreateSolicitacoesTitle_dataSolicitacao}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_dataSolicitacao}">
-                                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                                            <p:calendar pt:type="date" effect="fold" locale="pt_BR" pattern="dd/MM/yyyy" timeZone="America/Fortaleza" id="dataSolicitacao" value="#{solicitacoesController.selected.dataSolicitacao}" title="#{bundle.CreateSolicitacoesTitle_dataSolicitacao}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_dataSolicitacao}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" timeZone="America/Fortaleza"/>
                                             </p:calendar>
                                         </div>
                                     </div>
@@ -74,7 +74,7 @@
                                         <div class="form-group">
                                             <p:outputLabel value="#{bundle.CreateSolicitacoesLabel_horaSolicitacao}" for="horaSolicitacao" />
                                             <p:inputMask mask="99:99" style="text-align: center" id="horaSolicitacao" value="#{solicitacoesController.selected.horaSolicitacao}" title="#{bundle.CreateSolicitacoesTitle_horaSolicitacao}" required="true" requiredMessage="#{bundle.CreateSolicitacoesRequiredMessage_horaSolicitacao}">
-                                                <f:convertDateTime pattern="HH:mm" />
+                                                <f:convertDateTime pattern="HH:mm" locale="pt_BR" timeZone="America/Fortaleza"/>
                                             </p:inputMask>
                                         </div>
                                     </div>

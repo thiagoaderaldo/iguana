@@ -65,16 +65,16 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <p:outputLabel value="#{bundle.EditSolicitacoesLabel_dataSolicitacao}" for="dataSolicitacao" />
-                                            <p:calendar pt:type="date" id="dataSolicitacao" value="#{solicitacoesController.selected.dataSolicitacao}" title="#{bundle.EditSolicitacoesTitle_dataSolicitacao}" required="true" requiredMessage="#{bundle.EditSolicitacoesRequiredMessage_dataSolicitacao}">
-                                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                                            <p:calendar pt:type="date" effect="fold" id="dataSolicitacao" locale="pt_BR" pattern="dd/MM/yyyy" timeZone="America/Fortaleza" value="#{solicitacoesController.selected.dataSolicitacao}" title="#{bundle.EditSolicitacoesTitle_dataSolicitacao}" required="true" requiredMessage="#{bundle.EditSolicitacoesRequiredMessage_dataSolicitacao}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" timeZone="America/Fortaleza"/>
                                             </p:calendar>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <p:outputLabel value="#{bundle.EditSolicitacoesLabel_horaSolicitacao}" for="horaSolicitacao" />
-                                            <p:inputMask mask="__:__" style="text-align: center" id="horaSolicitacao" pt:type="time" value="#{solicitacoesController.selected.horaSolicitacao}" title="#{bundle.EditSolicitacoesTitle_horaSolicitacao}" required="true" requiredMessage="#{bundle.EditSolicitacoesRequiredMessage_horaSolicitacao}">
-                                                <f:convertDateTime pattern="HH:mm:ss" />
+                                            <p:inputMask mask="99:99" style="text-align: center" id="horaSolicitacao" pt:type="time" value="#{solicitacoesController.selected.horaSolicitacao}" title="#{bundle.EditSolicitacoesTitle_horaSolicitacao}" required="true" requiredMessage="#{bundle.EditSolicitacoesRequiredMessage_horaSolicitacao}">
+                                                <f:convertDateTime pattern="HH:mm" locale="pt_BR" timeZone="America/Fortaleza"/>
                                             </p:inputMask>
                                         </div>
                                     </div>
